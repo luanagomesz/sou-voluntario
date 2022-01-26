@@ -20,8 +20,9 @@
  # Variaveís de cores: <br/>
  --orange <br/>
  --ligthorange <br/>
- --green <br/>
+ --cyan <br/>
  --darkblue <br/>
+ --ligthblue <br/>
  --red <br/>
  --grey-100 <br/>
  --grey-50 <br/>
