@@ -19,6 +19,7 @@
  
  # Variaveís de cores: <br/>
  --orange <br/>
+ --ligthorange <br/>
  --green <br/>
  --darkblue <br/>
  --red <br/>
