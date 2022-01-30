@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
 }
 body{
     background: white;
-    color: var(---darkblue);
+    color: var(--darkblue);
     font-family: 'Fira Sans', sans-serif;
 }
 h1,h2, h3, h4, span, button, div, input, p{
@@ -33,7 +33,7 @@ button{
     cursor: pointer;
     border: none;
     font-style: normal;
-    font-weight: 600;
+
     font-size: 16px;
 }
 a{
