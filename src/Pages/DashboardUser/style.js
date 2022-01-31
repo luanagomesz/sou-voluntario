@@ -18,3 +18,9 @@ export const EventsTypeContainer = styled.section`
   height: 100px;
   padding: 30px 20px 15px;
 `;
+
+export const EventsSearchContainer = styled.section`
+  width: 100%;
+  height: 100px;
+  padding: 30px 20px 15px;
+`;
