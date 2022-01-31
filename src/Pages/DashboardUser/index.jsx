@@ -29,11 +29,9 @@ export const DashboardUser = () => {
   useEffect(() => {
     loadSubscribedEvents(
       5,
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2VAbWFpbC5jb20iLCJpYXQiOjE2NDM2NTUzMjksImV4cCI6MTY0MzY1ODkyOSwic3ViIjoiNSJ9.bHixpAfu0KxILlIctRmvWLUdb5TNhCJKSfR9HLFie98",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2VAbWFpbC5jb20iLCJpYXQiOjE2NDM2NTc0NzEsImV4cCI6MTY0MzY2MTA3MSwic3ViIjoiNSJ9.Bx8OXnDy9MTuRr-syOKWu7WLyncw_GMg3IwpXfDriUs",
     );
   }, []);
-
-  console.log(subscribedEvents);
 
   return (
     <>
