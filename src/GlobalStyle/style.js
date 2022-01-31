@@ -10,10 +10,10 @@ const GlobalStyle = createGlobalStyle`
 :root{
     --red: #FF4D4D;
     --orange: #FC7D2F;
-    --ligthorange:#FE9E63;
+    --lightorange:#FE9E63;
     --cyan: #24585F;
     --darkblue:#081140;
-    --ligthblue: ##F4F8FB;
+    --lightblue: #F4F8FB;
     --grey-100:#333333;
     --grey-50:#999999;
     --grey-0:rgba(222, 222, 222, 0.3);;
