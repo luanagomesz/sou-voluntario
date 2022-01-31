@@ -1,42 +1,62 @@
 import { GrLocation } from "react-icons/gr";
 import { IoPeopleCircle } from "react-icons/io5";
+import { MdOutlineAttachMoney } from "react-icons/md";
 
 import {
   EventContainer,
   EventUserImage,
   EventUserInfo,
-  VoluntariesOfEvent,
+  WorkTypeEvent,
   EventUserLocationAndStatus,
 } from "./style";
 const bibliotecario = require("../../assets/img/bibliotecario.jpg");
 
-export const EventUserCard = () => {
+export const EventUserCard = ({ event }) => {
+  const {
+    title,
+    description,
+    ["work-type"]: workType,
+    ["donation-goal"]: donationGoal,
+    ["donation-value"]: donationValue,
+    category,
+    state,
+    completed,
+    voluntaries,
+    ["ong-name"]: ongName,
+  } = event;
+
   return (
     <EventContainer className="events__list__item">
       <EventUserImage className="image__container">
         <img src={bibliotecario} alt="event" />
-        <VoluntariesOfEvent>
-          <IoPeopleCircle />
-          <span>20</span>
-        </VoluntariesOfEvent>
+        <WorkTypeEvent>
+          {workType === "volunteering" ? (
+            <>
+              <IoPeopleCircle />
+              <span>{voluntaries.length}</span>
+            </>
+          ) : (
+            <>
+              <MdOutlineAttachMoney />
+              <span>
+                {donationValue.toFixed(2)} / {donationGoal.toFixed(2)}
+              </span>
+            </>
+          )}
+        </WorkTypeEvent>
       </EventUserImage>
       <EventUserInfo>
-        <h2>Agente de Biblioteca</h2>
-        <h4>Nome da ONG</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum modi
-          beatae alias, veniam eveniet porro amet, atque non excepturi
-          accusantium autem ea commodi voluptatem velit, nesciunt incidunt
-          placeat molestias. Voluptatum?Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Repudiandae doloremque recusandae beatae quas
-          similique magnam aliquid molestiae explicabo pariatur dolorum
-          distinctio qui, minima, aspernatur rerum hic, quam vitae quis
-          veritatis.
-        </p>
+        <h2>{title}</h2>
+        <h4>{ongName}</h4>
+        <p>{description}</p>
         <EventUserLocationAndStatus>
           <GrLocation />
-          <span>São Paulo,...</span>
-          <button>Concluir</button>
+          <span>{state}</span>
+          {!completed && workType === "volunteering" ? (
+            <button>Concluir</button>
+          ) : (
+            !completed && workType === "donation" && <button>Doar</button>
+          )}
         </EventUserLocationAndStatus>
       </EventUserInfo>
     </EventContainer>

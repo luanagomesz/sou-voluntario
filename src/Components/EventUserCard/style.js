@@ -28,7 +28,7 @@ export const EventUserImage = styled.figure`
   }
 `;
 
-export const VoluntariesOfEvent = styled.div`
+export const WorkTypeEvent = styled.div`
   width: fit-content;
   height: 30px;
   padding-right: 6px;
@@ -53,6 +53,8 @@ export const VoluntariesOfEvent = styled.div`
     height: 25px;
   }
 `;
+
+export const DonationEvent = styled.div``;
 
 export const EventUserInfo = styled.div`
   width: 100%;
