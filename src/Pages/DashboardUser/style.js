@@ -27,6 +27,15 @@ export const EventsStatusContainer = styled.section`
   height: 100px;
   padding-top: 30px;
   padding-bottom: 15px;
+
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: 1024px) {
+    justify-content: flex-start;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
 `;
 
 export const EventsListContainer = styled.section`
@@ -39,7 +48,15 @@ export const EventsListContainer = styled.section`
 export const EventsList = styled.ul`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 40px;
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 20px;
+    /* justify-content: flex-start; */
+  }
 `;
