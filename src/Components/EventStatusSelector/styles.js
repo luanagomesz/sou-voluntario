@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const EventsTypeSelection = styled.div`
+export const EventsStatusSelection = styled.div`
   width: 100%;
   height: 50px;
   border-radius: 6px;
@@ -25,9 +25,9 @@ export const ButtonOpenEvents = styled.button`
   flex-shrink: 0;
 
   background-color: ${(props) =>
-    props.eventType === "open" ? "var(--red)" : "transparent"};
+    props.eventStatus === false ? "var(--red)" : "transparent"};
   color: ${(props) =>
-    props.eventType === "open" ? "#FFF" : "var(--grey-100)"};
+    props.eventStatus === false ? "#FFF" : "var(--grey-100)"};
 `;
 
 export const ButtonClosedEvents = styled.button`
@@ -39,7 +39,7 @@ export const ButtonClosedEvents = styled.button`
   flex-shrink: 0;
 
   background-color: ${(props) =>
-    props.eventType === "closed" ? "var(--red)" : "transparent"};
+    props.eventStatus === true ? "var(--red)" : "transparent"};
   color: ${(props) =>
-    props.eventType === "closed" ? "#FFF" : "var(--grey-100)"};
+    props.eventStatus === true ? "#FFF" : "var(--grey-100)"};
 `;
