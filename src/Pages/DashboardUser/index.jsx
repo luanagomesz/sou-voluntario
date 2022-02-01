@@ -11,8 +11,8 @@ import { useUserEvents } from "../../Contexts/UserEvents";
 import { useCallback, useEffect, useState } from "react";
 
 export const DashboardUser = () => {
-  const { subscribedEvents, loadSubscribedEvents } = useUserEvents();
-  const [filteredEvents, setFilteredEvents] = useState([]);
+  const { subscribedFilteredEvents, loadSubscribedFilteredEvents } =
+    useUserEvents();
   const [eventIsCompleted, setEventIsCompleted] = useState(false);
 
   const handleSetEventStatus = useCallback((status) => {
@@ -20,18 +20,14 @@ export const DashboardUser = () => {
   }, []);
 
   useEffect(() => {
-    const events = subscribedEvents.filter(
-      (event) => event.completed === eventIsCompleted
+    loadSubscribedFilteredEvents(
+      3,
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9uZ0BtYWlsLmNvbSIsImlhdCI6MTY0MzczOTUzMCwiZXhwIjoxNjQzNzQzMTMwLCJzdWIiOiIxIn0.t6bImOl8t_uqfuG7kB0tHM3FiNqPs5narJ7SkvR6ei4",
+      eventIsCompleted
     );
-    setFilteredEvents(events);
   }, [eventIsCompleted]);
 
-  useEffect(() => {
-    loadSubscribedEvents(
-      5,
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2VAbWFpbC5jb20iLCJpYXQiOjE2NDM2NTc0NzEsImV4cCI6MTY0MzY2MTA3MSwic3ViIjoiNSJ9.Bx8OXnDy9MTuRr-syOKWu7WLyncw_GMg3IwpXfDriUs"
-    );
-  }, []);
+  console.log(subscribedFilteredEvents);
 
   return (
     <>
@@ -45,7 +41,7 @@ export const DashboardUser = () => {
         </EventsStatusContainer>
         <EventsListContainer className="events__list__container">
           <EventsList className="events__list">
-            {filteredEvents.map((event) => (
+            {subscribedFilteredEvents.map((event) => (
               <EventUserCard key={event.id} event={event} />
             ))}
           </EventsList>

@@ -6,6 +6,7 @@ const UserEventsContext = createContext({});
 
 const UserEventsProvider = ({ children }) => {
   const [subscribedEvents, setSubscribedEvents] = useState([]);
+  const [subscribedFilteredEvents, setSubscribedFilteredEvents] = useState([]);
 
   const loadSubscribedEvents = useCallback(async (userId, accessToken) => {
     const response = await api.get(`/events?voluntaries_like=[${userId}]`, {
@@ -15,9 +16,30 @@ const UserEventsProvider = ({ children }) => {
     setSubscribedEvents([...response.data]);
   }, []);
 
+  const loadSubscribedFilteredEvents = useCallback(
+    async (userId, accessToken, status) => {
+      const response = await api.get(
+        `/events?voluntaries_like=[${userId}]&completed_like=${status}`,
+        {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        },
+      );
+
+      console.log(response.data);
+
+      setSubscribedFilteredEvents([...response.data]);
+    },
+    [],
+  );
+
   return (
     <UserEventsContext.Provider
-      value={{ subscribedEvents, loadSubscribedEvents }}
+      value={{
+        subscribedEvents,
+        loadSubscribedEvents,
+        subscribedFilteredEvents,
+        loadSubscribedFilteredEvents,
+      }}
     >
       {children}
     </UserEventsContext.Provider>

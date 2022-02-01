@@ -15,14 +15,14 @@ export const EventUserCard = ({ event }) => {
   const {
     title,
     description,
-    ["work-type"]: workType,
-    ["donation-goal"]: donationGoal,
-    ["donation-value"]: donationValue,
+    workType,
+    donationGoal,
+    amountDonated,
     category,
     state,
     completed,
     voluntaries,
-    ["ong-name"]: ongName,
+    ongName,
   } = event;
 
   return (
@@ -39,7 +39,7 @@ export const EventUserCard = ({ event }) => {
             <>
               <MdOutlineAttachMoney />
               <span>
-                {donationValue.toFixed(2)} / {donationGoal.toFixed(2)}
+                {amountDonated.toFixed(2)} / {donationGoal.toFixed(2)}
               </span>
             </>
           )}
