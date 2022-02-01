@@ -10,6 +10,7 @@ import {
 } from "./style";
 import souVoluntario from "../../Assets/souvol.svg";
 import volunteers from "../../Assets/volunteers.svg";
+import { FormLogin } from "../../Components/FormLogin";
 
 export const Login = () => {
   return (
@@ -21,17 +22,7 @@ export const Login = () => {
           <img src={volunteers} alt="volunteers" className="volunteers" />
         </ContainerInfo>
         <ContainerForm>
-          <h1>Login</h1>
-
-          <Input>
-            <p>Email:</p>
-            <input placeholder="Digite seu email" />
-          </Input>
-          <Input>
-            <p>Senha:</p>
-            <input placeholder="Digite sua senha" />
-          </Input>
-          <Button>Entrar</Button>
+          <FormLogin />
         </ContainerForm>
       </ContainerLogin>
       <BackgroundBottom />

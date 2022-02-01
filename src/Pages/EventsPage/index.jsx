@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-import { useLocation } from "react-router-dom";
-
-export const Events = () => {
-  const location = useLocation();
-  console.log(location);
-=======
 import { useEffect, useState } from "react";
 import {
   PageContainer,
@@ -29,7 +22,6 @@ export const Events = () => {
   const filterByState = (states) => {};
   const filterByCategory = (type) => {};
 
->>>>>>> 99dc0f998a26abf30a824d34d7394137c2c243a3
   return (
     <PageContainer>
       <FakeHeader>Fake Header</FakeHeader>

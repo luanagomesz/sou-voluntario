@@ -3,6 +3,7 @@ import { Button, Nav, NavLink, Burger, Menu, ButtonLink, User } from "./style";
 import Logo from "../../Assets/souvol.svg";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../../Contexts/Auth";
 
 export const Header = ({
   MyEvents = false,
@@ -11,6 +12,7 @@ export const Header = ({
   isOng = false,
 }) => {
   const [burger, setBurger] = useState(false);
+  const { logout } = useAuth();
 
   const toggleBurger = () => {
     setBurger(!burger);
@@ -45,7 +47,9 @@ export const Header = ({
       <User>
         <h2 className="userItems">John Doe{User.name}</h2>
         <FaUser className="userItems" size="24px" color="#999999" />
-        <FaSignOutAlt className="userItems" size="24px" color="#999999" />
+        <Button onClick={logout}>
+          <FaSignOutAlt className="userItems" size="24px" color="#999999" />
+        </Button>
       </User>
     </Nav>
   );

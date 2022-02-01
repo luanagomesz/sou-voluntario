@@ -55,7 +55,8 @@ export const ContainerLogin = styled.div`
   }
 `;
 export const ContainerForm = styled.div`
-  width: 314px;
+  width: 35%;
+  height: 500px;
 
   background-color: var(--ligthblue);
   box-shadow: 5px;

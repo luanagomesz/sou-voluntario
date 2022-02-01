@@ -1,10 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { Api } from "../../Service";
+import { api } from "../../Service";
 
 export const AuthContext = createContext();
 
 export const useAuth = () => {
-  const context = useContext(useAuth);
+  const context = useContext(AuthContext);
 
   return context;
 };
@@ -33,9 +33,9 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const LoginRequest = async (email, password) => {
+  const LoginRequest = (data) => {
     try {
-      const request = await Api.post("login, {email, password");
+      api.post("login", data).then((r) => console.log(r));
     } catch (error) {
       return null;
     }
@@ -54,5 +54,9 @@ export const AuthProvider = ({ children }) => {
     setLocalStorageUser(null);
   };
 
-  return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ LoginRequest, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
