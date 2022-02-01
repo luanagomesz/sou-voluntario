@@ -13,8 +13,14 @@ const GlobalStyle = createGlobalStyle`
     --lightorange:#FE9E63;
     --cyan: #24585F;
     --darkblue:#081140;
+<<<<<<< HEAD
     --lightblue: #F4F8FB;
+=======
+    --ligthblue: #F4F8FB;
+    --ligthgrey: #dedede;
+>>>>>>> 99dc0f998a26abf30a824d34d7394137c2c243a3
     --grey-100:#333333;
+    --grey-80: #333131;
     --grey-50:#999999;
     --grey-0:rgba(222, 222, 222, 0.3);
 }
@@ -33,7 +39,6 @@ button{
     cursor: pointer;
     border: none;
     font-style: normal;
-
     font-size: 16px;
 }
 a{
