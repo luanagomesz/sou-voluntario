@@ -14,7 +14,9 @@ const GlobalStyle = createGlobalStyle`
     --cyan: #24585F;
     --darkblue:#081140;
     --ligthblue: #F4F8FB;
+    --ligthgrey: #dedede;
     --grey-100:#333333;
+    --grey-80: #333131;
     --grey-50:#999999;
     --grey-0:rgba(222, 222, 222, 0.3);
 }
@@ -33,7 +35,6 @@ button{
     cursor: pointer;
     border: none;
     font-style: normal;
-
     font-size: 16px;
 }
 a{
