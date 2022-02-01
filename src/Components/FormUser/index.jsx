@@ -2,12 +2,10 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
-import { useState } from "react";
 
 import { Form, Button, Center } from "./style";
 
 export const FormUser = () => {
-  const [volunter, setVolunter] = useState(true);
 
   const formSchema = yup.object().shape({
     name: yup.string().required("Informe o seu nome").min(3, "Nome inválido"),

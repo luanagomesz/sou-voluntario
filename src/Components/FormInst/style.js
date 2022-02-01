@@ -12,7 +12,7 @@ flex-direction: column;
 justify-content: space-around;
 background-color: #fff;
 border-radius: 8px;
-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 6px 0px rgba(128,128,128,1);
 
 `
 export const Button = styled.button`
