@@ -22,9 +22,9 @@ export const NavLink = styled(Link)`
 
 export const Burger = styled(FaBars)`
   display: none;
-  color: gray;
 
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 1090px) {
+    color: gray;
     display: block;
     position: absolute;
     top: 0;
@@ -41,9 +41,9 @@ export const Menu = styled.div`
   width: 30%;
 
   .colorTheme {
-    color: red;
+    color: var(--lightblue);
   }
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 1090px) {
     display: none;
   }
 `;
@@ -53,7 +53,7 @@ export const Button = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 1090px) {
     display: none;
   }
 `;
@@ -88,7 +88,7 @@ export const User = styled.div`
       margin-left: 35px;
     }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 1090px) {
 display: none;
   }
 `;

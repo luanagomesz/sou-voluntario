@@ -2,36 +2,42 @@ import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import { Button, Nav, NavLink, Burger, Menu, ButtonLink, User } from "./style";
 import Logo from "../../Assets/souvol.svg";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 export const Header = ({
-  login = false,
-  register = false,
-  dashboardOng = false,
+  MyEvents = false,
+  Events = false,
+  Faq = false,
   isOng = false,
 }) => {
-  const location = useLocation();
-  console.log(location);
+  const [burger, setBurger] = useState(false);
+
+  const toggleBurger = () => {
+    setBurger(!burger);
+  };
 
   return (
     <Nav>
       <NavLink to="/">
         <img src={Logo} alt="Logo" />
       </NavLink>
-      <Burger />
+      <Button onClick={toggleBurger}>
+        <Burger />
+      </Button>
       <Menu>
         {isOng ? (
           <Button>
             <ButtonLink to="/">Criar Evento</ButtonLink>
           </Button>
         ) : (
-          <NavLink className={login ? "colorTheme" : ""} to="/Events">
+          <NavLink className={MyEvents ? "colorTheme" : ""} to="/Events">
             Meus Eventos
           </NavLink>
         )}
-        <NavLink className={login ? "colorTheme" : ""} to="/Events">
+        <NavLink className={Events ? "colorTheme" : ""} to="/Events">
           Eventos
         </NavLink>
-        <NavLink className={dashboardOng ? "colorTheme" : ""} to="/Faq">
+        <NavLink className={Faq ? "colorTheme" : ""} to="/Faq">
           Faq
         </NavLink>
       </Menu>

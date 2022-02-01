@@ -8,19 +8,21 @@ import {
   ContainerLogin,
   Input,
 } from "./style";
-// import SouVoluntario from "../../Assets/souvol.png";
-// import bgbottom from "../../Assets/bgbottom.png";
+import souVoluntario from "../../Assets/souvol.svg";
+import volunteers from "../../Assets/volunteers.svg";
 
 export const Login = () => {
   return (
     <Container>
       <BackgroundTop />
-      <h1>Login</h1>
       <ContainerLogin>
         <ContainerInfo>
-          <image src="../../Assets/souvol.png" alt="logo" />
+          <img src={souVoluntario} alt="logo" className="logo" />
+          <img src={volunteers} alt="volunteers" className="volunteers" />
         </ContainerInfo>
         <ContainerForm>
+          <h1>Login</h1>
+
           <Input>
             <p>Email:</p>
             <input placeholder="Digite seu email" />
