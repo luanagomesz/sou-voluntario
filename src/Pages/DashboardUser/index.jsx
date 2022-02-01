@@ -1,20 +1,56 @@
-import { useLayoutEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { Header } from "../../Components/Header";
+import {
+  FakeHeader,
+  Main,
+  EventsStatusContainer,
+  EventsList,
+  EventsListContainer,
+} from "./style";
+import { EventStatusSelector } from "../../Components/EventStatusSelector";
+import { EventUserCard } from "../../Components/EventUserCard";
+import { useUserEvents } from "../../Contexts/UserEvents";
+import { useCallback, useEffect, useState } from "react";
 
 export const DashboardUser = () => {
-  const location = useLocation();
+  const { subscribedEvents, loadSubscribedEvents } = useUserEvents();
+  const [filteredEvents, setFilteredEvents] = useState([]);
+  const [eventIsCompleted, setEventIsCompleted] = useState(false);
 
-  useLayoutEffect(() => {
-    // ga.send(["pageview", location.pathname]);
-    console.log(location.pathname);
-  }, [location]);
+  const handleSetEventStatus = useCallback((status) => {
+    setEventIsCompleted(status);
+  }, []);
 
-  console.log(location);
+  useEffect(() => {
+    const events = subscribedEvents.filter(
+      (event) => event.completed === eventIsCompleted
+    );
+    setFilteredEvents(events);
+  }, [eventIsCompleted]);
+
+  useEffect(() => {
+    loadSubscribedEvents(
+      5,
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2VAbWFpbC5jb20iLCJpYXQiOjE2NDM2NTc0NzEsImV4cCI6MTY0MzY2MTA3MSwic3ViIjoiNSJ9.Bx8OXnDy9MTuRr-syOKWu7WLyncw_GMg3IwpXfDriUs"
+    );
+  }, []);
+
   return (
-    <div>
-      <Header dashboardOng={true} />
-      <h1>DashboardOng</h1>
-    </div>
+    <>
+      <FakeHeader />
+      <Main>
+        <EventsStatusContainer className="events__status__container">
+          <EventStatusSelector
+            handleSetEventStatus={handleSetEventStatus}
+            eventIsCompleted={eventIsCompleted}
+          />
+        </EventsStatusContainer>
+        <EventsListContainer className="events__list__container">
+          <EventsList className="events__list">
+            {filteredEvents.map((event) => (
+              <EventUserCard key={event.id} event={event} />
+            ))}
+          </EventsList>
+        </EventsListContainer>
+      </Main>
+    </>
   );
 };
