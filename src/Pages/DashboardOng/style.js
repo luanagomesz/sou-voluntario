@@ -9,6 +9,10 @@ export const Main = styled.main`
   .photos_container {
     background-color: var(--ligthblue);
     height: 340px;
+    @media (min-width: 720px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .address {
@@ -30,6 +34,32 @@ export const Main = styled.main`
     color: var(--darkblue);
     font-weight: 600;
   }
+
+  @media (min-width: 720px) {
+    .address {
+      margin-left: 7vw;
+    }
+    h1 {
+      margin-left: 7vw;
+    }
+
+    p {
+      margin-left: 7vw;
+    }
+  }
+
+  @media (min-width: 1470px) {
+    .address {
+      margin-left: 12vw;
+    }
+    h1 {
+      margin-left: 12vw;
+    }
+
+    p {
+      margin-left: 12vw;
+    }
+  }
 `;
 
 export const CoverPhoto = styled.div`
@@ -38,8 +68,14 @@ export const CoverPhoto = styled.div`
   height: 274px;
   background-position-x: center;
   background-size: cover;
-  border: 1px solid;
+  border: 1px solid var(--ligthgrey);
   border-radius: 0px 0px 20px 20px;
+
+  @media (min-width: 720px) {
+    width: 90vw;
+    max-width: 1250px;
+    align-self: center;
+  }
 `;
 
 export const ProfilePhoto = styled.div`
@@ -47,11 +83,19 @@ export const ProfilePhoto = styled.div`
   width: 100px;
   height: 100px;
   background-size: cover;
-  border: 1px solid;
+  border: 1px solid var(--ligthgrey);
   border-radius: 10px;
   position: relative;
   bottom: 60px;
   left: 10px;
+
+  @media (min-width: 720px) {
+    left: 7vw;
+  }
+
+  @media (min-width: 1470px) {
+    left: 12vw;
+  }
 `;
 
 export const CategorySection = styled.div`
@@ -59,6 +103,8 @@ export const CategorySection = styled.div`
   margin-top: 15px;
   height: 40px;
   align-items: center;
+  width: 50%;
+  margin-left: 10px;
 
   div {
     width: 20px;
@@ -72,10 +118,22 @@ export const CategorySection = styled.div`
     width: 50%;
     margin-left: 15px;
   }
+
+  @media (min-width: 720px) {
+    margin-left: 7vw;
+  }
+
+  div {
+    margin-left: 0px;
+  }
+
+  @media (min-width: 1470px) {
+    margin-left: 12vw;
+  }
 `;
 
 export const Divisory = styled.div`
-  background-color: #dedede;
+  background-color: var(--ligthgrey);
   width: 90%;
   height: 1px;
   margin: 20px auto 20px;
@@ -87,6 +145,15 @@ export const InfoSection = styled.div`
   justify-content: center;
   width: 100vw;
   align-items: center;
+
+  @media (min-width: 720px) {
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-evenly;
+    width: 90vw;
+    min-height: 30vw;
+    margin: auto;
+  }
 `;
 
 export const DescriptionContainer = styled.div`
@@ -114,7 +181,13 @@ export const DescriptionContainer = styled.div`
 
   p {
     margin-top: 15px;
-    color: #333131;
+    color: var(--grey-80);
+  }
+
+  @media (min-width: 720px) {
+    width: 50%;
+    margin-right: 20px;
+    min-height: 300px;
   }
 `;
 
@@ -152,6 +225,13 @@ export const ContactContainer = styled.div`
     justify-content: center;
     background-color: var(--orange);
     margin-right: 10px;
+  }
+
+  @media (min-width: 720px) {
+    width: 30%;
+    margin: 0px;
+    margin-left: 20px;
+    min-width: 360px;
   }
 `;
 
