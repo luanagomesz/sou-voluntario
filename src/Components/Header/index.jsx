@@ -1,27 +1,46 @@
-import { Button, Nav, NavLink, Burger, Menu, ButtonLink } from "./style";
+import { FaUser, FaSignOutAlt } from "react-icons/fa";
+import { Button, Nav, NavLink, Burger, Menu, ButtonLink, User } from "./style";
+import Logo from "../../Assets/souvol.svg";
+import { useLocation } from "react-router-dom";
 
-export const Header = () => {
+export const Header = ({
+  login = false,
+  register = false,
+  dashboardOng = false,
+  isOng = false,
+}) => {
+  const location = useLocation();
+  console.log(location);
+
   return (
     <Nav>
       <NavLink to="/">
-        <img src="../../Assets/souvol.png" />
+        <img src={Logo} alt="Logo" />
       </NavLink>
       <Burger />
-      <Button>
-        <ButtonLink to="/">Texto</ButtonLink>
-      </Button>
       <Menu>
-        <NavLink to="/">Destination 1</NavLink>
-        <NavLink to="/">Destination 2</NavLink>
-        <NavLink to="/">Destination 3</NavLink>
-        <NavLink to="/">Destination 4</NavLink>
+        {isOng ? (
+          <Button>
+            <ButtonLink to="/">Criar Evento</ButtonLink>
+          </Button>
+        ) : (
+          <NavLink className={login ? "colorTheme" : ""} to="/Events">
+            Meus Eventos
+          </NavLink>
+        )}
+        <NavLink className={login ? "colorTheme" : ""} to="/Events">
+          Eventos
+        </NavLink>
+        <NavLink className={dashboardOng ? "colorTheme" : ""} to="/Faq">
+          Faq
+        </NavLink>
       </Menu>
 
-      {/* <User>
-        {User.name}
-        {/* <Icon1/>
-          <Icon2/> 
-      </User> */}
+      <User>
+        <h2 className="userItems">John Doe{User.name}</h2>
+        <FaUser className="userItems" size="24px" color="#999999" />
+        <FaSignOutAlt className="userItems" size="24px" color="#999999" />
+      </User>
     </Nav>
   );
 };

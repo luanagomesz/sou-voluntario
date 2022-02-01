@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import SouVoluntario from "../../Assets/souvol.png";
+import SouVoluntario from "../../Assets/souvol.svg";
 import bgbottom from "../../Assets/bgbottom.png";
 import bgtop from "../../Assets/bgtop.png";
+import volunteers from "../../Assets/volunteers.svg";
 
 export const BackgroundTop = styled.img.attrs({ src: `${bgtop}` })`
   position: absolute;
@@ -28,14 +29,20 @@ export const Container = styled.div`
 `;
 export const ContainerLogin = styled.div`
   position: absolute;
+  display: block;
   z-index: 2;
-  background-color: var(--ligthblue);
+  background-color: var(--lightblue);
   border-radius: 8px;
   border: 2px solid black;
   margin: 25px;
   height: 80%;
+  width: 80%
   align-items: center;
   justify-content: center;
+
+  @media screen and (min-width: 760px) {
+    display: flex;
+  } 
 `;
 export const ContainerForm = styled.div`
   width: 314px;
@@ -50,7 +57,8 @@ export const ContainerForm = styled.div`
   align-items: center;
   justify-content: center;
   input {
-    background: #dedede;
+    background: VAR(--grey-0);
+    color: #9398A2
     width: 314px;
     height: 46px;
     border: none;
