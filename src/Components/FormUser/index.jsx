@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
 import Logo from "../../assets/img/logo-Header-Lp.png";
-import { useUserEvents } from "../../Contexts/RegisterEvents";
+import { useRegisterEvents } from "../../Contexts/RegisterEvents";
 import { Link } from "react-router-dom";
 
 import {
@@ -22,7 +22,7 @@ import {
 } from "./style";
 
 export const FormUser = () => {
-  const { toggleForm } = useUserEvents();
+  const { toggleForm } = useRegisterEvents();
 
   const formSchema = yup.object().shape({
     name: yup.string().required("Informe o seu nome").min(3, "Nome inválido"),

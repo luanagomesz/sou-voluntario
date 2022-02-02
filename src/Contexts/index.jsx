@@ -1,10 +1,10 @@
 import { UserEventsProvider } from "./UserEvents";
-import { RegisterEvents } from "./RegisterEvents";
+import { RegisterEventsProvider } from "./RegisterEvents";
 
 export const Providers = ({ children }) => {
   return (
-    <RegisterEvents>
+    <RegisterEventsProvider>
       <UserEventsProvider>{children}</UserEventsProvider>;
-    </RegisterEvents>
+    </RegisterEventsProvider>
   );
 };

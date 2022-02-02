@@ -19,10 +19,10 @@ const RegisterEventsProvider = ({ children }) => {
   );
 };
 
-const RegisterEvents = () => {
+const useRegisterEvents = () => {
   const context = useContext(RegisterEventsContext);
 
   return context;
 };
 
-export { RegisterEventsProvider, RegisterEvents };
+export { RegisterEventsProvider, useRegisterEvents };
