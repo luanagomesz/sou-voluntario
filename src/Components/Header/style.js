@@ -41,7 +41,7 @@ export const Menu = styled.div`
   width: 30%;
 
   .colorTheme {
-    color: var(--lightblue);
+    color: var(--ligthblue);
   }
   @media screen and (max-width: 1090px) {
     display: none;
@@ -62,7 +62,7 @@ export const ButtonLink = styled(Link)`
   border: none;
   width: 251px;
   height: 60px;
-  background-color: var(--lightorange);
+  background-color: var(--ligthorange);
   color: #fff;
   border-radius: 8px;
   cursor: pointer;
@@ -81,7 +81,7 @@ export const User = styled.div`
     font-family: "Cantata One";
     border-left: 2px solid var(--grey-0);
     width: 20vw;
-    color: var(--lightorange);
+    color: var(--ligthorange);
     height: 75px;
 
     .userItems {

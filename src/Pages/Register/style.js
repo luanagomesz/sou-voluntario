@@ -29,17 +29,26 @@ export const BackgroundBottom = styled.img.attrs({ src: `${bgbottom}` })`
 
 export const Modal = styled.div`
   width: 75vw;
+  max-width: 1200px;
   height: 75vh;
+  max-height: 600px;
   min-height: 480px;
   border-radius: 20px;
   background-color: #F4F8FB;
   display: flex;
   align-items: center;
   align-content: space-around;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   z-index: 2;
   box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.75);
+
+  @media(max-width: 800px) {
+    height: auto;
+    flex-wrap: nowrap;
+    flex-direction: column-reverse;
+    padding-bottom:  10px;
+  }
 `;
 
 export const Title = styled.h2`
