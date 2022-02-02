@@ -109,7 +109,6 @@ export const CategorySection = styled.div`
     div {
       margin-left: 0px;
     }
-    
   }
 `;
 
@@ -241,5 +240,30 @@ export const ContactDiv = styled.div`
     font-weight: 600;
     font-size: 15px;
     margin-bottom: 5px;
+  }
+`;
+
+export const EventSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ligthblue);
+  width: 85vw;
+  height: 400px;
+  margin: auto;
+  margin-top: auto;
+  border-radius: 10px;
+  margin-top: 20px;
+
+  .header_events {
+    display: flex;
+    background-color: var(--ice);
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    border-radius: 10px 10px 0px 0px;
+
+    h1 {
+      font-size: 20px;
+    }
   }
 `;

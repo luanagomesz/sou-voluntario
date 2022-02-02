@@ -8,6 +8,7 @@ import {
   DescriptionContainer,
   ContactContainer,
   ContactDiv,
+  EventSection,
 } from "./style";
 import { MdModeEditOutline, MdAlternateEmail } from "react-icons/md";
 import { BiMap, BiLink } from "react-icons/bi";
@@ -102,6 +103,12 @@ export const DashboardOng = () => {
           </ContactDiv>
         </ContactContainer>
       </InfoSection>
+      <EventSection>
+        <div className="header_events">
+          <h1>Eventos Criados</h1>
+        </div>
+        <div className="card_events"></div>
+      </EventSection>
     </>
   );
 };
