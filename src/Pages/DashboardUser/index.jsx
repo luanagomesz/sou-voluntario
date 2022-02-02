@@ -9,8 +9,10 @@ import { EventStatusSelector } from "../../Components/EventStatusSelector";
 import { EventUserCard } from "../../Components/EventUserCard";
 import { useUserEvents } from "../../Contexts/UserEvents";
 import { useCallback, useEffect, useState } from "react";
+import { useAuth } from "../../Contexts/Auth";
 
 export const DashboardUser = () => {
+  const { accessToken, user } = useAuth();
   const { subscribedFilteredEvents, loadSubscribedFilteredEvents } =
     useUserEvents();
   const [eventIsCompleted, setEventIsCompleted] = useState(false);
@@ -20,11 +22,7 @@ export const DashboardUser = () => {
   }, []);
 
   useEffect(() => {
-    loadSubscribedFilteredEvents(
-      3,
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9uZ0BtYWlsLmNvbSIsImlhdCI6MTY0MzczOTUzMCwiZXhwIjoxNjQzNzQzMTMwLCJzdWIiOiIxIn0.t6bImOl8t_uqfuG7kB0tHM3FiNqPs5narJ7SkvR6ei4",
-      eventIsCompleted
-    );
+    loadSubscribedFilteredEvents(user.id, accessToken, eventIsCompleted);
   }, [eventIsCompleted]);
 
   console.log(subscribedFilteredEvents);
