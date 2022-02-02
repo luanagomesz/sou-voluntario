@@ -5,9 +5,9 @@ import { RegisterEventsProvider } from "./RegisterEvents";
 export const Providers = ({ children }) => {
   return (
     <AuthProvider>
-      <RegisterEventsProvider>
-        <UserEventsProvider>{children}</UserEventsProvider>;
-      </RegisterEventsProvider>
+    <RegisterEventsProvider>
+      <UserEventsProvider>{children}</UserEventsProvider>
+    </RegisterEventsProvider>
     </AuthProvider>
   );
 };
