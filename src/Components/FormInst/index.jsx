@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
 import Logo from "../../assets/img/logo-Header-Lp.png";
 import { useRegisterEvents } from "../../Contexts/RegisterEvents";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Form,
   Button,
@@ -19,13 +19,8 @@ import {
   Redirect,
   ButtonToggleInst,
 } from "./style";
-import { api } from "../../Service";
-import { toast } from "react-toastify";
 
-export const FormInst = ({ userType}) => {
-
-  const history = useHistory()
-
+export const FormInst = () => {
   const { toggleForm } = useRegisterEvents();
 
   const formSchema = yup.object().shape({
@@ -44,34 +39,7 @@ export const FormInst = ({ userType}) => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmit = async (data) => {
-    data.userType = userType ? "voluntary" : "ong";
-    console.log(data);
-
-    try {
-      const response = await api.post("/signup", data);
-      console.log(response.data);
-
-      toast.success('Cadastrado com sucesso !', {
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        });
-      history.push("/login");
-    } catch (error) {
-      toast.error("Email já cadastrado !", {
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-  };
+  const onSubmit = (data) => console.log(data);
 
   return (
     <>
@@ -80,8 +48,7 @@ export const FormInst = ({ userType}) => {
           type="text"
           placeholder="Digite seu nome"
           error={errors.name?.message}
-          data="name"
-          register={register}
+          {...register("name")}
           label="Nome:"
         />
 
@@ -89,8 +56,7 @@ export const FormInst = ({ userType}) => {
           type="text"
           placeholder="Digite seu email"
           error={errors.email?.message}
-          register={register}
-          data="email"
+          {...register("email")}
           label="Email:"
         />
 
@@ -98,8 +64,7 @@ export const FormInst = ({ userType}) => {
           type="password"
           placeholder="Digite sua senha"
           error={errors.password?.message}
-          register={register}
-          data="password"
+          {...register("password")}
           label="Senha:"
         />
 
@@ -107,8 +72,7 @@ export const FormInst = ({ userType}) => {
           type="text"
           placeholder="Selecione sua categoria"
           error={errors.category?.message}
-          register={register}
-          data="category"
+          {...register("category")}
           label="Categoria:"
         />
 
@@ -116,8 +80,7 @@ export const FormInst = ({ userType}) => {
           type="number"
           placeholder="Digite seu CEP"
           error={errors.cep?.message}
-          register={register}
-          data="cep"
+          {...register("cep")}
           label="CEP:"
         />
 

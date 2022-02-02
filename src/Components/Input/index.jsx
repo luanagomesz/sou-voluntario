@@ -1,10 +1,10 @@
-import { InputBase, Erro, Label } from "./style";
+import { InputBase, Erro,Label } from "./style";
 
-export const Input = ({ type, placeholder, error, label, register, data }) => {
+export const Input = ({ type, placeholder, error, label }) => {
   return (
     <>
       <Label>{label}</Label>
-      <InputBase type={type} placeholder={placeholder} {...register(data)}/>
+      <InputBase type={type} placeholder={placeholder} />
       <Erro>{error}</Erro>
     </>
   );
