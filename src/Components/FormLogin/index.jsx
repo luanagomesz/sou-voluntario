@@ -27,12 +27,13 @@ export const FormLogin = () => {
 
   return (
     <>
-      <Form onSubmit={handleSubmit(handleLogin())}>
+      <Form onSubmit={handleSubmit(handleLogin)}>
         <Input
           type="text"
           placeholder="Digite seu email"
           error={errors.email?.message}
-          {...register("email")}
+          data="email"
+          register={register}
           label="Email:"
         />
 
@@ -40,7 +41,8 @@ export const FormLogin = () => {
           type="password"
           placeholder="Digite sua senha"
           error={errors.password?.message}
-          {...register("password")}
+          data="password"
+          register={register}
           label="Senha:"
         />
 
