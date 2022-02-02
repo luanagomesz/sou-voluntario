@@ -10,8 +10,9 @@ const EventsPageProvider = ({ children }) => {
   const [selectedCategories, setCategories] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [filteredDonation, SetFilteredDonation] = useState(false);
-
+  const [Searched, setSearched] = useState(false);
   useEffect(() => {
+    setSearched(false);
     if (
       filteredDonation === true &&
       selectedCategories.length > 0 &&
@@ -94,6 +95,8 @@ const EventsPageProvider = ({ children }) => {
         filteredDonation,
         SetFilteredDonation,
         selectedCategories,
+        setSearched,
+        Searched,
       }}
     >
       {children}

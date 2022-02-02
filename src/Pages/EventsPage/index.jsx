@@ -12,9 +12,11 @@ import { FilterStatesModal } from "../../Components/EventPageModalState";
 import { useEventsPageContext } from "../../Contexts/EventPage";
 import { FilterCategoriesModal } from "../../Components/EventPageModalCategory";
 import { Header } from "../../Components/Header";
+import { set } from "react-hook-form";
 export const Events = () => {
   const [Events, setEvents] = useState([]);
   const [search, setSearch] = useState("");
+  const [searchedValue, SetSearchedValue] = useState("");
   const {
     stateModal,
     setStateModal,
@@ -24,6 +26,8 @@ export const Events = () => {
     setFilteredEvents,
     filteredDonation,
     SetFilteredDonation,
+    Searched,
+    setSearched,
   } = useEventsPageContext();
 
   useEffect(() => {
@@ -80,7 +84,21 @@ export const Events = () => {
       });
   };
 
-  const SearchFilter = () => {};
+  const SearchFilter = () => {
+    setSearched(true);
+    SetSearchedValue(search);
+    api.get("/events").then((res) => {
+      setFilteredEvents(
+        res.data.filter(
+          (item) =>
+            item.category.toUpperCase().includes(search.toUpperCase()) ||
+            item.state.toUpperCase().includes(search.toUpperCase()) ||
+            item.title.toUpperCase().includes(search.toUpperCase()) ||
+            item.ongName.toUpperCase().includes(search.toUpperCase())
+        )
+      );
+    });
+  };
 
   return (
     <PageContainer>
@@ -143,6 +161,19 @@ export const Events = () => {
           </button>
         </div>
       </SearchContainer>
+      <div>
+        {Searched === true ? (
+          filteredEvents.length > 0 && searchedValue.length > 0 ? (
+            <p className="result">resultados para: {searchedValue}</p>
+          ) : searchedValue.length > 0 ? (
+            <p className="result">nenhum resultado para: {searchedValue}</p>
+          ) : (
+            ""
+          )
+        ) : (
+          ""
+        )}
+      </div>
       <CardContainer>
         {filteredEvents.length > 0
           ? filteredEvents.map((item) => <EventPageCard event={item} />)
