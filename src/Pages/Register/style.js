@@ -36,10 +36,17 @@ export const Modal = styled.div`
   display: flex;
   align-items: center;
   align-content: space-around;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   z-index: 2;
   box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.75);
+
+  @media(max-width: 800px) {
+    height: auto;
+    flex-wrap: nowrap;
+    flex-direction: column-reverse;
+    padding-bottom:  10px;
+  }
 `;
 
 export const Title = styled.h2`

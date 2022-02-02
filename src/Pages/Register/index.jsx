@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useUserEvents } from "../../Contexts/UserEvents";
 import { FormUser } from "../../Components/FormUser";
 import { FormInst } from "../../Components/FormInst";
-
 import { Background, Modal, BackgroundBottom, BackgroundTop } from "./style";
 
 export const Register = () => {
-  const [volunter, setVolunter] = useState(true);
+
+  const {volunter} = useUserEvents()
 
   return (
     <>
@@ -13,11 +13,6 @@ export const Register = () => {
       <Background>
         <Modal>
           {volunter ? <FormUser /> : <FormInst />}
-          <div>
-            Sou:
-            <button onClick={() => setVolunter(true)}>voluntário</button>
-            <button onClick={() => setVolunter(false)}>instituição</button>
-          </div>
         </Modal>
       </Background>
       <BackgroundBottom />

@@ -2,10 +2,27 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
+import Logo from "../../assets/img/logo-Header-Lp.png";
+import { useUserEvents } from "../../Contexts/UserEvents";
+import { Link } from "react-router-dom";
 
-import { Form, Button, Center } from "./style";
+import {
+  Form,
+  Button,
+  Center,
+  RightDiv,
+  LogoImg,
+  TextSignup,
+  DivButton,
+  TextButton,
+  DivFooter,
+  ButtonToggle,
+  Redirect,
+  ButtonToggleVolunter
+} from "./style";
 
 export const FormUser = () => {
+  const { toggleForm } = useUserEvents();
 
   const formSchema = yup.object().shape({
     name: yup.string().required("Informe o seu nome").min(3, "Nome inválido"),
@@ -63,6 +80,26 @@ export const FormUser = () => {
           <Button type="submit">Cadastrar</Button>
         </Center>
       </Form>
+
+      <RightDiv>
+        <LogoImg src={Logo} alt="" srcset="" />
+        <TextSignup>
+          O Sou Voluntário ajuda você a se conectar com ONGS e fazer uma mudança
+          positiva na sociedade.
+        </TextSignup>
+
+        <DivFooter>
+          <TextButton>Sou:</TextButton>
+          <DivButton>
+            <ButtonToggleVolunter onClick={toggleForm}>Voluntário</ButtonToggleVolunter>
+            <ButtonToggle onClick={toggleForm}>Instituição</ButtonToggle>
+          </DivButton>
+        </DivFooter>
+
+        <Redirect>
+          <Link to="/login"> Já possui uma conta?</Link>
+        </Redirect>
+      </RightDiv>
     </>
   );
 };
