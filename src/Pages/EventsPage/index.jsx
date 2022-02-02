@@ -10,13 +10,14 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { EventPageCard } from "../../Components/EventPageCard";
 import { FilterStatesModal } from "../../Components/EventPageModalState";
 import { useEventsPageContext } from "../../Contexts/EventPage";
+import { FilterCategoriesModal } from "../../Components/EventPageModalCategory";
 export const Events = () => {
   const [Events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [filteredDonation, SetFilteredDonation] = useState(false);
-  const [selectedStates, setSelectedStates] = useState([]);
 
-  const { stateModal, setStateModal } = useEventsPageContext();
+  const { stateModal, setStateModal, setCategoryModal, categoryModal } =
+    useEventsPageContext();
 
   useEffect(() => {
     if (filteredDonation === true) {
@@ -83,7 +84,23 @@ export const Events = () => {
             ""
           )}
         </div>
-        <button>Categoria</button>
+        <div className="button">
+          <button
+            onClick={() => {
+              categoryModal === true
+                ? setCategoryModal(false)
+                : setCategoryModal(true);
+            }}
+            id="category"
+          >
+            Categoria
+          </button>
+          {categoryModal === true ? (
+            <FilterCategoriesModal IsOpen={categoryModal} />
+          ) : (
+            ""
+          )}
+        </div>
         <div className="search">
           <input type="text" placeholder="Digite sua pesquisa" />
           <button>

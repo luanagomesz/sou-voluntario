@@ -6,10 +6,18 @@ const EventsPageContext = createContext({});
 const EventsPageProvider = ({ children }) => {
   const [selectedStates, setSelectedStates] = useState([]);
   const [stateModal, setStateModal] = useState(false);
-
+  const [categoryModal, setCategoryModal] = useState(false);
+  const [selectedCategories, setCategories] = useState([]);
   useEffect(() => {
-    console.log(selectedStates);
-  }, [selectedStates]);
+    if (categoryModal === true) {
+      document.getElementById("category").style.backgroundColor =
+        "var(--ligthorange)";
+      document.getElementById("category").style.color = "white";
+    } else {
+      document.getElementById("category").style.backgroundColor = "white";
+      document.getElementById("category").style.color = "var(--grey-50)";
+    }
+  }, [categoryModal]);
 
   useEffect(() => {
     if (stateModal === true) {
@@ -21,9 +29,18 @@ const EventsPageProvider = ({ children }) => {
       document.getElementById("state").style.color = "var(--grey-50)";
     }
   }, [stateModal]);
+
   return (
     <EventsPageContext.Provider
-      value={{ selectedStates, setSelectedStates, setStateModal, stateModal }}
+      value={{
+        selectedStates,
+        setSelectedStates,
+        setStateModal,
+        stateModal,
+        setCategories,
+        categoryModal,
+        setCategoryModal,
+      }}
     >
       {children}
     </EventsPageContext.Provider>
