@@ -31,6 +31,12 @@ export const SearchContainer = styled.div`
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  .button {
+    width: 20%;
+    button {
+      width: 100%;
+    }
+  }
   button {
     background-color: white;
     border: 1px solid #dedede;
@@ -70,9 +76,12 @@ export const SearchContainer = styled.div`
 `;
 
 export const CardContainer = styled.div`
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   width: 90%;
   align-items: center;
   justify-content: space-around;
+  max-height: 700px;
+  overflow-y: auto;
 `;
