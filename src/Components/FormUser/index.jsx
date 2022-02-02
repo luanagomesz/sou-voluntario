@@ -4,8 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
 import Logo from "../../assets/img/logo-Header-Lp.png";
 import { useRegisterEvents } from "../../Contexts/RegisterEvents";
-import { Link, useHistory } from "react-router-dom";
-import { api } from "../../Service";
+import { Link } from "react-router-dom";
 
 import {
   Form,
@@ -19,23 +18,17 @@ import {
   DivFooter,
   ButtonToggle,
   Redirect,
-  ButtonToggleVolunter,
+  ButtonToggleVolunter
 } from "./style";
-import { toast } from "react-toastify";
 
-export const FormUser = ({ userType }) => {
-  const history = useHistory();
-
+export const FormUser = () => {
   const { toggleForm } = useRegisterEvents();
 
   const formSchema = yup.object().shape({
     name: yup.string().required("Informe o seu nome").min(3, "Nome inválido"),
     email: yup.string().required("Email obrigatório").email("Email inválido"),
     password: yup.string().required("Insira uma senha").min(6, "Senha fraca"),
-    confirm_password: yup
-      .string()
-      .required("Insira uma senha")
-      .oneOf([yup.ref("password"), null], "As senhas são diferentes"),
+    confirm_password: yup.string().required("Insira uma senha"),
   });
 
   const {
@@ -46,35 +39,7 @@ export const FormUser = ({ userType }) => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmit = async (data) => {
-    data.userType = userType ? "voluntary" : "ong";
-    delete data.confirm_password;
-    console.log(data);
-
-    try {
-      const response = await api.post("/signup", data);
-      console.log(response.data);
-
-      toast.success('Cadastrado com sucesso !', {
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        });
-      history.push("/login");
-    } catch (error) {
-      toast.error("Email já cadastrado !", {
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-  };
+  const onSubmit = (data) => console.log(data);
 
   return (
     <>
@@ -83,17 +48,15 @@ export const FormUser = ({ userType }) => {
           type="text"
           placeholder="Digite seu nome"
           error={errors.name?.message}
-          register={register}
+          {...register("name")}
           label="Nome:"
-          data="name"
         />
 
         <Input
           type="text"
           placeholder="Digite seu email"
           error={errors.email?.message}
-          register={register}
-          data="email"
+          {...register("email")}
           label="Email:"
         />
 
@@ -101,8 +64,7 @@ export const FormUser = ({ userType }) => {
           type="password"
           placeholder="Digite sua senha"
           error={errors.password?.message}
-          data="password"
-          register={register}
+          {...register("password")}
           label="Senha:"
         />
 
@@ -110,8 +72,7 @@ export const FormUser = ({ userType }) => {
           type="password"
           placeholder="Confirme sua senha"
           error={errors.confirm_password?.message}
-          register={register}
-          data="confirm_password"
+          {...register("confirm_password")}
           label="Confirmar Senha:"
         />
 
@@ -130,9 +91,7 @@ export const FormUser = ({ userType }) => {
         <DivFooter>
           <TextButton>Sou:</TextButton>
           <DivButton>
-            <ButtonToggleVolunter onClick={toggleForm}>
-              Voluntário
-            </ButtonToggleVolunter>
+            <ButtonToggleVolunter onClick={toggleForm}>Voluntário</ButtonToggleVolunter>
             <ButtonToggle onClick={toggleForm}>Instituição</ButtonToggle>
           </DivButton>
         </DivFooter>

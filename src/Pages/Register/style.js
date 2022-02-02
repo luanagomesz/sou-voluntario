@@ -3,23 +3,17 @@ import bgtop from "../../assets/img/bgtop.png"
 import bgbottom from "../../assets/img/bgbottom.png"
 
 export const Background = styled.div`
+  min-height: 100vh;
   width: 100vw;
-  height: 100vh !important;
-  overflow-y: hidden;
-  overflow-x: hidden;
-
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 `;
 
 export const BackgroundTop = styled.img.attrs({ src: `${bgtop}` })`
   position: absolute;
   z-index: 1;
-  top: 0;
-  left: 0;
   width: 75%;
   height: 43vh;
 `;
