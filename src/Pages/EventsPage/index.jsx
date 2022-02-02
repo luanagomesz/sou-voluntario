@@ -11,13 +11,20 @@ import { EventPageCard } from "../../Components/EventPageCard";
 import { FilterStatesModal } from "../../Components/EventPageModalState";
 import { useEventsPageContext } from "../../Contexts/EventPage";
 import { FilterCategoriesModal } from "../../Components/EventPageModalCategory";
+import { Header } from "../../Components/Header";
 export const Events = () => {
   const [Events, setEvents] = useState([]);
-  const [filteredEvents, setFilteredEvents] = useState([]);
-  const [filteredDonation, SetFilteredDonation] = useState(false);
-
-  const { stateModal, setStateModal, setCategoryModal, categoryModal } =
-    useEventsPageContext();
+  const [search, setSearch] = useState("");
+  const {
+    stateModal,
+    setStateModal,
+    setCategoryModal,
+    categoryModal,
+    filteredEvents,
+    setFilteredEvents,
+    filteredDonation,
+    SetFilteredDonation,
+  } = useEventsPageContext();
 
   useEffect(() => {
     if (filteredDonation === true) {
@@ -73,8 +80,7 @@ export const Events = () => {
       });
   };
 
-  const filterByState = (states) => {};
-  const filterByCategory = (type) => {};
+  const SearchFilter = () => {};
 
   return (
     <PageContainer>
@@ -124,8 +130,12 @@ export const Events = () => {
           )}
         </div>
         <div className="search">
-          <input type="text" placeholder="Digite sua pesquisa" />
-          <button>
+          <input
+            type="text"
+            placeholder="Digite sua pesquisa"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button onClick={() => SearchFilter()}>
             <AiOutlineSearch
               color="white
             "

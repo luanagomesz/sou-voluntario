@@ -81,7 +81,8 @@ export const CardContainer = styled.div`
   flex-wrap: wrap;
   width: 90%;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   max-height: 700px;
   overflow-y: auto;
+  max-width: 1600px;
 `;
