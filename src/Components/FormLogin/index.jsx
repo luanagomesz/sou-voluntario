@@ -6,7 +6,7 @@ import { Form, Button, Center } from "./style";
 import { useAuth } from "../../Contexts/Auth";
 
 export const FormLogin = () => {
-  const { LoginRequest } = useAuth();
+  const { login } = useAuth();
 
   const formSchema = yup.object().shape({
     email: yup.string().required("Email obrigatório").email("Email inválido"),
@@ -22,7 +22,10 @@ export const FormLogin = () => {
   });
 
   const handleLogin = (data) => {
-    LoginRequest(data);
+    const { email, password } = data;
+    login(email, password)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
   };
 
   return (
