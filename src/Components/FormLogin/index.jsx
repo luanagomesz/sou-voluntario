@@ -4,9 +4,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
 import { Form, Button, Center } from "./style";
 import { useAuth } from "../../Contexts/Auth";
+import { useHistory } from "react-router-dom";
 
 export const FormLogin = () => {
   const { login } = useAuth();
+  const history = useHistory();
 
   const formSchema = yup.object().shape({
     email: yup.string().required("Email obrigatório").email("Email inválido"),
@@ -24,7 +26,17 @@ export const FormLogin = () => {
   const handleLogin = (data) => {
     const { email, password } = data;
     login(email, password)
-      .then((response) => console.log(response))
+      .then((response) => {
+        const {
+          user: { userType },
+        } = response;
+
+        if (userType === "voluntary") {
+          history.push("/DashboardUser");
+        } else if (userType === "ong") {
+          history.push("/DashboardOng");
+        }
+      })
       .catch((err) => console.log(err));
   };
 
