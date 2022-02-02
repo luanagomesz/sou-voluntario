@@ -2,9 +2,27 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
-import { Form, Button,Center } from "./style";
+import Logo from "../../assets/img/logo-Header-Lp.png";
+import { useRegisterEvents } from "../../Contexts/RegisterEvents";
+import { Link } from "react-router-dom";
+import {
+  Form,
+  Button,
+  Center,
+  RightDiv,
+  LogoImg,
+  TextSignup,
+  DivButton,
+  TextButton,
+  DivFooter,
+  ButtonToggle,
+  Redirect,
+  ButtonToggleInst,
+} from "./style";
 
 export const FormInst = () => {
+  const { toggleForm } = useRegisterEvents();
+
   const formSchema = yup.object().shape({
     name: yup.string().required("Informe o seu nome").min(3, "Nome inválido"),
     email: yup.string().required("Email obrigatório").email("Email inválido"),
@@ -70,6 +88,27 @@ export const FormInst = () => {
           <Button type="submit">Cadastrar</Button>
         </Center>
       </Form>
+      <RightDiv>
+        <LogoImg src={Logo} alt="" srcset="" />
+        <TextSignup>
+          Registre sua instituição, faça projetos e eventos, obtenha doações e
+          voluntários realize uma mudança positiva em sua comunidade.
+        </TextSignup>
+
+        <DivFooter>
+          <TextButton>Sou:</TextButton>
+          <DivButton>
+            <ButtonToggle onClick={toggleForm}>Voluntário</ButtonToggle>
+            <ButtonToggleInst onClick={toggleForm}>
+              Instituição
+            </ButtonToggleInst>
+          </DivButton>
+        </DivFooter>
+
+        <Redirect>
+          <Link to="/login"> Já possui uma conta?</Link>
+        </Redirect>
+      </RightDiv>
     </>
   );
 };
