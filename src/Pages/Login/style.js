@@ -41,52 +41,64 @@ export const ContainerLogin = styled.div`
   position: absolute;
   display: block;
   z-index: 2;
-  background-color: var(--lightblue);
+  background-color: var(--ligthblue);
   border-radius: 8px;
-  border: 2px solid black;
   margin: 25px;
   height: 80%;
   width: 80%;
   align-items: center;
-  justify-content: center;
+  align-content: space-around;
+  justify-content: space-evenly;
+  box-shadow: 0px 0px 6px -1px rgba(0, 0, 0, 0.75);
 
   @media screen and (min-width: 760px) {
     display: flex;
   }
 `;
 export const ContainerForm = styled.div`
-  width: 35%;
-  height: 500px;
-
-  background-color: var(--ligthblue);
-  box-shadow: 5px;
-  color: var(--darkblue);
-  margin-right: 15px;
-  margin-left: 15px;
-  margin-top: 35px;
-  font-size: 16px;
+  display: block;
+  border: none;
+  width: 50%;
   align-items: center;
   justify-content: center;
-  input {
-    background: var(--grey-0);
-    color: #9398a2;
-    width: 314px;
-    height: 46px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 15px;
-    font-size: 22px;
+  align-content: center;
+
+  h1 {
+    width: 100px;
+    margin: auto;
+    color: var(--ligthorange);
+    font-family: "Cantata One";
+    margin-bottom: 100px;
+  }
+
+  @media screen and (max-width: 760px) {
+    h1 {
+      display: none;
+    }
+    width: 100%;
   }
 `;
 
 export const ContainerInfo = styled.div`
-  display: block;
+  display: flex;
+  flex-direction: column;
 
   .volunteers {
     max-width: 500px;
   }
 
+  .logo {
+    width: 55%;
+  }
+
+  button {
+    background: none;
+    color: var(--grey-50);
+  }
   @media screen and (max-width: 760px) {
+    button {
+      display: none;
+    }
     .volunteers {
       display: none;
     }

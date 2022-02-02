@@ -45,7 +45,7 @@ export const FormLogin = () => {
         />
 
         <Center>
-          <Button type="submit">Cadastrar</Button>
+          <Button type="submit">Entrar</Button>
         </Center>
       </Form>
     </>
