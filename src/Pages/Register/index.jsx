@@ -4,18 +4,15 @@ import { FormInst } from "../../Components/FormInst";
 import { Background, Modal, BackgroundBottom, BackgroundTop } from "./style";
 
 export const Register = () => {
-
-  const {volunter} = useRegisterEvents()
+  const { volunter } = useRegisterEvents();
 
   return (
-    <>
+    <Background>
       <BackgroundTop />
-      <Background>
-        <Modal>
-          {volunter ? <FormUser /> : <FormInst />}
-        </Modal>
-      </Background>
+      <Modal >
+        {volunter ? <FormUser userType={volunter} /> : <FormInst userType={volunter} />}
+      </Modal>
       <BackgroundBottom />
-    </>
+    </Background>
   );
 };

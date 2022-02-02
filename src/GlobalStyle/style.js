@@ -26,6 +26,7 @@ body{
     color: var(--darkblue);
     font-family: 'Fira Sans', sans-serif;
 }
+
 h1,h2, h3, h4, span, button, div, input, p{
     font-family: 'Fira Sans', sans-serif;
 } 
