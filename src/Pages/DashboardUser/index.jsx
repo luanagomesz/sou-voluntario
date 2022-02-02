@@ -23,7 +23,7 @@ export const DashboardUser = () => {
     loadSubscribedFilteredEvents(
       3,
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9uZ0BtYWlsLmNvbSIsImlhdCI6MTY0MzczOTUzMCwiZXhwIjoxNjQzNzQzMTMwLCJzdWIiOiIxIn0.t6bImOl8t_uqfuG7kB0tHM3FiNqPs5narJ7SkvR6ei4",
-      eventIsCompleted,
+      eventIsCompleted
     );
   }, [eventIsCompleted]);
 

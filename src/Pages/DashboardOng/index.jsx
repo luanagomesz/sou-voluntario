@@ -8,6 +8,7 @@ import {
   DescriptionContainer,
   ContactContainer,
   ContactDiv,
+  EventSection,
 } from "./style";
 import { MdModeEditOutline, MdAlternateEmail } from "react-icons/md";
 import { BiMap, BiLink } from "react-icons/bi";
@@ -20,15 +21,18 @@ export const DashboardOng = () => {
     <>
       <Main>
         <div className="photos_container">
-          <CoverPhoto></CoverPhoto>
-          <ProfilePhoto></ProfilePhoto>
+          <CoverPhoto>
+            <ProfilePhoto />
+          </CoverPhoto>
         </div>
-        <p className="address">São Paulo, SP</p>
-        <h1>NAIA</h1>
-        <p>
-          "Oportunizar condições de desenvolvimento às pessoas, transformando
-          gerações através de um processo socioeducativo de qualidade."
-        </p>
+        <div className="text_container">
+          <p className="address">São Paulo, SP</p>
+          <h1>NAIA</h1>
+          <p>
+            "Oportunizar condições de desenvolvimento às pessoas, transformando
+            gerações através de um processo socioeducativo de qualidade."
+          </p>
+        </div>
       </Main>
       <CategorySection>
         <div class="dot_category"></div>
@@ -99,6 +103,12 @@ export const DashboardOng = () => {
           </ContactDiv>
         </ContactContainer>
       </InfoSection>
+      <EventSection>
+        <div className="header_events">
+          <h1>Eventos Criados</h1>
+        </div>
+        <div className="card_events"></div>
+      </EventSection>
     </>
   );
 };
