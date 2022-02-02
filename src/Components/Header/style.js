@@ -73,22 +73,21 @@ export const ButtonLink = styled(Link)`
 `;
 
 export const User = styled.div`
-{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-right: 30px;
-    font-family: "Cantata One";
-    border-left: 2px solid var(--grey-0);
-    width: 20vw;
-    color: var(--ligthorange);
-    height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 30px;
+  font-family: "Cantata One";
+  border-left: 2px solid var(--grey-0);
+  width: 20vw;
+  color: var(--ligthorange);
+  height: 75px;
 
-    .userItems {
-      margin-left: 35px;
-    }
+  .userItems {
+    margin-left: 35px;
+  }
 
-@media screen and (max-width: 1090px) {
-display: none;
+  @media screen and (max-width: 1090px) {
+    display: none;
   }
 `;
