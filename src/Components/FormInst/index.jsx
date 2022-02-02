@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
 import Logo from "../../assets/img/logo-Header-Lp.png";
 import { useRegisterEvents } from "../../Contexts/RegisterEvents";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   Form,
   Button,
@@ -19,8 +19,13 @@ import {
   Redirect,
   ButtonToggleInst,
 } from "./style";
+import { api } from "../../Service";
+import { toast } from "react-toastify";
 
-export const FormInst = () => {
+export const FormInst = ({ userType}) => {
+
+  const history = useHistory()
+
   const { toggleForm } = useRegisterEvents();
 
   const formSchema = yup.object().shape({
@@ -39,7 +44,34 @@ export const FormInst = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    data.userType = userType ? "voluntary" : "ong";
+    console.log(data);
+
+    try {
+      const response = await api.post("/signup", data);
+      console.log(response.data);
+
+      toast.success('Cadastrado com sucesso !', {
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+      history.push("/login");
+    } catch (error) {
+      toast.error("Email já cadastrado !", {
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
 
   return (
     <>
@@ -48,7 +80,8 @@ export const FormInst = () => {
           type="text"
           placeholder="Digite seu nome"
           error={errors.name?.message}
-          {...register("name")}
+          data="name"
+          register={register}
           label="Nome:"
         />
 
@@ -56,7 +89,8 @@ export const FormInst = () => {
           type="text"
           placeholder="Digite seu email"
           error={errors.email?.message}
-          {...register("email")}
+          register={register}
+          data="email"
           label="Email:"
         />
 
@@ -64,7 +98,8 @@ export const FormInst = () => {
           type="password"
           placeholder="Digite sua senha"
           error={errors.password?.message}
-          {...register("password")}
+          register={register}
+          data="password"
           label="Senha:"
         />
 
@@ -72,7 +107,8 @@ export const FormInst = () => {
           type="text"
           placeholder="Selecione sua categoria"
           error={errors.category?.message}
-          {...register("category")}
+          register={register}
+          data="category"
           label="Categoria:"
         />
 
@@ -80,7 +116,8 @@ export const FormInst = () => {
           type="number"
           placeholder="Digite seu CEP"
           error={errors.cep?.message}
-          {...register("cep")}
+          register={register}
+          data="cep"
           label="CEP:"
         />
 
