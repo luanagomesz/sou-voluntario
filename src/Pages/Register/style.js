@@ -29,7 +29,9 @@ export const BackgroundBottom = styled.img.attrs({ src: `${bgbottom}` })`
 
 export const Modal = styled.div`
   width: 75vw;
+  max-width: 1200px;
   height: 75vh;
+  max-height: 600px;
   min-height: 480px;
   border-radius: 20px;
   background-color: #F4F8FB;
