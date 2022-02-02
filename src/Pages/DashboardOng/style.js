@@ -35,6 +35,23 @@ export const Main = styled.main`
     font-weight: 600;
   }
 
+  .dot_category {
+    width: 20px;
+    height: 20px;
+    background-color: var(--red);
+    border-radius: 50px;
+    margin-right: 5px;
+  }
+
+  .category_text {
+    display: flex;
+    width: 50%;
+    margin-left: 10px;
+    margin-top: 15px;
+    align-items: center;
+    color: var(--grey-80);
+  }
+
   @media (min-width: 720px) {
     .address {
       margin-left: 7vw;
@@ -49,6 +66,10 @@ export const Main = styled.main`
     .text_container {
       margin: auto;
       max-width: 1400px;
+    }
+
+    .category_text {
+      margin-left: 7vw;
     }
   }
 `;
@@ -87,7 +108,7 @@ export const CategorySection = styled.div`
   margin-top: 15px;
   height: 40px;
   align-items: center;
-  width: 50%;
+  width: 100%;
   margin-left: 10px;
 
   div {
@@ -101,6 +122,7 @@ export const CategorySection = styled.div`
   p {
     width: 50%;
     margin-left: 15px;
+    color: var(--grey-80);
   }
 
   @media (min-width: 720px) {
@@ -196,6 +218,14 @@ export const ContactContainer = styled.div`
     }
   }
 
+  a {
+    font-size: 13px;
+  }
+
+  a:visited {
+    color: var(--darkblue);
+  }
+
   .dot_contact {
     min-width: 35px;
     height: 35px;
@@ -248,11 +278,11 @@ export const EventSection = styled.section`
   flex-direction: column;
   background-color: var(--ligthblue);
   width: 85vw;
-  height: 400px;
   margin: auto;
   margin-top: auto;
   border-radius: 10px;
   margin-top: 20px;
+  padding-bottom: 20px;
 
   .header_events {
     display: flex;
@@ -265,5 +295,119 @@ export const EventSection = styled.section`
     h1 {
       font-size: 20px;
     }
+  }
+
+  .card_events {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  @media (min-width: 720px) {
+    max-width: 1150px;
+    box-sizing: border-box;
+
+    .card_events {
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+`;
+
+export const EventDashContainer = styled.div`
+  background-color: white;
+  width: 90%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+
+  @media (min-width: 720px) {
+    max-width: 250px;
+    margin-left: 15px;
+  }
+`;
+
+export const EventDashImage = styled.div`
+  position: relative;
+  img {
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+  }
+`;
+
+export const WorkTypeEvent = styled.div`
+  position: absolute;
+  top: 110px;
+  left: 10px;
+  background-color: var(--cyan);
+  min-width: 40px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10px;
+  padding: 2px;
+
+  .icon_volunteer,
+  .icon_donate {
+    color: white;
+  }
+
+  span,
+  .donate_numbers {
+    color: white;
+    font-size: 14px;
+  }
+`;
+
+export const EventDashInfo = styled.div`
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 15px;
+  }
+
+  h4 {
+    font-size: 15px;
+    margin: 5px 0px 5px 15px;
+  }
+
+  p {
+    font-size: 15px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+  }
+`;
+
+export const EventDashLocationAndStatus = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    display: flex;
+    align-items: center;
+    color: black;
+    width: 50%;
+    margin-left: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-overflow: "...";
+
+    .icon_map {
+      color: white;
+      min-width: 20px;
+      margin: 0px 3px 2px 0px;
+    }
+  }
+
+  button {
+    background-color: var(--orange);
+    width: 40%;
+    height: 30px;
+    border-radius: 10px 0px 10px 0px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
   }
 `;
