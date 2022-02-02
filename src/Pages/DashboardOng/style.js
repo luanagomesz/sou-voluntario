@@ -46,18 +46,9 @@ export const Main = styled.main`
     p {
       margin-left: 7vw;
     }
-  }
-
-  @media (min-width: 1470px) {
-    .address {
-      margin-left: 12vw;
-    }
-    h1 {
-      margin-left: 12vw;
-    }
-
-    p {
-      margin-left: 12vw;
+    .text_container {
+      margin: auto;
+      max-width: 1400px;
     }
   }
 `;
@@ -70,6 +61,7 @@ export const CoverPhoto = styled.div`
   background-size: cover;
   border: 1px solid var(--ligthgrey);
   border-radius: 0px 0px 20px 20px;
+  position: relative;
 
   @media (min-width: 720px) {
     width: 90vw;
@@ -85,17 +77,9 @@ export const ProfilePhoto = styled.div`
   background-size: cover;
   border: 1px solid var(--ligthgrey);
   border-radius: 10px;
-  position: relative;
-  bottom: 60px;
-  left: 10px;
-
-  @media (min-width: 720px) {
-    left: 7vw;
-  }
-
-  @media (min-width: 1470px) {
-    left: 12vw;
-  }
+  position: absolute;
+  top: 210px;
+  left: 50px;
 `;
 
 export const CategorySection = styled.div`
@@ -121,20 +105,16 @@ export const CategorySection = styled.div`
 
   @media (min-width: 720px) {
     margin-left: 7vw;
-  }
 
-  div {
-    margin-left: 0px;
-  }
-
-  @media (min-width: 1470px) {
-    margin-left: 12vw;
+    div {
+      margin-left: 0px;
+    }
   }
 `;
 
 export const Divisory = styled.div`
   background-color: var(--ligthgrey);
-  width: 90%;
+  width: 80%;
   height: 1px;
   margin: 20px auto 20px;
 `;
@@ -151,7 +131,7 @@ export const InfoSection = styled.div`
     align-items: start;
     justify-content: space-evenly;
     width: 90vw;
-    min-height: 30vw;
+    max-width: 1300px;
     margin: auto;
   }
 `;
@@ -260,5 +240,30 @@ export const ContactDiv = styled.div`
     font-weight: 600;
     font-size: 15px;
     margin-bottom: 5px;
+  }
+`;
+
+export const EventSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ligthblue);
+  width: 85vw;
+  height: 400px;
+  margin: auto;
+  margin-top: auto;
+  border-radius: 10px;
+  margin-top: 20px;
+
+  .header_events {
+    display: flex;
+    background-color: var(--ice);
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    border-radius: 10px 10px 0px 0px;
+
+    h1 {
+      font-size: 20px;
+    }
   }
 `;
