@@ -18,6 +18,7 @@ export const NavLink = styled(Link)`
   align-items: center;
   margin-right: 80px;
   font-size: 22px;
+  margin-left: 30px;
 `;
 
 export const Burger = styled(FaBars)`
@@ -45,6 +46,33 @@ export const Menu = styled.div`
   }
   @media screen and (max-width: 1090px) {
     display: none;
+  }
+`;
+
+export const BurgerMenu = styled.div`
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: var(--darkblue);
+
+  div {
+    display: block;
+    border-bottom: 1px solid #dedede;
+    height: 60px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .Logo {
+    display: flex;
+    justify-content: space-between;
   }
 `;
 

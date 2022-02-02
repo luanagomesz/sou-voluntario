@@ -9,6 +9,7 @@ import { EventStatusSelector } from "../../Components/EventStatusSelector";
 import { EventUserCard } from "../../Components/EventUserCard";
 import { useUserEvents } from "../../Contexts/UserEvents";
 import { useCallback, useEffect, useState } from "react";
+import { Header } from "../../Components/Header";
 
 export const DashboardUser = () => {
   const { subscribedFilteredEvents, loadSubscribedFilteredEvents } =
@@ -31,7 +32,7 @@ export const DashboardUser = () => {
 
   return (
     <>
-      <FakeHeader />
+      <Header />
       <Main>
         <EventsStatusContainer className="events__status__container">
           <EventStatusSelector

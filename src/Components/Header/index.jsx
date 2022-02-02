@@ -1,9 +1,9 @@
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import { Button, Nav, NavLink, Burger, Menu, ButtonLink, User } from "./style";
 import Logo from "../../Assets/souvol.svg";
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
 import { useAuth } from "../../Contexts/Auth";
+import HamburgerMenu from "./burgerMenu";
+import { useBurger } from "../../Contexts/Burger/toggle";
 
 export const Header = ({
   MyEvents = false,
@@ -11,21 +11,18 @@ export const Header = ({
   Faq = false,
   isOng = false,
 }) => {
-  const [burger, setBurger] = useState(false);
   const { logout } = useAuth();
 
-  const toggleBurger = () => {
-    setBurger(!burger);
-  };
+  const { toggleBurger, burger } = useBurger();
 
   return (
     <Nav>
       <NavLink to="/">
         <img src={Logo} alt="Logo" />
       </NavLink>
-      <Button onClick={toggleBurger}>
-        <Burger />
-      </Button>
+
+      <Burger onClick={() => toggleBurger()} />
+      {burger && <HamburgerMenu />}
       <Menu>
         {isOng ? (
           <Button>
@@ -47,9 +44,12 @@ export const Header = ({
       <User>
         <h2 className="userItems">John Doe{User.name}</h2>
         <FaUser className="userItems" size="24px" color="#999999" />
-        <Button onClick={logout}>
-          <FaSignOutAlt className="userItems" size="24px" color="#999999" />
-        </Button>
+        <FaSignOutAlt
+          className="userItems"
+          size="24px"
+          color="#999999"
+          onClick={() => logout()}
+        />
       </User>
     </Nav>
   );

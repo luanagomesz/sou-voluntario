@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
 
   const LoginRequest = (data) => {
     try {
-      api.post("login", data).then((r) => console.log(r));
+      api.post("/login", data).then((r) => console.log(r));
     } catch (error) {
       return null;
     }
