@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     --cyan: #24585F;
     --darkblue:#081140;
     --ligthblue: #F4F8FB;
+    --ice: #D5E0E4;
     --ligthgrey: #dedede;
     --grey-100:#333333;
     --grey-80: #333131;
@@ -25,6 +26,7 @@ body{
     color: var(--darkblue);
     font-family: 'Fira Sans', sans-serif;
 }
+
 h1,h2, h3, h4, span, button, div, input, p{
     font-family: 'Fira Sans', sans-serif;
 } 

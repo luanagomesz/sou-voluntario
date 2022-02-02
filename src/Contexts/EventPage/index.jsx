@@ -8,27 +8,7 @@ const EventsPageProvider = ({ children }) => {
   const [stateModal, setStateModal] = useState(false);
   const [categoryModal, setCategoryModal] = useState(false);
   const [selectedCategories, setCategories] = useState([]);
-  useEffect(() => {
-    if (categoryModal === true) {
-      document.getElementById("category").style.backgroundColor =
-        "var(--ligthorange)";
-      document.getElementById("category").style.color = "white";
-    } else {
-      document.getElementById("category").style.backgroundColor = "white";
-      document.getElementById("category").style.color = "var(--grey-50)";
-    }
-  }, [categoryModal]);
-
-  useEffect(() => {
-    if (stateModal === true) {
-      document.getElementById("state").style.backgroundColor =
-        "var(--ligthorange)";
-      document.getElementById("state").style.color = "white";
-    } else {
-      document.getElementById("state").style.backgroundColor = "white";
-      document.getElementById("state").style.color = "var(--grey-50)";
-    }
-  }, [stateModal]);
+  const [eventPage, setEventPage] = useState(false);
 
   return (
     <EventsPageContext.Provider
