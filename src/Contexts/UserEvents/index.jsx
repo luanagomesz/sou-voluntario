@@ -6,12 +6,6 @@ const UserEventsContext = createContext({});
 
 const UserEventsProvider = ({ children }) => {
 
-  const [volunter, setVolunter] = useState(true);
-  
-  const toggleForm = () =>{
-    setVolunter(!volunter)
-  }
-
   const [subscribedEvents, setSubscribedEvents] = useState([]);
 
   const loadSubscribedEvents = useCallback(async (userId, accessToken) => {
@@ -24,7 +18,7 @@ const UserEventsProvider = ({ children }) => {
 
   return (
     <UserEventsContext.Provider
-      value={{ subscribedEvents, loadSubscribedEvents, volunter, toggleForm}}
+      value={{ subscribedEvents, loadSubscribedEvents}}
     >
       {children}
     </UserEventsContext.Provider>

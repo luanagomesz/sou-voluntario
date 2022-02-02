@@ -1,4 +1,4 @@
-import { useUserEvents } from "../../Contexts/UserEvents";
+import { useUserEvents } from "../../Contexts/RegisterEvents";
 import { FormUser } from "../../Components/FormUser";
 import { FormInst } from "../../Components/FormInst";
 import { Background, Modal, BackgroundBottom, BackgroundTop } from "./style";

@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
 import Logo from "../../assets/img/logo-Header-Lp.png";
-import { useUserEvents } from "../../Contexts/UserEvents";
+import { useUserEvents } from "../../Contexts/RegisterEvents";
 import { Link } from "react-router-dom";
 
 import {
