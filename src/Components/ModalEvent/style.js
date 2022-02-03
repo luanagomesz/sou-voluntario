@@ -24,7 +24,7 @@ export const ModalContainer = styled.div`
   z-index: 2;
   border-radius: 8px;
   background-color: white;
-  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.45);
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1);
   #close {
     position: absolute;
     margin-right: -265px;

@@ -6,15 +6,17 @@ import { GoLocation } from "react-icons/go";
 import { AiFillCloseSquare } from "react-icons/ai";
 import { api } from "../../Service";
 import { useAuth } from "../../Contexts/Auth";
-import { useEffect, useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { useEventsPageContext } from "../../Contexts/EventPage";
 export const ModalEvent = ({ event, SetModal }) => {
+  const { refresh, setRefresh } = useEventsPageContext();
   const { accessToken, user } = useAuth();
   const [userIds, setUserId] = useState([]);
 
   useEffect(() => {
     setUserId(event.voluntaries);
-    console.log(userIds);
+    console.log(event);
   }, []);
 
   const EnterEvent = () => {
@@ -30,9 +32,10 @@ export const ModalEvent = ({ event, SetModal }) => {
           }
         )
         .then((res) => {
-          console.log(res.data);
+          refresh === true ? setRefresh(false) : setRefresh(true);
           setUserId(...userIds, user.id);
           toast("Confirmado com sucesso");
+
           SetModal(false);
         });
     }

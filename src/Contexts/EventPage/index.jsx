@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 import { api } from "../../Service";
 const EventsPageContext = createContext({});
 
@@ -11,6 +11,8 @@ const EventsPageProvider = ({ children }) => {
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [filteredDonation, SetFilteredDonation] = useState(false);
   const [Searched, setSearched] = useState(false);
+  const [refresh, setRefresh] = useState(false);
+  const [Events, setEvents] = useState([]);
 
   useEffect(() => {
     setSearched(false);
@@ -142,8 +144,17 @@ const EventsPageProvider = ({ children }) => {
       });
     } else {
       setFilteredEvents([]);
+      api
+        .get(`/events`)
+        .then((res) => {
+          console.log(res.data);
+          setEvents(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-  }, [filteredDonation, selectedCategories, selectedStates]);
+  }, [filteredDonation, selectedCategories, selectedStates, refresh]);
   return (
     <EventsPageContext.Provider
       value={{
@@ -161,6 +172,10 @@ const EventsPageProvider = ({ children }) => {
         selectedCategories,
         setSearched,
         Searched,
+        refresh,
+        setRefresh,
+        Events,
+        setEvents,
       }}
     >
       {children}
