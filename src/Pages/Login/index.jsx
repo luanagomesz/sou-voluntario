@@ -1,3 +1,5 @@
+import { useHistory } from "react-router-dom";
+
 import {
   BackgroundBottom,
   BackgroundTop,
@@ -13,12 +15,13 @@ import {
 import souVoluntario from "../../Assets/souvol.svg";
 import volunteers from "../../Assets/volunteers.svg";
 import { FormLogin } from "../../Components/FormLogin";
-import { useHistory } from "react-router-dom";
+import { NavNoPrivatePages } from "../../Components/NavNoPrivatePages";
 
 export const Login = () => {
   const history = useHistory();
   return (
     <Container>
+      <NavNoPrivatePages />
       <BackgroundTop />
       <ContainerLogin>
         <ContainerInfo>
