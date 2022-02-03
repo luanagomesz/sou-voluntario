@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import bgtop from "../../assets/img/bgtop.png"
-import bgbottom from "../../assets/img/bgbottom.png"
+import bgtop from "../../assets/img/bgtop.png";
+import bgbottom from "../../assets/img/bgbottom.png";
 
 export const Background = styled.div`
   width: 100vw;
@@ -31,7 +31,7 @@ export const BackgroundBottom = styled.img.attrs({ src: `${bgbottom}` })`
   height: 31vh;
   right: 0px;
   bottom: 0px;
-  `
+`;
 
 export const Modal = styled.div`
   width: 75vw;
@@ -40,20 +40,22 @@ export const Modal = styled.div`
   max-height: 600px;
   min-height: 480px;
   border-radius: 20px;
-  background-color: #F4F8FB;
+  background-color: #f4f8fb;
   display: flex;
   align-items: center;
   align-content: space-around;
   justify-content: space-evenly;
   flex-wrap: wrap;
   z-index: 2;
-  box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 6px -1px rgba(0, 0, 0, 0.75);
 
-  @media(max-width: 800px) {
+  @media (max-width: 800px) {
+    max-height: 650px;
+
     height: auto;
     flex-wrap: nowrap;
     flex-direction: column-reverse;
-    padding-bottom:  10px;
+    padding-bottom: 10px;
   }
 `;
 
@@ -62,6 +64,4 @@ export const Title = styled.h2`
   font-size: 20px;
 `;
 
-export const Button = styled.button`
-
-`
+export const Button = styled.button``;

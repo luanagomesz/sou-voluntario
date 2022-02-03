@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-  width: 30%;
+  width: 100%;
   min-width: 220px;
   height: 85%;
   padding: 10px 15px;
@@ -9,16 +9,22 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 8px;
-  box-shadow: 0px 0px 6px 0px rgba(128, 128, 128, 1);
+
+  @media (min-width: 600px) {
+    background-color: #fff;
+    box-shadow: 0px 0px 6px 0px rgba(128, 128, 128, 1);
+  }
 `;
 export const Button = styled.button`
   background-color: #fe9e63;
   color: #fff;
-  height: 30px;
-  width: 140px;
+  height: 40px;
+  max-width: 250px;
+  width: 100%;
   border-radius: 20px;
+  font-size: 1.25rem;
 `;
 export const Center = styled.div`
   display: flex;
@@ -69,7 +75,7 @@ export const DivButton = styled.div`
   align-items: center;
   width: 100%;
   border-radius: 8px;
-  background-color: #D5E0E4;
+  background-color: #d5e0e4;
 `;
 
 export const DivFooter = styled.div`
