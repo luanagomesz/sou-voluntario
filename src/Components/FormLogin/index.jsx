@@ -5,6 +5,7 @@ import { Input } from "../Input";
 import { Form, Button, Center } from "./style";
 import { useAuth } from "../../Contexts/Auth";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const FormLogin = () => {
   const { login } = useAuth();
@@ -37,7 +38,16 @@ export const FormLogin = () => {
           history.push("/DashboardOng");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((_) => {
+        toast.error("Email e/ou senha incorretos !", {
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   return (
