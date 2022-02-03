@@ -13,13 +13,14 @@ export const Main = styled.main`
   width: 100vw;
   min-height: calc(100vh - 130px);
 
-  padding-bottom: 50px;
-
   background-color: var(--ligthblue);
   > * {
     margin: 0 auto;
     max-width: 1440px;
   }
+
+  display: flex;
+  flex-direction: column;
 `;
 
 export const EventsStatusContainer = styled.section`
@@ -40,23 +41,25 @@ export const EventsStatusContainer = styled.section`
 
 export const EventsListContainer = styled.section`
   width: 100%;
+  height: 100%;
+  flex-grow: 1;
   display: flex;
   justify-content: center;
-  padding-top: 15px;
 `;
 
 export const EventsList = styled.ul`
   width: 100%;
+  max-height: calc(100vh - 225px);
+  height: 100%;
+  max-width: 1600px;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
 
-  @media (min-width: 768px) {
-  }
-
-  @media (min-width: 1024px) {
-    padding: 0 20px;
-    /* justify-content: flex-start; */
+  @media (max-width: 850px) {
+    max-height: 700px;
+    max-width: 400px;
   }
 `;
