@@ -13,6 +13,7 @@ import {
   FaRegEdit,
 } from "react-icons/fa";
 import { useHistory } from "react-router";
+import { useEffect } from "react";
 
 export const Header = ({
   MyEvents = false,
@@ -21,8 +22,15 @@ export const Header = ({
   isOng = false,
 }) => {
   const [burguer, setBurguer] = useState(false);
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
+  const [userName, setUserName] = useState("");
   const history = useHistory();
+
+  console.log(user);
+
+  useEffect(() => {
+    user.name !== undefined ? setUserName(user.name) : setUserName("JohnDoe");
+  }, []);
 
   const toggleBurguer = () => {
     setBurguer(!burguer);
@@ -33,10 +41,12 @@ export const Header = ({
     console.log("teste");
     if (userType !== "volunteer") {
       return history.push("/DashboardOng");
+    } else {
+      return history.push("/DashboardUser");
     }
   };
 
-  const userType = "asdasds";
+  const userType = "volunteer";
 
   return (
     <Nav>
@@ -50,7 +60,7 @@ export const Header = ({
       </button>
       <MenuNav burguer={burguer}>
         <div className="header_menu">
-          <img className="logo_menu" src={Logo}></img>
+          <img className="logo_menu" src={Logo} alt="Sou Voluntário"></img>
           <button onClick={toggleBurguer}>
             <FiX className="x_icon" />
           </button>
@@ -95,7 +105,7 @@ export const Header = ({
         <div className="user_container">
           <div className="info_user">
             <FaUser className="icon" onClick={OngProfile} />
-            <p className="name_user">{user}</p>
+            <p className="name_user">{userName}</p>
           </div>
           <FaSignOutAlt className="icon" />
         </div>
@@ -110,7 +120,7 @@ export const Header = ({
         )}
         <Link to="/Events">Eventos</Link>
         <Link to="/Faq">Faq</Link>
-        <p className="name_user">{user}</p>
+        <p className="name_user">{userName}</p>
         <FaUser className="icon" onClick={OngProfile} />
         <FaSignOutAlt onClick={logout} className="icon" />
       </div>
