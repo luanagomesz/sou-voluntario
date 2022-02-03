@@ -15,6 +15,8 @@ export const Header = ({
 
   const { toggleBurger, burger } = useBurger();
 
+  const user = JSON.parse(localStorage.getItem("@SouVoluntario:user"));
+
   return (
     <Nav>
       <NavLink to="/">
@@ -22,7 +24,7 @@ export const Header = ({
       </NavLink>
 
       <Burger onClick={() => toggleBurger()} />
-      {burger && <HamburgerMenu />}
+      {burger && <HamburgerMenu className="HamburgerMenu" />}
       <Menu>
         {isOng ? (
           <Button>
@@ -42,7 +44,7 @@ export const Header = ({
       </Menu>
 
       <User>
-        <h2 className="userItems">John Doe{User.name}</h2>
+        <h2 className="userItems">John Doe{user.name}</h2>
         <FaUser className="userItems" size="24px" color="#999999" />
         <FaSignOutAlt
           className="userItems"

@@ -62,17 +62,46 @@ export const BurgerMenu = styled.div`
   color: var(--darkblue);
 
   div {
-    display: block;
+    display: flex;
     border-bottom: 1px solid #dedede;
     height: 60px;
     align-items: center;
-    align-content: center;
-    justify-content: center;
+    justify-content: left;
+    padding-left: 25px;
   }
 
-  .Logo {
+  .BurgerHeader {
     display: flex;
     justify-content: space-between;
+    height: auto;
+    padding: 0;
+  }
+
+  .footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border: none;
+    border-top: 1px solid #dedede;
+  }
+
+  .footer div {
+    border: none;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .close-item {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    color: var(--darkblue);
+    z-index: 1000;
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 1090px) {
+    display: none;
   }
 `;
 
@@ -117,5 +146,18 @@ export const User = styled.div`
 
   @media screen and (max-width: 1090px) {
     display: none;
+  }
+`;
+
+export const BurgerUser = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-right: 30px;
+  font-family: "Cantata One";
+  color: var(--ligthorange);
+
+  .userItems {
+    margin-left: 35px;
   }
 `;
