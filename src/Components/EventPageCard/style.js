@@ -5,12 +5,15 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+
   border-radius: 8px;
   background-color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   padding-bottom: 10px;
+  margin-right: 40px;
+  min-height: 394px;
+
   .ong {
     width: 90%;
     font-size: 15px;
@@ -22,6 +25,7 @@ export const CardContainer = styled.div`
     border-radius: 8px;
     width: 100%;
     position: relative;
+    border-radius: 8px;
 
     img {
       width: 100%;
@@ -58,6 +62,7 @@ export const CardContainer = styled.div`
     justify-content: center;
     flex-wrap: nowrap;
     width: 90%;
+    margin-top: 3%;
     p {
       margin-left: 10px;
       margin-bottom: 0px;
@@ -71,6 +76,23 @@ export const CardContainer = styled.div`
       color: white;
       padding: 10px;
       border-radius: 5px;
+    }
+  }
+  @media (max-width: 850px) {
+    width: 280px;
+    margin-right: 0px;
+    .imgContainer {
+      .containerType {
+        margin-top: 150px;
+      }
+    }
+
+    .bottomDiv {
+      button {
+        font-size: 15px;
+        padding-right: 8px;
+        padding-left: 8px;
+      }
     }
   }
 `;
