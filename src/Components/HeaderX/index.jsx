@@ -14,7 +14,7 @@ import {
 } from "react-icons/fa";
 import { useHistory } from "react-router";
 import { useEffect } from "react";
-export const HeaderX = ({
+export const Header = ({
   MyEvents = false,
   Events = false,
   Faq = false,
