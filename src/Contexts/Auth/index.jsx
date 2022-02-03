@@ -35,13 +35,13 @@ export const AuthProvider = ({ children }) => {
 
   const login = useCallback(async (email, password) => {
     try {
-      const response = await api.post("/login", { email, password });
+      const response = await api.post("login", { email, password });
 
       const { accessToken, user } = response.data;
 
       localStorage.setItem(
         "@SouVoluntario:user",
-        JSON.stringify({ name: user.name, id: user.id })
+        JSON.stringify({ name: user.name, id: user.id }),
       );
       localStorage.setItem("@SouVoluntario:token", String(accessToken));
 
@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return error;
     }
-  }, []);
+  });
 
   const logout = () => {
     localStorage.removeItem("@SouVoluntario:token");

@@ -1,8 +1,7 @@
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
-import { Nav, MenuNav, Divisory } from "./style";
-import { AiOutlineMenu } from "react-icons/ai";
-import { FiX } from "react-icons/fi";
-import Logo from "../../Assets/logoPng.png";
+import { Button, Nav, NavLink, Burger, Menu, ButtonLink, User } from "./style";
+import Logo from "../../Assets/souvol.svg";
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../Contexts/Auth";
 import { Link } from "react-router-dom";
@@ -116,7 +115,9 @@ export const Header = ({
         {userType === "volunteer" ? (
           <Link to="/DashboardUser">Meus Eventos</Link>
         ) : (
-          <button className="newEvent_desktop">Criar novo evento</button>
+          <NavLink className={MyEvents ? "colorTheme" : ""} to="/Events">
+            Meus Eventos
+          </NavLink>
         )}
         <Link to="/Events">Eventos</Link>
         <Link to="/Faq">Faq</Link>
