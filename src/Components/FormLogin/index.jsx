@@ -4,9 +4,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../Input";
 import { Form, Button, Center } from "./style";
 import { useAuth } from "../../Contexts/Auth";
+import { useHistory } from "react-router-dom";
 
 export const FormLogin = () => {
-  const { LoginRequest } = useAuth();
+  const { login } = useAuth();
+  const history = useHistory();
 
   const formSchema = yup.object().shape({
     email: yup.string().required("Email obrigatório").email("Email inválido"),
@@ -22,17 +24,31 @@ export const FormLogin = () => {
   });
 
   const handleLogin = (data) => {
-    LoginRequest(data);
+    const { email, password } = data;
+    login(email, password)
+      .then((response) => {
+        const {
+          user: { userType },
+        } = response;
+
+        if (userType === "voluntary") {
+          history.push("/DashboardUser");
+        } else if (userType === "ong") {
+          history.push("/DashboardOng");
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <>
-      <Form onSubmit={handleSubmit(handleLogin())}>
+      <Form onSubmit={handleSubmit(handleLogin)}>
         <Input
           type="text"
           placeholder="Digite seu email"
           error={errors.email?.message}
-          {...register("email")}
+          data="email"
+          register={register}
           label="Email:"
         />
 
@@ -40,7 +56,8 @@ export const FormLogin = () => {
           type="password"
           placeholder="Digite sua senha"
           error={errors.password?.message}
-          {...register("password")}
+          data="password"
+          register={register}
           label="Senha:"
         />
 

@@ -8,10 +8,16 @@ export const PageContainer = styled.div`
   align-items: center;
 
   background-color: var(--ligthblue);
+  .result {
+    margin-top: 10px;
+    margin-bottom: -10px;
+    font-size: 15px;
+    color: var(--grey-50);
+  }
 `;
 
 export const FakeHeader = styled.header`
-  height: 100px;
+  height: 51px;
   display: flex;
   background-color: white;
   align-items: center;
@@ -73,6 +79,31 @@ export const SearchContainer = styled.div`
       font-size: 16px;
     }
   }
+  @media (max-width: 850px) {
+    box-shadow: none;
+    margin-top: 0px;
+    width: 100%;
+    border-top: 1px solid var(--grey-0);
+    .button {
+      display: none;
+    }
+    #donation {
+      display: none;
+    }
+    .search {
+      width: 70%;
+      height: 40px;
+      button {
+        height: 30px;
+        width: 40px;
+      }
+      input {
+        width: 90%;
+        color: var(--grey-100);
+        background-color: var(--grey-0);
+      }
+    }
+  }
 `;
 
 export const CardContainer = styled.div`
@@ -81,7 +112,13 @@ export const CardContainer = styled.div`
   flex-wrap: wrap;
   width: 90%;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   max-height: 700px;
   overflow-y: auto;
+  max-width: 1600px;
+
+  @media (max-width: 850px) {
+    max-height: 700px;
+    max-width: 400px;
+  }
 `;
