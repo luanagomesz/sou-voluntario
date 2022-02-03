@@ -4,6 +4,7 @@ import Logo from "../../Assets/souvol.svg";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../Contexts/Auth";
+import { useHistory } from "react-router-dom";
 
 export const Header = ({
   MyEvents = false,
@@ -13,9 +14,15 @@ export const Header = ({
 }) => {
   const [burger, setBurger] = useState(false);
   const { logout } = useAuth();
+  const history = useHistory();
 
   const toggleBurger = () => {
     setBurger(!burger);
+  };
+
+  const handleLogout = () => {
+    logout();
+    history.push("/");
   };
 
   return (
@@ -47,7 +54,7 @@ export const Header = ({
       <User>
         <h2 className="userItems">John Doe{User.name}</h2>
         <FaUser className="userItems" size="24px" color="#999999" />
-        <Button onClick={logout}>
+        <Button onClick={handleLogout}>
           <FaSignOutAlt className="userItems" size="24px" color="#999999" />
         </Button>
       </User>

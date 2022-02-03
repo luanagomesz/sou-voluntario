@@ -26,8 +26,6 @@ export const DashboardUser = () => {
     loadSubscribedFilteredEvents(user.id, accessToken, eventIsCompleted);
   }, [eventIsCompleted]);
 
-  console.log(subscribedFilteredEvents);
-
   return (
     <>
       <Header />
