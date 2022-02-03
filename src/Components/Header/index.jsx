@@ -1,7 +1,8 @@
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
-import { Button, Nav, NavLink, Burger, Menu, ButtonLink, User } from "./style";
+import { FiX } from "react-icons/fi";
+import { AiOutlineMenu } from "react-icons/ai";
+import { Nav, MenuNav, Divisory } from "./style";
 import Logo from "../../Assets/souvol.svg";
-import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../Contexts/Auth";
 import { Link } from "react-router-dom";
@@ -38,14 +39,16 @@ export const Header = ({
 
   const OngProfile = () => {
     console.log("teste");
-    if (userType !== "volunteer") {
+    if (userType !== "voluntary") {
+      toggleBurguer();
       return history.push("/DashboardOng");
     } else {
+      toggleBurguer();
       return history.push("/DashboardUser");
     }
   };
 
-  const userType = "volunteer";
+  const userType = "voluntary";
 
   return (
     <Nav>
@@ -66,7 +69,7 @@ export const Header = ({
         </div>
         <Divisory />
         <div className="box_link">
-          {userType === "volunteer" ? (
+          {userType === "voluntary" ? (
             <>
               <Link
                 onClick={toggleBurguer}
@@ -112,12 +115,10 @@ export const Header = ({
 
       {/* versão desktop */}
       <div className="links">
-        {userType === "volunteer" ? (
+        {userType === "voluntary" ? (
           <Link to="/DashboardUser">Meus Eventos</Link>
         ) : (
-          <NavLink className={MyEvents ? "colorTheme" : ""} to="/Events">
-            Meus Eventos
-          </NavLink>
+          <button className="newEvent_desktop">Criar novo evento</button>
         )}
         <Link to="/Events">Eventos</Link>
         <Link to="/Faq">Faq</Link>

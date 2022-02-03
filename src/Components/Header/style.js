@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { NavLink as Link } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
 
 export const Nav = styled.nav`
   background: #fff;
@@ -10,84 +8,146 @@ export const Nav = styled.nav`
   padding: 0.5rem;
   align-items: center;
   z-index: 100;
+  img {
+    width: 170px;
+    margin-left: 20px;
+  }
+  .menu_button {
+    width: 30px;
+    background-color: transparent;
+    margin-right: 25px;
+  }
+  .menu_icon {
+    width: 30px;
+    height: 30px;
+    @media (min-width: 720px) {
+      display: none;
+    }
+  }
+  .links {
+    display: none;
+  }
+  .newEvent_mobile {
+    min-width: 180px;
+    height: 19px;
+    display: flex;
+    align-items: center;
+  }
+  @media (min-width: 720px) {
+    a:visited {
+      color: var(--darkblue);
+    }
+    .links {
+      display: flex;
+      width: 50%;
+      justify-content: space-around;
+      max-width: 660px;
+    }
+    .name_user {
+      border-left: 1px solid var(--ligthgrey);
+      min-width: 20%;
+      max-width: 90px;
+      text-align: right;
+      color: var(--ligthorange);
+    }
+    .icon {
+      margin-right: 5px;
+      color: var(--grey-100);
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+    .newEvent_desktop {
+      width: 138px;
+      height: 32px;
+      position: relative;
+      bottom: 4px;
+      background-color: var(--ligthorange);
+      color: white;
+      font-weight: 600;
+      border-radius: 5px;
+    }
+  }
 `;
 
-export const NavLink = styled(Link)`
-  color: var(--darkblue);
-  text-decoration: none;
-  align-items: center;
-  margin-right: 80px;
-  font-size: 22px;
-`;
-
-export const Burger = styled(FaBars)`
-  display: none;
-
-  @media screen and (max-width: 1090px) {
-    color: gray;
-    display: block;
+export const MenuNav = styled.div`
+  display: ${({ burguer }) => (burguer ? "none" : "flex")};
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  .header_menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 125px;
+    padding: 0.5rem;
+  }
+  button {
+    width: 25px;
+    height: 25px;
+    margin-right: 30px;
+    background: transparent;
+  }
+  .logo_menu {
+    width: 170px;
+  }
+  .x_icon {
+    width: 25px;
+    height: 25px;
+  }
+  .box_link {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+  }
+  .link_mobile,
+  .newEvent_mobile {
+    margin: 20px 0px 10px 20px;
+    color: var(--darkblue);
+  }
+  a:visited {
+    color: var(--darkblue);
+  }
+  .user_container {
     position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 75%);
-    font-size: 2rem;
+    bottom: 0px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 15px 10px 0px 10px;
+    border-top: 1px solid var(--ligthgrey);
+  }
+  .info_user {
+    display: flex;
+    min-width: 25%;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 110px;
+  }
+  .name_user {
+    color: var(--ligthorange);
+  }
+  .icon {
+    margin-right: 5px;
+    color: var(--grey-100);
+    width: 15px;
+    height: 15px;
     cursor: pointer;
   }
-`;
-
-export const Menu = styled.div`
-  display: flex;
-  align-items: center;
-  width: 30%;
-
-  .colorTheme {
-    color: var(--ligthblue);
-  }
-  @media screen and (max-width: 1090px) {
+  @media (min-width: 720px) {
     display: none;
   }
 `;
 
-export const Button = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media screen and (max-width: 1090px) {
-    display: none;
-  }
-`;
-
-export const ButtonLink = styled(Link)`
-  border: none;
-  width: 251px;
-  height: 60px;
-  background-color: var(--ligthorange);
-  color: #fff;
-  border-radius: 8px;
-  cursor: pointer;
-  text-decoration: none;
-  :hover {
-    background-color: var(--darkorange);
-  }
-`;
-
-export const User = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-right: 30px;
-  font-family: "Cantata One";
-  border-left: 2px solid var(--grey-0);
-  width: 20vw;
-  color: var(--ligthorange);
-  height: 75px;
-
-  .userItems {
-    margin-left: 35px;
-  }
-
-  @media screen and (max-width: 1090px) {
-    display: none;
-  }
+export const Divisory = styled.div`
+  width: 90%;
+  height: 1px;
+  background-color: var(--ligthgrey);
+  align-self: center;
+  border-radius: 5px;
 `;
