@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-  width: 60%;
+  width: 100%;
   min-width: 220px;
   height: 80%;
   min-height: 300px;
@@ -10,22 +10,22 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 8px;
-  box-shadow: 0px 0px 6px 0px rgba(128, 128, 128, 1);
-  margin: auto;
 
-  @media screen and (min-width: 760px) {
-    width: 100%;
-    margin: 0;
+  @media (min-width: 600px) {
+    background-color: #fff;
+    box-shadow: 0px 0px 6px 0px rgba(128, 128, 128, 1);
   }
 `;
 export const Button = styled.button`
   background-color: #fe9e63;
   color: #fff;
-  height: 30px;
-  width: 140px;
+  height: 40px;
+  max-width: 250px;
+  width: 100%;
   border-radius: 20px;
+  font-size: 1.25rem;
 `;
 export const Center = styled.div`
   display: flex;
