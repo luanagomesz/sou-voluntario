@@ -10,6 +10,7 @@ import { EventUserCard } from "../../Components/EventUserCard";
 import { useUserEvents } from "../../Contexts/UserEvents";
 import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "../../Contexts/Auth";
+import { Header } from "../../Components/Header";
 
 export const DashboardUser = () => {
   const { accessToken, user } = useAuth();
@@ -29,7 +30,7 @@ export const DashboardUser = () => {
 
   return (
     <>
-      <FakeHeader />
+      <Header />
       <Main>
         <EventsStatusContainer className="events__status__container">
           <EventStatusSelector
