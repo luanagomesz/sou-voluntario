@@ -31,11 +31,11 @@ export const FormLogin = () => {
           user: { userType },
         } = response;
 
-        if (userType === "voluntary") {
-          history.push("/DashboardUser");
-        } else if (userType === "ong") {
-          history.push("/DashboardOng");
-        }
+        // if (userType === "voluntary") {
+        //   history.push("/dashboarduser");
+        // } else if (userType === "ong") {
+        //   history.push("/dashboardong");
+        // }
       })
       .catch((err) => console.log(err));
   };
