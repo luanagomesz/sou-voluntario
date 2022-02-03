@@ -5,6 +5,7 @@ import { api } from "../../Service";
 const UserEventsContext = createContext({});
 
 const UserEventsProvider = ({ children }) => {
+  const [statusEvent, setStatusEvent] = useState(false);
   const [subscribedEvents, setSubscribedEvents] = useState([]);
   const [subscribedFilteredEvents, setSubscribedFilteredEvents] = useState([]);
 
@@ -25,12 +26,14 @@ const UserEventsProvider = ({ children }) => {
         },
       );
 
-      console.log(response.data);
-
       setSubscribedFilteredEvents([...response.data]);
     },
     [],
   );
+
+  const defineStatusEvents = (status) => {
+    setStatusEvent(status);
+  };
 
   return (
     <UserEventsContext.Provider
@@ -39,6 +42,8 @@ const UserEventsProvider = ({ children }) => {
         loadSubscribedEvents,
         subscribedFilteredEvents,
         loadSubscribedFilteredEvents,
+        defineStatusEvents,
+        statusEvent,
       }}
     >
       {children}

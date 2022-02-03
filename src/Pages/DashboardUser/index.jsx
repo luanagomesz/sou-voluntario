@@ -14,19 +14,20 @@ import { Header } from "../../Components/Header";
 
 export const DashboardUser = () => {
   const { accessToken, user } = useAuth();
-  const { subscribedFilteredEvents, loadSubscribedFilteredEvents } =
-    useUserEvents();
-  const [eventIsCompleted, setEventIsCompleted] = useState(false);
+  const {
+    subscribedFilteredEvents,
+    loadSubscribedFilteredEvents,
+    defineStatusEvents,
+    statusEvent,
+  } = useUserEvents();
 
   const handleSetEventStatus = useCallback((status) => {
-    setEventIsCompleted(status);
+    defineStatusEvents(status);
   }, []);
 
   useEffect(() => {
-    loadSubscribedFilteredEvents(user.id, accessToken, eventIsCompleted);
-  }, [eventIsCompleted]);
-
-  console.log(subscribedFilteredEvents);
+    loadSubscribedFilteredEvents(user.id, accessToken, statusEvent);
+  }, [statusEvent]);
 
   return (
     <>
@@ -35,7 +36,7 @@ export const DashboardUser = () => {
         <EventsStatusContainer className="events__status__container">
           <EventStatusSelector
             handleSetEventStatus={handleSetEventStatus}
-            eventIsCompleted={eventIsCompleted}
+            eventIsCompleted={statusEvent}
           />
         </EventsStatusContainer>
         <EventsListContainer className="events__list__container">
