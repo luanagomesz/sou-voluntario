@@ -18,9 +18,11 @@ export const Container = styled.div`
   }
 `;
 
-export const Button = styled.div`
+export const Button = styled.button`
   width: 30px;
   height: 30px;
+  background-color: transparent;
+  border: none;
 `;
 
 export const IconHome = styled(FaHome)`
