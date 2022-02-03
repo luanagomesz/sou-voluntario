@@ -1,35 +1,37 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
+  width: 100%;
+  min-width: 220px;
+  height: 90%;
+  padding: 10px 15px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: transparent;
+  border-radius: 8px;
 
-width: 30%;
-min-width: 220px;
-height: 90%;
-padding: 10px 15px;
-max-width: 350px;
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-background-color: #fff;
-border-radius: 8px;
-box-shadow: 0px 0px 6px 0px rgba(128,128,128,1);
-
-`
+  @media (min-width: 600px) {
+    background-color: #fff;
+    box-shadow: 0px 0px 6px 0px rgba(128, 128, 128, 1);
+  }
+`;
 export const Button = styled.button`
-
-background-color: #FE9E63;
-color: #fff;
-height: 30px;
-width: 140px;
-border-radius: 20px;
-`
+  background-color: #fe9e63;
+  color: #fff;
+  height: 40px;
+  max-width: 250px;
+  width: 100%;
+  border-radius: 20px;
+  font-size: 1.25rem;
+`;
 export const Center = styled.div`
-
-display: flex;
-justify-content: center;
-width: 100%;
-align-items: center;
-`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+`;
 export const RightDiv = styled.div`
   width: 40%;
   min-width: 220px;
@@ -73,7 +75,7 @@ export const DivButton = styled.div`
   align-items: center;
   width: 100%;
   border-radius: 8px;
-  background-color: #D5E0E4;
+  background-color: #d5e0e4;
 `;
 
 export const DivFooter = styled.div`

@@ -21,10 +21,10 @@ import {
 } from "./style";
 import { api } from "../../Service";
 import { toast } from "react-toastify";
+import { Select } from "../Select";
 
-export const FormInst = ({ userType}) => {
-
-  const history = useHistory()
+export const FormInst = ({ userType }) => {
+  const history = useHistory();
 
   const { toggleForm } = useRegisterEvents();
 
@@ -52,14 +52,14 @@ export const FormInst = ({ userType}) => {
       const response = await api.post("/signup", data);
       console.log(response.data);
 
-      toast.success('Cadastrado com sucesso !', {
+      toast.success("Cadastrado com sucesso !", {
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
+      });
       history.push("/login");
     } catch (error) {
       toast.error("Email já cadastrado !", {
@@ -103,14 +103,19 @@ export const FormInst = ({ userType}) => {
           label="Senha:"
         />
 
-        <Input
-          type="text"
-          placeholder="Selecione sua categoria"
-          error={errors.category?.message}
+        <Select
           register={register}
           data="category"
+          name="cars"
           label="Categoria:"
-        />
+          options={[
+            "Educação",
+            "Meio ambiente",
+            "Vulnerabiliade social",
+            "Inclusão social",
+            "Outros",
+          ]}
+        ></Select>
 
         <Input
           type="number"
@@ -136,7 +141,7 @@ export const FormInst = ({ userType}) => {
           <TextButton>Sou:</TextButton>
           <DivButton>
             <ButtonToggle onClick={toggleForm}>Voluntário</ButtonToggle>
-            <ButtonToggleInst onClick={toggleForm}>
+            <ButtonToggleInst >
               Instituição
             </ButtonToggleInst>
           </DivButton>
