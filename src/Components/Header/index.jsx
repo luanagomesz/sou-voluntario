@@ -1,9 +1,18 @@
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
-import { Button, Nav, NavLink, Burger, Menu, ButtonLink, User } from "./style";
-import Logo from "../../Assets/souvol.svg";
-import { useLocation } from "react-router-dom";
+import { Nav, MenuNav, Divisory } from "./style";
+import { AiOutlineMenu } from "react-icons/ai";
+import { FiX } from "react-icons/fi";
+import Logo from "../../Assets/logoPng.png";
 import { useState } from "react";
 import { useAuth } from "../../Contexts/Auth";
+import { Link } from "react-router-dom";
+import {
+  FaGlobeAmericas,
+  FaInfoCircle,
+  FaPlusCircle,
+  FaRegEdit,
+} from "react-icons/fa";
+import { useHistory } from "react-router";
 
 export const Header = ({
   MyEvents = false,
@@ -11,46 +20,100 @@ export const Header = ({
   Faq = false,
   isOng = false,
 }) => {
-  const [burger, setBurger] = useState(false);
+  const [burguer, setBurguer] = useState(false);
   const { logout } = useAuth();
+  const history = useHistory();
 
-  const toggleBurger = () => {
-    setBurger(!burger);
+  const toggleBurguer = () => {
+    setBurguer(!burguer);
+    console.log(burguer);
   };
+
+  const OngProfile = () => {
+    console.log("teste");
+    if (userType !== "volunteer") {
+      return history.push("/DashboardOng");
+    }
+  };
+
+  const userType = "asdasds";
 
   return (
     <Nav>
-      <NavLink to="/">
-        <img src={Logo} alt="Logo" />
-      </NavLink>
-      <Button onClick={toggleBurger}>
-        <Burger />
-      </Button>
-      <Menu>
-        {isOng ? (
-          <Button>
-            <ButtonLink to="/">Criar Evento</ButtonLink>
-          </Button>
-        ) : (
-          <NavLink className={MyEvents ? "colorTheme" : ""} to="/Events">
-            Meus Eventos
-          </NavLink>
-        )}
-        <NavLink className={Events ? "colorTheme" : ""} to="/Events">
-          Eventos
-        </NavLink>
-        <NavLink className={Faq ? "colorTheme" : ""} to="/Faq">
-          Faq
-        </NavLink>
-      </Menu>
+      <div>
+        <img src={Logo} alt="Sou Voluntário"></img>
+      </div>
 
-      <User>
-        <h2 className="userItems">John Doe{User.name}</h2>
-        <FaUser className="userItems" size="24px" color="#999999" />
-        <Button onClick={logout}>
-          <FaSignOutAlt className="userItems" size="24px" color="#999999" />
-        </Button>
-      </User>
+      {/* versão mobile */}
+      <button onClick={toggleBurguer} className="menu_button">
+        <AiOutlineMenu className="menu_icon" />
+      </button>
+      <MenuNav burguer={burguer}>
+        <div className="header_menu">
+          <img className="logo_menu" src={Logo}></img>
+          <button onClick={toggleBurguer}>
+            <FiX className="x_icon" />
+          </button>
+        </div>
+        <Divisory />
+        <div className="box_link">
+          {userType === "volunteer" ? (
+            <>
+              <Link
+                onClick={toggleBurguer}
+                to="/DashboardUser"
+                className="link_mobile"
+              >
+                <FaRegEdit className="icon" />
+                Meus Eventos
+              </Link>
+
+              <Divisory />
+            </>
+          ) : (
+            <>
+              <button onClick={toggleBurguer} className="newEvent_mobile">
+                <FaPlusCircle className="icon" />
+                Criar novo evento
+              </button>
+
+              <Divisory />
+            </>
+          )}
+          <Link onClick={toggleBurguer} to="/Events" className="link_mobile">
+            <FaGlobeAmericas className="icon" />
+            Eventos
+          </Link>
+          <Divisory />
+          <Link onClick={toggleBurguer} to="/Faq" className="link_mobile">
+            <FaInfoCircle className="icon" />
+            Faq
+          </Link>
+          <Divisory />
+        </div>
+
+        <div className="user_container">
+          <div className="info_user">
+            <FaUser className="icon" onClick={OngProfile} />
+            <p className="name_user">{user}</p>
+          </div>
+          <FaSignOutAlt className="icon" />
+        </div>
+      </MenuNav>
+
+      {/* versão desktop */}
+      <div className="links">
+        {userType === "volunteer" ? (
+          <Link to="/DashboardUser">Meus Eventos</Link>
+        ) : (
+          <button className="newEvent_desktop">Criar novo evento</button>
+        )}
+        <Link to="/Events">Eventos</Link>
+        <Link to="/Faq">Faq</Link>
+        <p className="name_user">{user}</p>
+        <FaUser className="icon" onClick={OngProfile} />
+        <FaSignOutAlt onClick={logout} className="icon" />
+      </div>
     </Nav>
   );
 };
