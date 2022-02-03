@@ -1,34 +1,46 @@
+import { useHistory } from "react-router-dom";
+
 import {
   BackgroundBottom,
   BackgroundTop,
-  Button,
+  ButtonNoAccountForm,
+  ButtonNoAccountInfo,
   Container,
   ContainerForm,
   ContainerInfo,
   ContainerLogin,
-  Input,
+  Logo,
+  VolunteersImage,
 } from "./style";
 import souVoluntario from "../../Assets/souvol.svg";
 import volunteers from "../../Assets/volunteers.svg";
 import { FormLogin } from "../../Components/FormLogin";
-import { useHistory } from "react-router-dom";
+import { NavNoPrivatePages } from "../../Components/NavNoPrivatePages";
 
 export const Login = () => {
   const history = useHistory();
   return (
     <Container>
+      <NavNoPrivatePages />
       <BackgroundTop />
       <ContainerLogin>
         <ContainerInfo>
-          <img src={souVoluntario} alt="logo" className="logo" />
-          <img src={volunteers} alt="volunteers" className="volunteers" />
-          <button onClick={() => history.push("/Register")}>
+          <Logo src={souVoluntario} alt="logo" className="logo" />
+          <VolunteersImage
+            src={volunteers}
+            alt="volunteers"
+            className="volunteers"
+          />
+          <ButtonNoAccountInfo onClick={() => history.push("/Register")}>
             Ainda não possui uma conta?
-          </button>
+          </ButtonNoAccountInfo>
         </ContainerInfo>
         <ContainerForm>
           <h1>Login</h1>
           <FormLogin />
+          <ButtonNoAccountForm onClick={() => history.push("/Register")}>
+            Ainda não possui uma conta?
+          </ButtonNoAccountForm>
         </ContainerForm>
       </ContainerLogin>
       <BackgroundBottom />

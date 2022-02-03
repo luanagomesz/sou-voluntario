@@ -11,13 +11,24 @@ import { EventPageCard } from "../../Components/EventPageCard";
 import { FilterStatesModal } from "../../Components/EventPageModalState";
 import { useEventsPageContext } from "../../Contexts/EventPage";
 import { FilterCategoriesModal } from "../../Components/EventPageModalCategory";
+import { Header } from "../../Components/Header";
 export const Events = () => {
-  const [Events, setEvents] = useState([]);
-  const [filteredEvents, setFilteredEvents] = useState([]);
-  const [filteredDonation, SetFilteredDonation] = useState(false);
-
-  const { stateModal, setStateModal, setCategoryModal, categoryModal } =
-    useEventsPageContext();
+  const [search, setSearch] = useState("");
+  const [searchedValue, SetSearchedValue] = useState("");
+  const {
+    stateModal,
+    setStateModal,
+    setCategoryModal,
+    categoryModal,
+    filteredEvents,
+    setFilteredEvents,
+    filteredDonation,
+    SetFilteredDonation,
+    Searched,
+    setSearched,
+    Events,
+    setEvents,
+  } = useEventsPageContext();
 
   useEffect(() => {
     if (filteredDonation === true) {
@@ -73,8 +84,21 @@ export const Events = () => {
       });
   };
 
-  const filterByState = (states) => {};
-  const filterByCategory = (type) => {};
+  const SearchFilter = () => {
+    setSearched(true);
+    SetSearchedValue(search);
+    api.get("/events").then((res) => {
+      setFilteredEvents(
+        res.data.filter(
+          (item) =>
+            item.category.toUpperCase().includes(search.toUpperCase()) ||
+            item.state.toUpperCase().includes(search.toUpperCase()) ||
+            item.title.toUpperCase().includes(search.toUpperCase()) ||
+            item.ongName.toUpperCase().includes(search.toUpperCase())
+        )
+      );
+    });
+  };
 
   return (
     <PageContainer>
@@ -124,8 +148,12 @@ export const Events = () => {
           )}
         </div>
         <div className="search">
-          <input type="text" placeholder="Digite sua pesquisa" />
-          <button>
+          <input
+            type="text"
+            placeholder="Digite sua pesquisa"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button onClick={() => SearchFilter()}>
             <AiOutlineSearch
               color="white
             "
@@ -133,6 +161,19 @@ export const Events = () => {
           </button>
         </div>
       </SearchContainer>
+      <div>
+        {Searched === true ? (
+          filteredEvents.length > 0 && searchedValue.length > 0 ? (
+            <p className="result">resultados para: {searchedValue}</p>
+          ) : searchedValue.length > 0 ? (
+            <p className="result">nenhum resultado para: {searchedValue}</p>
+          ) : (
+            ""
+          )
+        ) : (
+          ""
+        )}
+      </div>
       <CardContainer>
         {filteredEvents.length > 0
           ? filteredEvents.map((item) => <EventPageCard event={item} />)

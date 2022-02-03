@@ -1,7 +1,7 @@
 import { ModalContainer } from "./style";
 import { useEventsPageContext } from "../../Contexts/EventPage";
 export const FilterStatesModal = ({ IsOpen }) => {
-  const { setSelectedStates } = useEventsPageContext();
+  const { setSelectedStates, selectedStates } = useEventsPageContext();
 
   const allStates = [
     "Distrito Federal",
@@ -44,15 +44,26 @@ export const FilterStatesModal = ({ IsOpen }) => {
   };
   return IsOpen ? (
     <ModalContainer>
-      {allStates.map((state, index) => (
+      {allStates.map((item, index) => (
         <div>
-          <input
-            type="checkbox"
-            id={"state" + index}
-            name={state}
-            onClick={() => Checkthebox()}
-          />
-          <label for={state}>{state}</label>
+          {selectedStates.includes(item) ? (
+            <input
+              type="checkbox"
+              id={"state" + index}
+              name={item}
+              onClick={() => Checkthebox()}
+              checked
+            />
+          ) : (
+            <input
+              type="checkbox"
+              id={"state" + index}
+              name={item}
+              onClick={() => Checkthebox()}
+            />
+          )}
+
+          <label for={"state" + index}>{item}</label>
         </div>
       ))}
     </ModalContainer>

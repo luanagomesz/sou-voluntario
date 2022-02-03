@@ -1,5 +1,8 @@
-export const ModalCreateEvent = () => {
-  <div>
-    <h1>ModalCreateEvent </h1>
-  </div>;
+import { ModalContainer, PageContainer } from "./style";
+export const ModalCreateEvent = ({ event }) => {
+  return (
+    <PageContainer>
+      <ModalContainer></ModalContainer>
+    </PageContainer>
+  );
 };

@@ -55,14 +55,14 @@ export const FormUser = ({ userType }) => {
       const response = await api.post("/signup", data);
       console.log(response.data);
 
-      toast.success('Cadastrado com sucesso !', {
+      toast.success("Cadastrado com sucesso !", {
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
+      });
       history.push("/login");
     } catch (error) {
       toast.error("Email já cadastrado !", {
@@ -130,7 +130,7 @@ export const FormUser = ({ userType }) => {
         <DivFooter>
           <TextButton>Sou:</TextButton>
           <DivButton>
-            <ButtonToggleVolunter onClick={toggleForm}>
+            <ButtonToggleVolunter>
               Voluntário
             </ButtonToggleVolunter>
             <ButtonToggle onClick={toggleForm}>Instituição</ButtonToggle>
