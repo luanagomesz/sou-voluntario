@@ -11,6 +11,7 @@ const EventsPageProvider = ({ children }) => {
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [filteredDonation, SetFilteredDonation] = useState(false);
   const [Searched, setSearched] = useState(false);
+
   useEffect(() => {
     setSearched(false);
     if (
@@ -19,62 +20,125 @@ const EventsPageProvider = ({ children }) => {
       selectedStates.length > 0
     ) {
       api.get("/events").then((res) => {
-        setFilteredEvents(
+        if (
           res.data.filter(
             (item) =>
               item.workType === "donation" &&
               selectedCategories.includes(item.category) &&
               selectedStates.includes(item.state)
-          )
-        );
+          ).length === 0
+        ) {
+          setFilteredEvents([{}]);
+        } else {
+          setFilteredEvents(
+            res.data.filter(
+              (item) =>
+                item.workType === "donation" &&
+                selectedCategories.includes(item.category) &&
+                selectedStates.includes(item.state)
+            )
+          );
+        }
       });
     } else if (filteredDonation === true && selectedStates.length > 0) {
       api.get("/events").then((res) => {
-        setFilteredEvents(
+        if (
           res.data.filter(
             (item) =>
               item.workType === "donation" &&
               selectedStates.includes(item.state)
-          )
-        );
+          ).length === 0
+        ) {
+          setFilteredEvents([{}]);
+        } else {
+          setFilteredEvents(
+            res.data.filter(
+              (item) =>
+                item.workType === "donation" &&
+                selectedStates.includes(item.state)
+            )
+          );
+        }
       });
     } else if (filteredDonation === true && selectedCategories.length > 0) {
       api.get("/events").then((res) => {
-        setFilteredEvents(
+        if (
           res.data.filter(
             (item) =>
               item.workType === "donation" &&
               selectedCategories.includes(item.category)
-          )
-        );
+          ).length === 0
+        ) {
+          setFilteredEvents([{}]);
+        } else {
+          setFilteredEvents(
+            res.data.filter(
+              (item) =>
+                item.workType === "donation" &&
+                selectedCategories.includes(item.category)
+            )
+          );
+        }
       });
     } else if (selectedCategories.length > 0 && selectedStates.length > 0) {
       api.get("/events").then((res) => {
-        setFilteredEvents(
+        if (
           res.data.filter(
             (item) =>
               selectedCategories.includes(item.category) &&
               selectedStates.includes(item.state)
-          )
-        );
+          ).length === 0
+        ) {
+          setFilteredEvents([{}]);
+        } else {
+          setFilteredEvents(
+            res.data.filter(
+              (item) =>
+                selectedCategories.includes(item.category) &&
+                selectedStates.includes(item.state)
+            )
+          );
+        }
       });
     } else if (selectedStates.length > 0) {
       api.get("/events").then((res) => {
-        setFilteredEvents(
+        if (
           res.data.filter((item) => selectedStates.includes(item.state))
-        );
+            .length === 0
+        ) {
+          setFilteredEvents([{}]);
+        } else {
+          setFilteredEvents(
+            res.data.filter((item) => selectedStates.includes(item.state))
+          );
+        }
       });
     } else if (selectedCategories.length > 0) {
       api.get("/events").then((res) => {
-        setFilteredEvents(
+        if (
           res.data.filter((item) => selectedCategories.includes(item.category))
-        );
+            .length === 0
+        ) {
+          setFilteredEvents([{}]);
+        } else {
+          setFilteredEvents(
+            res.data.filter((item) =>
+              selectedCategories.includes(item.category)
+            )
+          );
+        }
       });
     } else if (filteredDonation === true) {
       api.get("/events").then((res) => {
-        setFilteredEvents(
-          res.data.filter((item) => item.workType === "donation")
-        );
+        if (
+          res.data.filter((item) => item.workType === "donation").length === 0
+        ) {
+          setFilteredEvents([{}]);
+        } else {
+          setFilteredEvents(
+            res.data.filter((item) => item.workType === "donation")
+          );
+        }
       });
     } else {
       setFilteredEvents([]);

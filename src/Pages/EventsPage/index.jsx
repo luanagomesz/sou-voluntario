@@ -28,6 +28,7 @@ export const Events = () => {
     SetFilteredDonation,
     Searched,
     setSearched,
+    notFound,
   } = useEventsPageContext();
 
   useEffect(() => {

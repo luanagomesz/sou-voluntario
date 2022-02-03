@@ -17,7 +17,7 @@ export const PageContainer = styled.div`
 `;
 
 export const FakeHeader = styled.header`
-  height: 200px;
+  height: 51px;
   display: flex;
   background-color: white;
   align-items: center;
@@ -113,7 +113,7 @@ export const CardContainer = styled.div`
   width: 90%;
   align-items: center;
   justify-content: center;
-  max-height: 900px;
+  max-height: 700px;
   overflow-y: auto;
   max-width: 1600px;
 
