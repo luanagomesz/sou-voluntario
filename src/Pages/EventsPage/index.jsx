@@ -13,7 +13,6 @@ import { useEventsPageContext } from "../../Contexts/EventPage";
 import { FilterCategoriesModal } from "../../Components/EventPageModalCategory";
 import { Header } from "../../Components/Header";
 export const Events = () => {
-  const [Events, setEvents] = useState([]);
   const [search, setSearch] = useState("");
   const [searchedValue, SetSearchedValue] = useState("");
   const {
@@ -27,6 +26,8 @@ export const Events = () => {
     SetFilteredDonation,
     Searched,
     setSearched,
+    Events,
+    setEvents,
   } = useEventsPageContext();
 
   useEffect(() => {

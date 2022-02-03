@@ -1,13 +1,15 @@
 import { CardContainer } from "./style";
 import PlaceHolder from "../../assets/img/placeholder.png";
 import { GoLocation } from "react-icons/go";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { MdAttachMoney } from "react-icons/md";
 import { BsPeopleFill } from "react-icons/bs";
 import { ModalEvent } from "../ModalEvent";
-import { useState } from "react/cjs/react.development";
+import { useEventsPageContext } from "../../Contexts/EventPage";
 export const EventPageCard = ({ event }) => {
+  const { refresh, setRefresh } = useEventsPageContext();
   const [openModal, SetModal] = useState(false);
+
   return event.workType === "donation" ? (
     <>
       {openModal === true ? (
@@ -33,7 +35,14 @@ export const EventPageCard = ({ event }) => {
         <div className="bottomDiv">
           <GoLocation />
           <p>{event.state}</p>
-          <button onClick={() => SetModal(true)}>Saber Mais</button>
+          <button
+            onClick={() => {
+              SetModal(true);
+              refresh === true ? setRefresh(false) : setRefresh(true);
+            }}
+          >
+            Saber Mais
+          </button>
         </div>
       </CardContainer>{" "}
     </>
@@ -61,7 +70,14 @@ export const EventPageCard = ({ event }) => {
         <div className="bottomDiv">
           <GoLocation />
           <p>{event.state}</p>
-          <button onClick={() => SetModal(true)}>Saber Mais</button>
+          <button
+            onClick={() => {
+              SetModal(true);
+              refresh === true ? setRefresh(false) : setRefresh(true);
+            }}
+          >
+            Saber Mais
+          </button>
         </div>
       </CardContainer>
     </>
