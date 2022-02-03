@@ -1,121 +1,131 @@
 import styled from "styled-components";
-import SouVoluntario from "../../Assets/souvol.svg";
 import bgbottom from "../../Assets/bgbottom.png";
 import bgtop from "../../Assets/bgtop.png";
-import volunteers from "../../Assets/volunteers.svg";
+
+export const Container = styled.div`
+  width: 100vw;
+  height: 100vh !important;
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
 
 export const BackgroundTop = styled.img.attrs({ src: `${bgtop}` })`
   position: absolute;
   z-index: 1;
+  top: 0;
+  left: 0;
   width: 75%;
-  height: 50vh;
+  height: 43vh;
 `;
 
 export const BackgroundBottom = styled.img.attrs({ src: `${bgbottom}` })`
   position: absolute;
   z-index: 1;
   width: 70%;
-  height: 50vh;
+  height: 31vh;
   right: 0px;
   bottom: 0px;
-
-  @media screen (min-width: 760px) {
-    width: 50%;
-    height: 50vh;
-  }
-
-  @media screen (min-width: 1090px) {
-    width: 30%;
-    height: 50vh;
-  } ;
 `;
-export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  align-items: center;
-  justify-content: center;
-`;
+
 export const ContainerLogin = styled.div`
-  position: absolute;
-  display: block;
+  width: 75vw;
+  max-width: 1200px;
+  height: auto;
+  max-height: 600px;
+  min-height: 480px;
+  border-radius: 20px;
+  background-color: #f4f8fb;
+  padding: 0 2vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
   z-index: 2;
-  background-color: var(--ligthblue);
-  border-radius: 8px;
-  margin: 25px;
-  height: 80%;
-  width: 80%;
-  align-items: center;
-  align-content: space-around;
-  justify-content: space-evenly;
   box-shadow: 0px 0px 6px -1px rgba(0, 0, 0, 0.75);
 
-  @media screen and (min-width: 760px) {
-    display: flex;
+  @media (min-width: 1024px) {
+    height: 75vh;
+    flex-direction: row;
+    padding-bottom: 10px;
+    padding-top: 70px;
   }
 `;
 export const ContainerForm = styled.div`
-  display: block;
+  display: flex;
   border: none;
-  width: 50%;
+  width: 100%;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  align-content: center;
+  justify-content: flex-start;
 
   h1 {
     width: 100px;
-    margin: auto;
+    text-align: center;
     color: var(--ligthorange);
-    font-family: "Cantata One";
-    margin-bottom: 100px;
+    margin-bottom: 40px;
   }
 
-  @media screen and (max-width: 760px) {
+  @media (max-width: 1023px) {
     h1 {
       display: none;
     }
-    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    width: 50%;
   }
 `;
 
 export const ContainerInfo = styled.div`
+  width: 100%;
+
   display: flex;
   flex-direction: column;
-
-  .volunteers {
-    max-width: 500px;
+  align-items: center;
+  justify-content: center;
+  @media (min-width: 1024px) {
+    width: 50%;
   }
+`;
 
-  .logo {
-    width: 55%;
+export const Logo = styled.img`
+  width: 100%;
+  max-width: 300px;
+`;
+
+export const VolunteersImage = styled.img`
+  display: none;
+  min-width: 350px;
+  width: 90%;
+
+  @media (min-width: 1024px) {
+    display: block;
   }
+`;
 
-  button {
+export const ButtonNoAccountForm = styled.button`
+  background: none;
+  color: var(--grey-50);
+  margin-top: 20px;
+  margin-bottom: 15px;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+`;
+
+export const ButtonNoAccountInfo = styled.button`
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
     background: none;
     color: var(--grey-50);
   }
-  @media screen and (max-width: 760px) {
-    button {
-      display: none;
-    }
-    .volunteers {
-      display: none;
-    }
-  }
-`;
-export const Input = styled.div`
-  width: 255px;
-  p {
-    margin-top: 30px;
-  }
-`;
-
-export const Button = styled.button`
-  background: var(--ligthorange);
-  border-radius: 25px;
-  height: 50px;
-  width: 215px;
-  color: #fff;
-  margin-top: 35px;
 `;
