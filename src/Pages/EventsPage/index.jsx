@@ -12,7 +12,6 @@ import { FilterStatesModal } from "../../Components/EventPageModalState";
 import { useEventsPageContext } from "../../Contexts/EventPage";
 import { FilterCategoriesModal } from "../../Components/EventPageModalCategory";
 import { Header } from "../../Components/Header";
-import { set } from "react-hook-form";
 export const Events = () => {
   const [Events, setEvents] = useState([]);
   const [search, setSearch] = useState("");
@@ -28,7 +27,6 @@ export const Events = () => {
     SetFilteredDonation,
     Searched,
     setSearched,
-    notFound,
   } = useEventsPageContext();
 
   useEffect(() => {

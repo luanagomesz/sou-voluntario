@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
-  width: 100vw;
+  width: 100%;
+
   height: 100vh;
+  max-height: 100vh;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: baseline;
   background-color: var(--ligthblue);
   .result {
     margin-top: 10px;

@@ -8,7 +8,7 @@ export const Providers = ({ children }) => {
     <AuthProvider>
       <EventsPageProvider>
         <RegisterEventsProvider>
-          <UserEventsProvider>{children}</UserEventsProvider>;
+          <UserEventsProvider>{children}</UserEventsProvider>
         </RegisterEventsProvider>
       </EventsPageProvider>
     </AuthProvider>
