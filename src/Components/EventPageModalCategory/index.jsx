@@ -1,12 +1,13 @@
 import { ModalContainer } from "./style";
 import { useEventsPageContext } from "../../Contexts/EventPage";
+import { useEffect } from "react/cjs/react.development";
 export const FilterCategoriesModal = ({ IsOpen }) => {
-  const { setCategories } = useEventsPageContext();
+  const { setCategories, selectedCategories } = useEventsPageContext();
 
   const Categories = [
     "educação",
     "meio ambiente",
-    "vulnerabiliade social",
+    "vulnerabilidade social",
     "inclusão social",
     "outros",
   ];
@@ -20,16 +21,28 @@ export const FilterCategoriesModal = ({ IsOpen }) => {
     }
     setCategories(selected);
   };
+  useEffect(() => {}, []);
   return IsOpen ? (
     <ModalContainer>
       {Categories.map((item, index) => (
         <div>
-          <input
-            type="checkbox"
-            id={"category" + index}
-            name={item}
-            onClick={() => Checkthebox()}
-          />
+          {selectedCategories.includes(item) ? (
+            <input
+              type="checkbox"
+              id={"category" + index}
+              name={item}
+              onClick={() => Checkthebox()}
+              checked
+            />
+          ) : (
+            <input
+              type="checkbox"
+              id={"category" + index}
+              name={item}
+              onClick={() => Checkthebox()}
+            />
+          )}
+
           <label for={item}>{item}</label>
         </div>
       ))}
@@ -38,3 +51,14 @@ export const FilterCategoriesModal = ({ IsOpen }) => {
     ""
   );
 };
+/*(
+    <div>
+      <input
+        type="checkbox"
+        id={"category" + index}
+        name={item}
+        onClick={() => Checkthebox()}
+      />
+      <label for={item}>{item}</label>
+    </div>
+  )*/

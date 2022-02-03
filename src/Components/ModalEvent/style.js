@@ -34,9 +34,9 @@ export const ModalContainer = styled.div`
     align-items: center;
     p {
       color: var(--grey-100);
-      span {
-        color: var(--ligthorange);
-      }
+    }
+    span {
+      color: var(--ligthorange);
     }
   }
   .bottomDiv {
