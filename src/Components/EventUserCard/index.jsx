@@ -16,7 +16,7 @@ import {
 } from "./style";
 
 export const EventUserCard = ({ event }) => {
-  const { selectImgUrl, imgUrl } = useCategoryImg();
+  const { imgUrl } = useCategoryImg();
   const { setEventAsCompleted, loadSubscribedFilteredEvents, statusEvent } =
     useUserEvents();
   const {
@@ -44,14 +44,10 @@ export const EventUserCard = ({ event }) => {
     });
   };
 
-  useEffect(() => {
-    selectImgUrl(category);
-  }, []);
-
   return (
     <EventContainer className="events__list__item">
       <EventUserImage className="image__container">
-        <img src={imgUrl} alt="event" />
+        <img src={imgUrl[category]} alt="event" />
         <WorkTypeEvent>
           {workType === "volunteering" ? (
             <>
