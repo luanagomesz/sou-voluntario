@@ -8,16 +8,12 @@ export const EventContainer = styled.li`
   margin-top: 20px;
   margin-bottom: 30px;
   margin-right: 30px;
-
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  @media (max-width: 850px) {
-    margin-right: 0;
-  }
+  animation: fade;
+  animation-duration: 500ms;
 `;
 
 export const EventUserImage = styled.figure`

@@ -7,21 +7,12 @@ export const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-export const FakeHeader = styled.header`
-  width: 100vw;
-  height: 130px;
-  background-color: #fff;
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 2;
-`;
 
 export const Main = styled.main`
-  width: 100vw;
-  min-height: calc(100vh - 130px);
+  width: 100%;
+  height: 100%;
 
-  padding-bottom: 50px;
-  margin-top: 125px;
+  margin-top: 100px;
 
   background-color: var(--ligthblue);
   > * {
