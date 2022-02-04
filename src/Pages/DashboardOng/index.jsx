@@ -14,6 +14,7 @@ import {
   WorkTypeEvent,
   EventDashInfo,
   EventDashLocationAndStatus,
+  PageContainer,
 } from "./style";
 import {
   MdModeEditOutline,
@@ -43,7 +44,7 @@ export const DashboardOng = () => {
   const completed = false;
 
   return (
-    <>
+    <PageContainer>
       <Header />
       <Main>
         <div className="photos_container">
@@ -175,6 +176,6 @@ export const DashboardOng = () => {
           ))}
         </div>
       </EventSection>
-    </>
+    </PageContainer>
   );
 };

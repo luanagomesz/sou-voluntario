@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const PageContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 export const FakeHeader = styled.header`
   width: 100vw;
   height: 130px;
