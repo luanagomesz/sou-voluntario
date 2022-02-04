@@ -17,6 +17,7 @@ export const ModalEvent = ({ event, SetModal }) => {
   useEffect(() => {
     setUserId(event.voluntaries);
     console.log(event);
+    console.log(user);
   }, []);
 
   const EnterEvent = () => {
