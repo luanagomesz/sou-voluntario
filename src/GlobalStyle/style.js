@@ -25,6 +25,15 @@ body{
     background: white;
     color: var(--darkblue);
     font-family: 'Fira Sans', sans-serif;
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 h1,h2, h3, h4, span, button, div, input, p{

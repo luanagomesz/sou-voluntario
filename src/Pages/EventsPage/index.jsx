@@ -12,6 +12,7 @@ import { FilterStatesModal } from "../../Components/EventPageModalState";
 import { useEventsPageContext } from "../../Contexts/EventPage";
 import { FilterCategoriesModal } from "../../Components/EventPageModalCategory";
 import { Header } from "../../Components/Header";
+import { ModalCreateEvent } from "../../Components/ModalCreateEvent";
 export const Events = () => {
   const [search, setSearch] = useState("");
   const [searchedValue, SetSearchedValue] = useState("");
@@ -28,6 +29,8 @@ export const Events = () => {
     setSearched,
     Events,
     setEvents,
+    createEventModal,
+    setCreateEventModal,
   } = useEventsPageContext();
 
   useEffect(() => {
@@ -103,6 +106,16 @@ export const Events = () => {
   return (
     <PageContainer>
       <FakeHeader>Fake Header</FakeHeader>
+
+      {createEventModal === true ? <ModalCreateEvent /> : ""}
+
+      <button
+        onClick={() => {
+          setCreateEventModal(true);
+        }}
+      >
+        teste
+      </button>
       <SearchContainer>
         {" "}
         <button
