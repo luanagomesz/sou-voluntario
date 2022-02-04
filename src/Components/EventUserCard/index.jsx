@@ -1,6 +1,9 @@
 import { GrLocation } from "react-icons/gr";
 import { IoPeopleCircle } from "react-icons/io5";
 import { MdOutlineAttachMoney } from "react-icons/md";
+import { toast } from "react-toastify";
+import { useAuth } from "../../Contexts/Auth";
+import { useUserEvents } from "../../Contexts/UserEvents";
 
 import {
   EventContainer,
@@ -12,7 +15,14 @@ import {
 const bibliotecario = require("../../assets/img/bibliotecario.jpg");
 
 export const EventUserCard = ({ event }) => {
+  const { setEventAsCompleted, loadSubscribedFilteredEvents, statusEvent } =
+    useUserEvents();
   const {
+    accessToken,
+    user: { id: userId },
+  } = useAuth();
+  const {
+    id: eventId,
     title,
     description,
     workType,
@@ -24,6 +34,13 @@ export const EventUserCard = ({ event }) => {
     voluntaries,
     ongName,
   } = event;
+
+  const handleSetEventAsCompleted = () => {
+    setEventAsCompleted(eventId, accessToken).then((_) => {
+      loadSubscribedFilteredEvents(userId, accessToken, statusEvent);
+      toast.success("Parabéns, você concluiu este evento !!!");
+    });
+  };
 
   return (
     <EventContainer className="events__list__item">
@@ -53,7 +70,7 @@ export const EventUserCard = ({ event }) => {
           <GrLocation />
           <span>{state}</span>
           {!completed && workType === "volunteering" ? (
-            <button>Concluir</button>
+            <button onClick={handleSetEventAsCompleted}>Concluir</button>
           ) : (
             !completed && workType === "donation" && <button>Doar</button>
           )}

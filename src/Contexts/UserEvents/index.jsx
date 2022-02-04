@@ -35,6 +35,15 @@ const UserEventsProvider = ({ children }) => {
     setStatusEvent(status);
   };
 
+  const setEventAsCompleted = useCallback(async (eventId, accessToken) => {
+    const response = await api.patch(
+      `/events/${eventId}`,
+      { completed: true },
+      { headers: { Authorization: `Bearer ${accessToken}` } },
+    );
+    return response.data;
+  }, []);
+
   return (
     <UserEventsContext.Provider
       value={{
@@ -44,6 +53,7 @@ const UserEventsProvider = ({ children }) => {
         loadSubscribedFilteredEvents,
         defineStatusEvents,
         statusEvent,
+        setEventAsCompleted,
       }}
     >
       {children}
