@@ -13,7 +13,8 @@ export const CardContainer = styled.div`
   padding-bottom: 10px;
   margin-right: 40px;
   min-height: 394px;
-
+  animation-name: fade;
+  animation-duration: 0.5s;
   .ong {
     width: 90%;
     font-size: 15px;
@@ -76,6 +77,11 @@ export const CardContainer = styled.div`
       color: white;
       padding: 10px;
       border-radius: 5px;
+      border: 1px solid var(--cyan);
+      :hover {
+        background-color: white;
+        color: var(--cyan);
+      }
     }
   }
   @media (max-width: 850px) {
