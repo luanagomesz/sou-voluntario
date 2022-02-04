@@ -30,7 +30,7 @@ export const DashboardUser = () => {
     loadSubscribedFilteredEvents(user.id, accessToken, statusEvent);
   }, [statusEvent]);
 
-  return (
+  return user.userType === "voluntary" ? (
     <PageContainer>
       <Header />
       <Main>
@@ -49,5 +49,7 @@ export const DashboardUser = () => {
         </EventsListContainer>
       </Main>
     </PageContainer>
+  ) : (
+    ""
   );
 };

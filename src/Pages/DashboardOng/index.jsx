@@ -26,11 +26,53 @@ import biblio from "./assets/biblio.jpeg";
 import { GrLocation } from "react-icons/gr";
 import { IoPeopleCircle } from "react-icons/io5";
 import { Header } from "../../Components/HeaderX";
-
+import { useAuth } from "../../Contexts/Auth";
+import { useEffect, useState } from "react";
+import { api } from "../../Service";
+import { EditModal } from "../../Components/EditModal";
 export const DashboardOng = () => {
+  const { user, accessToken } = useAuth();
+  const [ong, setOng] = useState({});
+  const [editModal, setEditModal] = useState(false);
+  const [refresh, setRefresh] = useState(false);
+  const [edit, setEdit] = useState("");
+  useEffect(() => {
+    console.log(user);
+    api
+      .get(`/users/${user.id}`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setOng(res.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    api
+      .get(`/users/${user.id}`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setOng(res.data);
+      });
+  }, [refresh]);
+
+  const RefreshPage = () => {
+    refresh === true ? setRefresh(false) : setRefresh(true);
+  };
+
+  const Modalset = () => {
+    editModal === true ? setEditModal(false) : setEditModal(true);
+  };
   const cep =
     "Rua Ribeiro do Vale, 120 - Brooklin Paulista, São Paulo - SP, Brasil";
   const googleMaps = `https://www.google.com.br/maps/search/${cep}/`;
+
+  useEffect(() => {
+    console.log(editModal);
+  }, [editModal]);
 
   const voluntaries = [1, 2, 3, 4];
   const workType = "volunteering";
@@ -43,8 +85,18 @@ export const DashboardOng = () => {
   const state = "São Paulo";
   const completed = false;
 
-  return (
+  return user.userType === "ong" ? (
     <PageContainer>
+      {editModal === true ? (
+        <EditModal
+          edit={edit}
+          Modalset={Modalset}
+          ong={ong}
+          RefreshPage={RefreshPage}
+        />
+      ) : (
+        ""
+      )}
       <Header />
       <Main>
         <div className="photos_container">
@@ -53,7 +105,16 @@ export const DashboardOng = () => {
           </CoverPhoto>
         </div>
         <div className="text_container">
-          <p className="address">São Paulo, SP</p>
+          <p className="address">
+            {ong.location !== undefined ? ong.location : "Adicione um endereço"}{" "}
+            <MdModeEditOutline
+              color="black"
+              onClick={() => {
+                setEdit("location");
+                Modalset();
+              }}
+            />
+          </p>
           <h1>NAIA</h1>
           <p>
             "Oportunizar condições de desenvolvimento às pessoas, transformando
@@ -177,5 +238,7 @@ export const DashboardOng = () => {
         </div>
       </EventSection>
     </PageContainer>
+  ) : (
+    ""
   );
 };
