@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Nav = styled.nav`
   background: #fff;
@@ -7,7 +7,23 @@ export const Nav = styled.nav`
   justify-content: space-between;
   padding: 0.5rem;
   align-items: center;
+  position: fixed;
   z-index: 100;
+  overflow-y: hidden;
+  left: 0px;
+  top: 0;
+  width: 100%;
+  /*   ${({ burguer }) =>
+    burguer &&
+    css`
+      position: fixed;
+      z-index: 100;
+      overflow-y: hidden;
+      left: 0px;
+      top: 0;
+      width: 100%;
+    `} */
+
   img {
     width: 170px;
     margin-left: 20px;
@@ -73,11 +89,15 @@ export const MenuNav = styled.div`
   display: ${({ burguer }) => (burguer ? "none" : "flex")};
   flex-direction: column;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 125px);
   background-color: white;
-  position: absolute;
+  position: fixed;
+  overflow-y: hidden;
+  z-index: 100;
+
   left: 0px;
-  top: 0px;
+  top: 125px;
+
   .header_menu {
     display: flex;
     align-items: center;

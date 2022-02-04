@@ -44,21 +44,41 @@ export const Header = ({
   };
   const userType = "voluntary";
   return (
-    <Nav>
-      <div>
-        <img src={Logo} alt="Sou Voluntário"></img>
-      </div>
-      {/* versão mobile */}
-      <button onClick={toggleBurguer} className="menu_button">
-        <AiOutlineMenu className="menu_icon" />
-      </button>
+    <>
+      <Nav>
+        <div>
+          <img src={Logo} alt="Sou Voluntário"></img>
+        </div>
+        {/* versão mobile */}
+        <button onClick={toggleBurguer} className="menu_button">
+          {burguer ? (
+            <AiOutlineMenu className="menu_icon" />
+          ) : (
+            <FiX className="x_icon" />
+          )}
+        </button>
+
+        {/* versão desktop */}
+        <div className="links">
+          {userType === "voluntary" ? (
+            <Link to="/DashboardUser">Meus Eventos</Link>
+          ) : (
+            <button className="newEvent_desktop">Criar novo evento</button>
+          )}
+          <Link to="/Events">Eventos</Link>
+          <Link to="/Faq">Faq</Link>
+          <p className="name_user">{userName}</p>
+          <FaUser className="icon" onClick={OngProfile} />
+          <FaSignOutAlt onClick={logout} className="icon" />
+        </div>
+      </Nav>
       <MenuNav burguer={burguer}>
-        <div className="header_menu">
+        {/* <div className="header_menu">
           <img className="logo_menu" src={Logo} alt="Sou Voluntário"></img>
           <button onClick={toggleBurguer}>
             <FiX className="x_icon" />
           </button>
-        </div>
+        </div> */}
         <Divisory />
         <div className="box_link">
           {userType === "voluntary" ? (
@@ -101,19 +121,6 @@ export const Header = ({
           <FaSignOutAlt className="icon" />
         </div>
       </MenuNav>
-      {/* versão desktop */}
-      <div className="links">
-        {userType === "voluntary" ? (
-          <Link to="/DashboardUser">Meus Eventos</Link>
-        ) : (
-          <button className="newEvent_desktop">Criar novo evento</button>
-        )}
-        <Link to="/Events">Eventos</Link>
-        <Link to="/Faq">Faq</Link>
-        <p className="name_user">{userName}</p>
-        <FaUser className="icon" onClick={OngProfile} />
-        <FaSignOutAlt onClick={logout} className="icon" />
-      </div>
-    </Nav>
+    </>
   );
 };
