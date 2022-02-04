@@ -32,6 +32,9 @@ export const Nav = styled.nav`
     width: 30px;
     background-color: transparent;
     margin-right: 25px;
+    @media (min-width: 720px) {
+      display: none;
+    }
   }
   .menu_icon {
     width: 30px;
@@ -127,6 +130,8 @@ export const MenuNav = styled.div`
   .newEvent_mobile {
     margin: 20px 0px 10px 20px;
     color: var(--darkblue);
+    width: 100%;
+    text-align: start;
   }
   a:visited {
     color: var(--darkblue);

@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 export const Main = styled.main`
   background-color: var(--ligthblue);
+  margin-top: 120px;
   padding-bottom: 15px;
 
   .photos_container {

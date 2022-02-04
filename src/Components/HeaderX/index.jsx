@@ -28,12 +28,12 @@ export const Header = ({
   useEffect(() => {
     user.name !== undefined ? setUserName(user.name) : setUserName("JohnDoe");
   }, []);
+
   const toggleBurguer = () => {
     setBurguer(!burguer);
-    console.log(burguer);
   };
+
   const OngProfile = () => {
-    console.log("teste");
     if (userType !== "voluntary") {
       toggleBurguer();
       return history.push("/DashboardOng");
@@ -43,12 +43,18 @@ export const Header = ({
     }
   };
   const userType = "voluntary";
+
+  const handleLogout = () => {
+    logout();
+    history.push("/");
+  };
+
   return (
     <>
       <Nav>
-        <div>
+        <Link to="/">
           <img src={Logo} alt="Sou Voluntário"></img>
-        </div>
+        </Link>
         {/* versão mobile */}
         <button onClick={toggleBurguer} className="menu_button">
           {burguer ? (
@@ -60,7 +66,7 @@ export const Header = ({
 
         {/* versão desktop */}
         <div className="links">
-          {userType === "voluntary" ? (
+          {user.userType === "voluntary" ? (
             <Link to="/DashboardUser">Meus Eventos</Link>
           ) : (
             <button className="newEvent_desktop">Criar novo evento</button>
@@ -69,7 +75,7 @@ export const Header = ({
           <Link to="/Faq">Faq</Link>
           <p className="name_user">{userName}</p>
           <FaUser className="icon" onClick={OngProfile} />
-          <FaSignOutAlt onClick={logout} className="icon" />
+          <FaSignOutAlt onClick={handleLogout} className="icon" />
         </div>
       </Nav>
       <MenuNav burguer={burguer}>
@@ -81,7 +87,7 @@ export const Header = ({
         </div> */}
         <Divisory />
         <div className="box_link">
-          {userType === "voluntary" ? (
+          {user.userType === "voluntary" ? (
             <>
               <Link
                 onClick={toggleBurguer}
