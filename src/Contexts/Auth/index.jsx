@@ -41,7 +41,11 @@ export const AuthProvider = ({ children }) => {
 
       localStorage.setItem(
         "@SouVoluntario:user",
-        JSON.stringify({ name: user.name, id: user.id }),
+        JSON.stringify({
+          name: user.name,
+          id: user.id,
+          userType: user.userType,
+        }),
       );
       localStorage.setItem("@SouVoluntario:token", String(accessToken));
 
@@ -57,7 +61,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem("@SouVoluntario:token");
-    localStorage.removeItem("@SouVoluntario:userId");
+    localStorage.removeItem("@SouVoluntario:user");
     setIsAuth(false);
   };
 
