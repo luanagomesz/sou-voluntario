@@ -1,18 +1,13 @@
 import { useEffect, useState } from "react";
-import {
-  PageContainer,
-  FakeHeader,
-  SearchContainer,
-  CardContainer,
-} from "./style";
+import { PageContainer, SearchContainer, CardContainer } from "./style";
 import { api } from "../../Service";
 import { AiOutlineSearch } from "react-icons/ai";
 import { EventPageCard } from "../../Components/EventPageCard";
 import { FilterStatesModal } from "../../Components/EventPageModalState";
 import { useEventsPageContext } from "../../Contexts/EventPage";
 import { FilterCategoriesModal } from "../../Components/EventPageModalCategory";
-import { Header } from "../../Components/Header";
 import { ModalCreateEvent } from "../../Components/ModalCreateEvent";
+import { Header } from "../../Components/HeaderX";
 export const Events = () => {
   const [search, setSearch] = useState("");
   const [searchedValue, SetSearchedValue] = useState("");
@@ -29,8 +24,6 @@ export const Events = () => {
     setSearched,
     Events,
     setEvents,
-    createEventModal,
-    setCreateEventModal,
   } = useEventsPageContext();
 
   useEffect(() => {
@@ -38,7 +31,7 @@ export const Events = () => {
       document.getElementById("donation").style.backgroundColor =
         "var(--ligthorange)";
       document.getElementById("donation").style.color = "white";
-      console.log(filteredDonation);
+
       if (filteredEvents.length > 0) {
         setFilteredEvents(
           filteredEvents.filter((item) => item.workType === "donation")
@@ -79,7 +72,6 @@ export const Events = () => {
     api
       .get(`/events`)
       .then((res) => {
-        console.log(res.data);
         setEvents(res.data);
       })
       .catch((err) => {
@@ -105,17 +97,8 @@ export const Events = () => {
 
   return (
     <PageContainer>
-      <FakeHeader>Fake Header</FakeHeader>
+      <Header />
 
-      {createEventModal === true ? <ModalCreateEvent /> : ""}
-
-      <button
-        onClick={() => {
-          setCreateEventModal(true);
-        }}
-      >
-        teste
-      </button>
       <SearchContainer>
         {" "}
         <button

@@ -5,12 +5,15 @@ export const EventContainer = styled.li`
   max-width: 320px;
   height: 360px;
   border-radius: 15px;
-
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-right: 30px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  animation: fade;
+  animation-duration: 500ms;
 `;
 
 export const EventUserImage = styled.figure`

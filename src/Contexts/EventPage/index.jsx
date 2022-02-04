@@ -13,7 +13,6 @@ const EventsPageProvider = ({ children }) => {
   const [Searched, setSearched] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const [Events, setEvents] = useState([]);
-  const [createEventModal, setCreateEventModal] = useState(false);
 
   useEffect(() => {
     setSearched(false);
@@ -148,7 +147,6 @@ const EventsPageProvider = ({ children }) => {
       api
         .get(`/events`)
         .then((res) => {
-          console.log(res.data);
           setEvents(res.data);
         })
         .catch((err) => {
@@ -177,8 +175,6 @@ const EventsPageProvider = ({ children }) => {
         setRefresh,
         Events,
         setEvents,
-        createEventModal,
-        setCreateEventModal,
       }}
     >
       {children}

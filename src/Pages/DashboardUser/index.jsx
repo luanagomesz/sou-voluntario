@@ -4,6 +4,7 @@ import {
   EventsStatusContainer,
   EventsList,
   EventsListContainer,
+  PageContainer,
 } from "./style";
 import { EventStatusSelector } from "../../Components/EventStatusSelector";
 import { EventUserCard } from "../../Components/EventUserCard";
@@ -14,28 +15,29 @@ import { Header } from "../../Components/HeaderX";
 
 export const DashboardUser = () => {
   const { accessToken, user } = useAuth();
-  const { subscribedFilteredEvents, loadSubscribedFilteredEvents } =
-    useUserEvents();
-  const [eventIsCompleted, setEventIsCompleted] = useState(false);
+  const {
+    subscribedFilteredEvents,
+    loadSubscribedFilteredEvents,
+    defineStatusEvents,
+    statusEvent,
+  } = useUserEvents();
 
   const handleSetEventStatus = useCallback((status) => {
-    setEventIsCompleted(status);
+    defineStatusEvents(status);
   }, []);
 
   useEffect(() => {
-    loadSubscribedFilteredEvents(user.id, accessToken, eventIsCompleted);
-  }, [eventIsCompleted]);
+    loadSubscribedFilteredEvents(user.id, accessToken, statusEvent);
+  }, [statusEvent]);
 
-  console.log(subscribedFilteredEvents);
-
-  return (
-    <>
+  return user.userType === "voluntary" ? (
+    <PageContainer>
       <Header />
       <Main>
         <EventsStatusContainer className="events__status__container">
           <EventStatusSelector
             handleSetEventStatus={handleSetEventStatus}
-            eventIsCompleted={eventIsCompleted}
+            eventIsCompleted={statusEvent}
           />
         </EventsStatusContainer>
         <EventsListContainer className="events__list__container">
@@ -46,6 +48,8 @@ export const DashboardUser = () => {
           </EventsList>
         </EventsListContainer>
       </Main>
-    </>
+    </PageContainer>
+  ) : (
+    ""
   );
 };

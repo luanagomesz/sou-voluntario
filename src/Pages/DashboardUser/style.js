@@ -1,25 +1,27 @@
 import styled from "styled-components";
 
-export const FakeHeader = styled.header`
+export const PageContainer = styled.div`
   width: 100vw;
-  height: 130px;
-  background-color: #fff;
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 2;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Main = styled.main`
-  width: 100vw;
-  min-height: calc(100vh - 130px);
+  width: 100%;
+  height: 100%;
 
-  padding-bottom: 50px;
+  margin-top: 100px;
 
   background-color: var(--ligthblue);
   > * {
     margin: 0 auto;
     max-width: 1440px;
   }
+
+  display: flex;
+  flex-direction: column;
 `;
 
 export const EventsStatusContainer = styled.section`
@@ -40,23 +42,25 @@ export const EventsStatusContainer = styled.section`
 
 export const EventsListContainer = styled.section`
   width: 100%;
+  height: 100%;
+  flex-grow: 1;
   display: flex;
   justify-content: center;
-  padding-top: 15px;
 `;
 
 export const EventsList = styled.ul`
   width: 100%;
+  max-height: calc(100vh - 225px);
+  height: 100%;
+  max-width: 1600px;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
 
-  @media (min-width: 768px) {
-  }
-
-  @media (min-width: 1024px) {
-    padding: 0 20px;
-    /* justify-content: flex-start; */
+  @media (max-width: 850px) {
+    max-height: 700px;
+    max-width: 400px;
   }
 `;

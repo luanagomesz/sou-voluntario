@@ -2,7 +2,7 @@ import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Nav, MenuNav, Divisory } from "./style";
-import Logo from "../../Assets/souvol.svg";
+import Logo from "../../assets/img/logo-Header-Lp.png";
 import { useState } from "react";
 import { useAuth } from "../../Contexts/Auth";
 import { Link } from "react-router-dom";
@@ -14,54 +14,96 @@ import {
 } from "react-icons/fa";
 import { useHistory } from "react-router";
 import { useEffect } from "react";
-export const Header = ({
-  MyEvents = false,
-  Events = false,
-  Faq = false,
-  isOng = false,
-}) => {
-  const [burguer, setBurguer] = useState(false);
+import { ModalCreateEvent } from "../../Components/ModalCreateEvent";
+
+export const Header = () => {
+  const [burguer, setBurguer] = useState(true);
   const { logout, user } = useAuth();
   const [userName, setUserName] = useState("");
+  const [createEventModal, setCreateEventModal] = useState(false);
+  const [userType, setUserType] = useState("");
   const history = useHistory();
-  console.log(user);
+
   useEffect(() => {
     user.name !== undefined ? setUserName(user.name) : setUserName("JohnDoe");
+    user.userType === "voluntary"
+      ? setUserType("voluntary")
+      : setUserType("ong");
   }, []);
+
   const toggleBurguer = () => {
     setBurguer(!burguer);
-    console.log(burguer);
   };
+
   const OngProfile = () => {
-    console.log("teste");
     if (userType !== "voluntary") {
       toggleBurguer();
-      return history.push("/DashboardOng");
+      history.push("/dashboardong");
     } else {
       toggleBurguer();
-      return history.push("/DashboardUser");
+      history.push("/dashboarduser");
     }
   };
-  const userType = "voluntary";
+
+  const handleLogout = () => {
+    logout();
+    history.push("/");
+  };
+
   return (
-    <Nav>
-      <div>
-        <img src={Logo} alt="Sou Voluntário"></img>
-      </div>
-      {/* versão mobile */}
-      <button onClick={toggleBurguer} className="menu_button">
-        <AiOutlineMenu className="menu_icon" />
-      </button>
+    <>
+      {createEventModal === true ? (
+        <ModalCreateEvent setCreateEventModal={setCreateEventModal} />
+      ) : (
+        ""
+      )}
+
+      <Nav>
+        <Link to="/">
+          <img src={Logo} alt="Sou Voluntário"></img>
+        </Link>
+        {/* versão mobile */}
+        <button onClick={toggleBurguer} className="menu_button">
+          {burguer ? (
+            <AiOutlineMenu className="menu_icon" />
+          ) : (
+            <FiX className="x_icon" />
+          )}
+        </button>
+
+        {/* versão desktop */}
+        <div className="links">
+          {user.userType === "voluntary" ? (
+            <Link to="/DashboardUser">Meus Eventos</Link>
+          ) : (
+            <button
+              className="newEvent_desktop"
+              onClick={() => setCreateEventModal(true)}
+            >
+              Criar novo evento
+            </button>
+          )}
+          <Link to="/Events" className="event">
+            Eventos
+          </Link>
+          <Link to="/Faq">Faq</Link>
+          <p className="name_user">{userName}</p>
+          <div className="iconContainer">
+            <FaUser className="icon" onClick={() => OngProfile()} />
+            <FaSignOutAlt onClick={handleLogout} className="icon" />
+          </div>
+        </div>
+      </Nav>
       <MenuNav burguer={burguer}>
-        <div className="header_menu">
+        {/* <div className="header_menu">
           <img className="logo_menu" src={Logo} alt="Sou Voluntário"></img>
           <button onClick={toggleBurguer}>
             <FiX className="x_icon" />
           </button>
-        </div>
+        </div> */}
         <Divisory />
         <div className="box_link">
-          {userType === "voluntary" ? (
+          {user.userType === "voluntary" ? (
             <>
               <Link
                 onClick={toggleBurguer}
@@ -75,7 +117,11 @@ export const Header = ({
             </>
           ) : (
             <>
-              <button onClick={toggleBurguer} className="newEvent_mobile">
+              <button
+                onClick={toggleBurguer}
+                className="newEvent_mobile"
+                onClick={() => setCreateEventModal(true)}
+              >
                 <FaPlusCircle className="icon" />
                 Criar novo evento
               </button>
@@ -101,19 +147,6 @@ export const Header = ({
           <FaSignOutAlt className="icon" />
         </div>
       </MenuNav>
-      {/* versão desktop */}
-      <div className="links">
-        {userType === "voluntary" ? (
-          <Link to="/DashboardUser">Meus Eventos</Link>
-        ) : (
-          <button className="newEvent_desktop">Criar novo evento</button>
-        )}
-        <Link to="/Events">Eventos</Link>
-        <Link to="/Faq">Faq</Link>
-        <p className="name_user">{userName}</p>
-        <FaUser className="icon" onClick={OngProfile} />
-        <FaSignOutAlt onClick={logout} className="icon" />
-      </div>
-    </Nav>
+    </>
   );
 };

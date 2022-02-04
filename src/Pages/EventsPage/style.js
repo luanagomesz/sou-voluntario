@@ -19,15 +19,6 @@ export const PageContainer = styled.div`
   }
 `;
 
-export const FakeHeader = styled.header`
-  height: 51px;
-  display: flex;
-  background-color: white;
-  align-items: center;
-  width: 100%;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-`;
-
 export const SearchContainer = styled.div`
   display: flex;
   flex-wrap: nowrap;
@@ -36,7 +27,7 @@ export const SearchContainer = styled.div`
   width: 90%;
   max-width: 1500px;
   background-color: white;
-  margin-top: 20px;
+  margin-top: 120px;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -93,7 +84,7 @@ export const SearchContainer = styled.div`
   }
   @media (max-width: 850px) {
     box-shadow: none;
-    margin-top: 0px;
+    margin-top: 100px;
     width: 100%;
     border-top: 1px solid var(--grey-0);
     .button {

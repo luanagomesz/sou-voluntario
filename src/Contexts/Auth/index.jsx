@@ -1,4 +1,11 @@
-import { createContext, useCallback, useContext, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import { api } from "../../Service";
 
 export const AuthContext = createContext({});
@@ -41,7 +48,11 @@ export const AuthProvider = ({ children }) => {
 
       localStorage.setItem(
         "@SouVoluntario:user",
-        JSON.stringify({ name: user.name, id: user.id }),
+        JSON.stringify({
+          name: user.name,
+          id: user.id,
+          userType: user.userType,
+        })
       );
       localStorage.setItem("@SouVoluntario:token", String(accessToken));
 
@@ -57,9 +68,33 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem("@SouVoluntario:token");
-    localStorage.removeItem("@SouVoluntario:userId");
+    localStorage.removeItem("@SouVoluntario:user");
     setIsAuth(false);
   };
+  const location = useLocation();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!window.localStorage.getItem("@SouVoluntario:token")) {
+      if (
+        location.pathname !== "/" ||
+        location.pathname !== "/login" ||
+        location.pathname !== "/register"
+      ) {
+        history.push("/");
+      }
+    } else if (
+      user.userType === "voluntary" &&
+      location.pathname.toLowerCase() === "/dashboardong"
+    ) {
+      history.push("dashboarduser");
+    } else if (
+      user.userType === "ong" &&
+      location.pathname.toLowerCase() === "/dashboarduser"
+    ) {
+      history.push("/dashboardong");
+    }
+  }, []);
 
   return (
     <AuthContext.Provider value={{ login, logout, user, accessToken, isAuth }}>
