@@ -2,7 +2,7 @@ import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Nav, MenuNav, Divisory } from "./style";
-import Logo from "../../Assets/souvol.svg";
+import Logo from "../../assets/img/logo-Header-Lp.png";
 import { useState } from "react";
 import { useAuth } from "../../Contexts/Auth";
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ import { useEffect } from "react";
 import { ModalCreateEvent } from "../../Components/ModalCreateEvent";
 
 export const Header = () => {
-  const [burguer, setBurguer] = useState(false);
+  const [burguer, setBurguer] = useState(true);
   const { logout, user } = useAuth();
   const [userName, setUserName] = useState("");
   const [createEventModal, setCreateEventModal] = useState(false);
@@ -81,11 +81,15 @@ export const Header = () => {
               Criar novo evento
             </button>
           )}
-          <Link to="/Events">Eventos</Link>
+          <Link to="/Events" className="event">
+            Eventos
+          </Link>
           <Link to="/Faq">Faq</Link>
           <p className="name_user">{userName}</p>
-          <FaUser className="icon" onClick={OngProfile} />
-          <FaSignOutAlt onClick={handleLogout} className="icon" />
+          <div className="iconContainer">
+            <FaUser className="icon" onClick={OngProfile} />
+            <FaSignOutAlt onClick={handleLogout} className="icon" />
+          </div>
         </div>
       </Nav>
       <MenuNav burguer={burguer}>

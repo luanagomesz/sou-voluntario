@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const Nav = styled.nav`
   background: #fff;
-  height: 125px;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem;
@@ -25,8 +25,9 @@ export const Nav = styled.nav`
     `} */
 
   img {
-    width: 170px;
-    margin-left: 20px;
+    width: 300px;
+    height: auto;
+    margin-left: 0px;
   }
   .menu_button {
     width: 30px;
@@ -56,35 +57,95 @@ export const Nav = styled.nav`
     a:visited {
       color: var(--darkblue);
     }
+
     .links {
       display: flex;
-      width: 50%;
-      justify-content: space-around;
-      max-width: 660px;
+      width: 90%;
+      justify-content: space-between;
+      max-width: 1000px;
+      align-items: center;
+    }
+    a {
+      font-size: 20px;
+      :hover {
+        color: var(--ligthorange);
+      }
+      img {
+        width: 320px;
+      }
+    }
+    .iconContainer {
+      width: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-right: 40px;
     }
     .name_user {
+      padding-left: 5%;
       border-left: 1px solid var(--ligthgrey);
-      min-width: 20%;
-      max-width: 90px;
+      height: 60px;
+      display: flex;
+      align-items: center;
       text-align: right;
       color: var(--ligthorange);
+      font-family: Cantata One;
+      font-size: 20px;
+    }
+    .event {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding-left: 5%;
+      border-left: 1px solid var(--ligthgrey);
     }
     .icon {
-      margin-right: 5px;
-      color: var(--grey-100);
-      width: 15px;
-      height: 15px;
+      color: var(--darkblue);
+      font-size: 25px;
+
       cursor: pointer;
+      :hover {
+        color: var(--ligthorange);
+      }
     }
     .newEvent_desktop {
-      width: 138px;
-      height: 32px;
+      width: 200px;
+      height: 50px;
       position: relative;
-      bottom: 4px;
+
       background-color: var(--ligthorange);
       color: white;
       font-weight: 600;
+      font-size: 20px;
       border-radius: 5px;
+
+      :hover {
+        color: var(--ligthorange);
+        background-color: white;
+        border: 1px solid var(--ligthorange);
+      }
+    }
+  }
+  @media (max-width: 1000px) {
+    .newEvent_desktop {
+      width: 120px;
+      font-size: 15px;
+      height: 45px;
+    }
+    .event {
+      padding-left: 0px;
+      border-left: none;
+    }
+    a {
+      font-size: 17px;
+      img {
+        width: 180px;
+      }
+    }
+    .name_user {
+      padding-left: 0px;
+      border-left: none;
+      font-size: 18px;
     }
   }
 `;
@@ -92,14 +153,15 @@ export const MenuNav = styled.div`
   display: ${({ burguer }) => (burguer ? "none" : "flex")};
   flex-direction: column;
   width: 100vw;
-  height: calc(100vh - 125px);
+  height: calc(100vh - 100px);
   background-color: white;
   position: fixed;
   overflow-y: hidden;
   z-index: 100;
-
   left: 0px;
-  top: 125px;
+  top: 100px;
+  animation: fade;
+  animation-duration: 500ms;
 
   .header_menu {
     display: flex;
