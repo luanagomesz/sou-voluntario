@@ -310,6 +310,9 @@ export const EventSection = styled.section`
     display: flex;
     align-items: center;
     flex-direction: column;
+    min-height: 200px;
+    margin-bottom: 30px;
+    justify-content: center;
   }
 
   @media (min-width: 720px) {
@@ -320,6 +323,10 @@ export const EventSection = styled.section`
       flex-direction: row;
       justify-content: center;
       flex-wrap: wrap;
+      min-height: 300px;
+    }
+
+    .Add_event {
     }
   }
 `;

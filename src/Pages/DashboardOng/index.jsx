@@ -74,6 +74,7 @@ export const DashboardOng = () => {
   const cep = ong.cep;
   const nomeOng = ong.name;
   const googleMaps = `https://www.google.com.br/maps/search/${cep}${nomeOng}/`;
+  const numOfEvents = listEvents;
 
   console.log(listEvents);
 
@@ -129,12 +130,13 @@ export const DashboardOng = () => {
               }}
             />
           </p>
-          <h1>{user.name}</h1>
+          <h1>{ong.name}</h1>
           <p contentEditable="true" id="1" onBlur={() => Updatetext("1")}>
             {ong.slogan !== undefined ? ong.slogan : "Adicione seu slogan"}
           </p>
           <p className="category_text">
-            <div class="dot_category"></div>Educação
+            <div class="dot_category"></div>
+            {ong.category}
           </p>
         </div>
       </Main>
@@ -211,44 +213,52 @@ export const DashboardOng = () => {
           <h1>Eventos Criados</h1>
         </div>
         <div className="card_events">
-          {listEvents.map((item, index) => (
-            <EventDashContainer>
-              <EventDashImage>
-                <img src={biblio} alt="biblioteca"></img>
-                <WorkTypeEvent>
-                  {workType === "volunteering" ? (
-                    <>
-                      <IoPeopleCircle className="icon_volunteer" />
-                      <span>{item.voluntaries.length}</span>
-                    </>
-                  ) : (
-                    <>
-                      <MdOutlineAttachMoney className="icon_donate" />
-                      <span className="donate_numbers">
-                        {item.amountDonated.toFixed(2)} / {item.donationGoal.toFixed(2)}
-                      </span>
-                    </>
-                  )}
-                </WorkTypeEvent>
-              </EventDashImage>
-              <EventDashInfo>
-                <h2>{item.title}</h2>
-                <h4>{item.ongName}</h4>
-                <p>{item.description}</p>
-                <EventDashLocationAndStatus>
-                  <span>
-                    <GrLocation className="icon_map" />
-                    {item.state}
-                  </span>
-                  {!completed ? (
-                    <button>Concluir</button>
-                  ) : (
-                    <button>Concluído</button>
-                  )}
-                </EventDashLocationAndStatus>
-              </EventDashInfo>
-            </EventDashContainer>
-          ))}
+          <>
+            {listEvents.map((item, index) => (
+              <EventDashContainer>
+                <EventDashImage>
+                  <img src={biblio} alt="biblioteca"></img>
+                  <WorkTypeEvent>
+                    {workType === "volunteering" ? (
+                      <>
+                        <IoPeopleCircle className="icon_volunteer" />
+                        <span>{item.voluntaries.length}</span>
+                      </>
+                    ) : (
+                      <>
+                        <MdOutlineAttachMoney className="icon_donate" />
+                        <span className="donate_numbers">
+                          {item.amountDonated.toFixed(2)} /{" "}
+                          {item.donationGoal.toFixed(2)}
+                        </span>
+                      </>
+                    )}
+                  </WorkTypeEvent>
+                </EventDashImage>
+                <EventDashInfo>
+                  <h2>{item.title}</h2>
+                  <h4>{item.ongName}</h4>
+                  <p>{item.description}</p>
+                  <EventDashLocationAndStatus>
+                    <span>
+                      <GrLocation className="icon_map" />
+                      {item.state}
+                    </span>
+                    {!completed ? (
+                      <button>Concluir</button>
+                    ) : (
+                      <button>Concluído</button>
+                    )}
+                  </EventDashLocationAndStatus>
+                </EventDashInfo>
+              </EventDashContainer>
+            ))}
+          </>
+          {listEvents < 0 ? (
+            <h2 className="Add_event">Adcione um evento!</h2>
+          ) : (
+            ""
+          )}
         </div>
       </EventSection>
     </PageContainer>
