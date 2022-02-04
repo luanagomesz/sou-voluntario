@@ -26,8 +26,9 @@ import biblio from "./assets/biblio.jpeg";
 import { GrLocation } from "react-icons/gr";
 import { IoPeopleCircle } from "react-icons/io5";
 import { Header } from "../../Components/HeaderX";
-
+import { useAuth } from "../../Contexts/Auth";
 export const DashboardOng = () => {
+  const { user } = useAuth();
   const cep =
     "Rua Ribeiro do Vale, 120 - Brooklin Paulista, São Paulo - SP, Brasil";
   const googleMaps = `https://www.google.com.br/maps/search/${cep}/`;
@@ -43,7 +44,7 @@ export const DashboardOng = () => {
   const state = "São Paulo";
   const completed = false;
 
-  return (
+  return user.userType === "ong" ? (
     <PageContainer>
       <Header />
       <Main>
@@ -177,5 +178,7 @@ export const DashboardOng = () => {
         </div>
       </EventSection>
     </PageContainer>
+  ) : (
+    ""
   );
 };
