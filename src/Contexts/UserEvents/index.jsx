@@ -5,6 +5,7 @@ import { api } from "../../Service";
 const UserEventsContext = createContext({});
 
 const UserEventsProvider = ({ children }) => {
+  const [statusEvent, setStatusEvent] = useState(false);
   const [subscribedEvents, setSubscribedEvents] = useState([]);
   const [subscribedFilteredEvents, setSubscribedFilteredEvents] = useState([]);
 
@@ -25,12 +26,23 @@ const UserEventsProvider = ({ children }) => {
         },
       );
 
-      console.log(response.data);
-
       setSubscribedFilteredEvents([...response.data]);
     },
     [],
   );
+
+  const defineStatusEvents = (status) => {
+    setStatusEvent(status);
+  };
+
+  const setEventAsCompleted = useCallback(async (eventId, accessToken) => {
+    const response = await api.patch(
+      `/events/${eventId}`,
+      { completed: true },
+      { headers: { Authorization: `Bearer ${accessToken}` } },
+    );
+    return response.data;
+  }, []);
 
   return (
     <UserEventsContext.Provider
@@ -39,6 +51,9 @@ const UserEventsProvider = ({ children }) => {
         loadSubscribedEvents,
         subscribedFilteredEvents,
         loadSubscribedFilteredEvents,
+        defineStatusEvents,
+        statusEvent,
+        setEventAsCompleted,
       }}
     >
       {children}
