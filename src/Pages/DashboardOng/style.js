@@ -13,6 +13,7 @@ export const Main = styled.main`
   background-color: var(--ligthblue);
   margin-top: 120px;
   padding-bottom: 15px;
+  width: 100vw;
 
   .photos_container {
     background-color: var(--ligthblue);

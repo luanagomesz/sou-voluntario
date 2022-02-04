@@ -2,7 +2,6 @@ import {
   Main,
   CoverPhoto,
   ProfilePhoto,
-  CategorySection,
   Divisory,
   InfoSection,
   DescriptionContainer,
@@ -30,19 +29,24 @@ import { useAuth } from "../../Contexts/Auth";
 import { useEffect, useState } from "react";
 import { api } from "../../Service";
 import { EditModal } from "../../Components/EditModal";
+import { useRef } from "react";
+import { useContext } from "react";
+import { OngDataContext } from "./../../Contexts/OngData/index";
 export const DashboardOng = () => {
   const { user, accessToken } = useAuth();
   const [ong, setOng] = useState({});
   const [editModal, setEditModal] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const [edit, setEdit] = useState("");
+
+  const { LoadEvents, UpdateProfile, listEvents } = useContext(OngDataContext);
+
   useEffect(() => {
-    console.log(user);
     api
       .get(`/users/${user.id}`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       })
-      .then((res) => {
+      .then(res => {
         console.log(res.data);
         setOng(res.data);
       });
@@ -53,10 +57,11 @@ export const DashboardOng = () => {
       .get(`/users/${user.id}`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       })
-      .then((res) => {
+      .then(res => {
         console.log(res.data);
         setOng(res.data);
       });
+    LoadEvents(user.id);
   }, [refresh]);
 
   const RefreshPage = () => {
@@ -66,13 +71,22 @@ export const DashboardOng = () => {
   const Modalset = () => {
     editModal === true ? setEditModal(false) : setEditModal(true);
   };
-  const cep =
-    "Rua Ribeiro do Vale, 120 - Brooklin Paulista, São Paulo - SP, Brasil";
-  const googleMaps = `https://www.google.com.br/maps/search/${cep}/`;
+  const cep = ong.cep;
+  const nomeOng = ong.name;
+  const googleMaps = `https://www.google.com.br/maps/search/${cep}${nomeOng}/`;
+
+  console.log(listEvents);
 
   useEffect(() => {
     console.log(editModal);
+    LoadEvents(user.id);
   }, [editModal]);
+
+  function Updatetext(tag) {
+    let elemento = document.getElementById(tag).innerHTML;
+
+    console.log(elemento);
+  }
 
   const voluntaries = [1, 2, 3, 4];
   const workType = "volunteering";
@@ -115,10 +129,9 @@ export const DashboardOng = () => {
               }}
             />
           </p>
-          <h1>NAIA</h1>
-          <p>
-            "Oportunizar condições de desenvolvimento às pessoas, transformando
-            gerações através de um processo socioeducativo de qualidade."
+          <h1>{user.name}</h1>
+          <p contentEditable="true" id="1" onBlur={() => Updatetext("1")}>
+            {ong.slogan !== undefined ? ong.slogan : "Adicione seu slogan"}
           </p>
           <p className="category_text">
             <div class="dot_category"></div>Educação
@@ -135,18 +148,14 @@ export const DashboardOng = () => {
               <MdModeEditOutline />
             </button>
           </div>
-          <p>
-            Desenvolvemos desde 1982 o trabalho de preparar através de um
-            processo educacional inclusivo, crianças e adolescentes para o
-            exercício pleno da cidadania, reduzindo o risco social a que estão
-            expostos, por meio de atendimento, promoção social e constituição de
-            redes de apoio comunitário, que abranjam necessariamente a família.
-            Alguns projetos desenvolvidos: CCA – Centro para Crianças e
-            Adolescentes (6 a 14 anos). Jovem Aprendiz (Preparatório –
-            Profissionalizante). Líderes do Amanhã – Cursos técnicos de
-            Informática e E-commerce. Preparação para o ENEM. Janelas para o
-            Mundo. Horta no Pote. Biblioteca Aberta. Óleo 360° Quer saber mais?
-            Acesse nossas redes!
+          <p
+            contentEditable="true"
+            id="description"
+            onBlur={() => Updatetext("description")}
+          >
+            {ong.description !== undefined
+              ? ong.description
+              : "Adicione uma descrição"}
           </p>
         </DescriptionContainer>
         <ContactContainer>
@@ -164,8 +173,7 @@ export const DashboardOng = () => {
             <div className="info_contact">
               <p className="topics_contact">Endereço:</p>
               <a href={googleMaps} target="_blank">
-                Rua Ribeiro do Vale, 120 - Brooklin Paulista, São Paulo - SP,
-                Brasil
+                {ong.cep !== undefined ? ong.cep : "Adicione seu endereço"}
               </a>
             </div>
           </ContactDiv>
@@ -176,7 +184,11 @@ export const DashboardOng = () => {
             </div>
             <div className="info_contact">
               <p className="topics_contact">Email:</p>
-              <p>diretoria@naia.org.br</p>
+              <p>
+                {ong.email !== undefined
+                  ? ong.email
+                  : "Adicione email para contato"}
+              </p>
             </div>
           </ContactDiv>
 
@@ -186,7 +198,9 @@ export const DashboardOng = () => {
             </div>
             <div className="info_contact">
               <p className="topics_contact">Website:</p>
-              <p>https://www.naia.org.br</p>
+              <p>
+                {ong.website !== undefined ? ong.website : "Adicione seu site"}
+              </p>
             </div>
           </ContactDiv>
         </ContactContainer>
@@ -197,7 +211,7 @@ export const DashboardOng = () => {
           <h1>Eventos Criados</h1>
         </div>
         <div className="card_events">
-          {[1, 1, 1, 1, 1, 1, 1, 1, 1].map((item, index) => (
+          {listEvents.map((item, index) => (
             <EventDashContainer>
               <EventDashImage>
                 <img src={biblio} alt="biblioteca"></img>
@@ -205,31 +219,31 @@ export const DashboardOng = () => {
                   {workType === "volunteering" ? (
                     <>
                       <IoPeopleCircle className="icon_volunteer" />
-                      <span>{voluntaries.length}</span>
+                      <span>{item.voluntaries.length}</span>
                     </>
                   ) : (
                     <>
                       <MdOutlineAttachMoney className="icon_donate" />
                       <span className="donate_numbers">
-                        {amountDonated.toFixed(2)} / {donationGoal.toFixed(2)}
+                        {item.amountDonated.toFixed(2)} / {item.donationGoal.toFixed(2)}
                       </span>
                     </>
                   )}
                 </WorkTypeEvent>
               </EventDashImage>
               <EventDashInfo>
-                <h2>{title}</h2>
-                <h4>{ongName}</h4>
-                <p>{description}</p>
+                <h2>{item.title}</h2>
+                <h4>{item.ongName}</h4>
+                <p>{item.description}</p>
                 <EventDashLocationAndStatus>
                   <span>
                     <GrLocation className="icon_map" />
-                    {state}
+                    {item.state}
                   </span>
                   {!completed ? (
                     <button>Concluir</button>
                   ) : (
-                    <button>Deletar</button>
+                    <button>Concluído</button>
                   )}
                 </EventDashLocationAndStatus>
               </EventDashInfo>
