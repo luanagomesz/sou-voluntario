@@ -2,6 +2,13 @@ import coverImg from "./assets/coverImg.png";
 import profileImg from "./assets/profileImg.jpeg";
 import styled from "styled-components";
 
+export const PageContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 export const Main = styled.main`
   background-color: var(--ligthblue);
   margin-top: 120px;

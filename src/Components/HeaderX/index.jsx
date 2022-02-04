@@ -14,15 +14,14 @@ import {
 } from "react-icons/fa";
 import { useHistory } from "react-router";
 import { useEffect } from "react";
-export const Header = ({
-  MyEvents = false,
-  Events = false,
-  Faq = false,
-  isOng = false,
-}) => {
+import { ModalCreateEvent } from "../../Components/ModalCreateEvent";
+
+export const Header = () => {
   const [burguer, setBurguer] = useState(false);
   const { logout, user } = useAuth();
   const [userName, setUserName] = useState("");
+  const [createEventModal, setCreateEventModal] = useState(false);
+
   const history = useHistory();
   console.log(user);
   useEffect(() => {
@@ -51,6 +50,12 @@ export const Header = ({
 
   return (
     <>
+      {createEventModal === true ? (
+        <ModalCreateEvent setCreateEventModal={setCreateEventModal} />
+      ) : (
+        ""
+      )}
+
       <Nav>
         <Link to="/">
           <img src={Logo} alt="Sou Voluntário"></img>
@@ -69,7 +74,12 @@ export const Header = ({
           {user.userType === "voluntary" ? (
             <Link to="/DashboardUser">Meus Eventos</Link>
           ) : (
-            <button className="newEvent_desktop">Criar novo evento</button>
+            <button
+              className="newEvent_desktop"
+              onClick={() => setCreateEventModal(true)}
+            >
+              Criar novo evento
+            </button>
           )}
           <Link to="/Events">Eventos</Link>
           <Link to="/Faq">Faq</Link>
@@ -101,7 +111,11 @@ export const Header = ({
             </>
           ) : (
             <>
-              <button onClick={toggleBurguer} className="newEvent_mobile">
+              <button
+                onClick={toggleBurguer}
+                className="newEvent_mobile"
+                onClick={() => setCreateEventModal(true)}
+              >
                 <FaPlusCircle className="icon" />
                 Criar novo evento
               </button>

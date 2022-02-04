@@ -7,9 +7,10 @@ export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   align-items: center;
-  z-index: 2;
+  z-index: 100000000000;
+  overflow-y: hidden;
 `;
 export const ModalContainer = styled.div`
   width: 300px;
