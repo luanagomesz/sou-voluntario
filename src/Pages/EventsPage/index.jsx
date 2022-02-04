@@ -167,10 +167,7 @@ export const Events = () => {
             onChange={(e) => setSearch(e.target.value)}
           />
           <button onClick={() => SearchFilter()}>
-            <AiOutlineSearch
-              color="white
-            "
-            />
+            <AiOutlineSearch />
           </button>
         </div>
       </SearchContainer>

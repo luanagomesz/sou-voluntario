@@ -25,7 +25,7 @@ export const ModalContainer = styled.div`
     position: absolute;
     font-size: 25px;
     margin-left: 280px;
-    margin-top: -27.5px;
+    margin-top: -27.9px;
     color: var(--grey-100);
     z-index: 4;
     cursor: pointer;
@@ -118,5 +118,10 @@ export const ModalContainer = styled.div`
     background-color: var(--ligthorange);
     color: white;
     margin-bottom: 20px;
+    :hover {
+      background-color: var(--white);
+      border: 1px solid var(--ligthorange);
+      color: var(--ligthorange);
+    }
   }
 `;
