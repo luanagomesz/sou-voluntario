@@ -21,11 +21,14 @@ export const Header = () => {
   const { logout, user } = useAuth();
   const [userName, setUserName] = useState("");
   const [createEventModal, setCreateEventModal] = useState(false);
-
+  const [userType, setUserType] = useState("");
   const history = useHistory();
-  console.log(user);
+
   useEffect(() => {
     user.name !== undefined ? setUserName(user.name) : setUserName("JohnDoe");
+    user.userType === "voluntary"
+      ? setUserType("voluntary")
+      : setUserType("ong");
   }, []);
 
   const toggleBurguer = () => {
@@ -35,13 +38,12 @@ export const Header = () => {
   const OngProfile = () => {
     if (userType !== "voluntary") {
       toggleBurguer();
-      return history.push("/DashboardOng");
+      history.push("/dashboardong");
     } else {
       toggleBurguer();
-      return history.push("/DashboardUser");
+      history.push("/dashboarduser");
     }
   };
-  const userType = "voluntary";
 
   const handleLogout = () => {
     logout();
@@ -87,7 +89,7 @@ export const Header = () => {
           <Link to="/Faq">Faq</Link>
           <p className="name_user">{userName}</p>
           <div className="iconContainer">
-            <FaUser className="icon" onClick={OngProfile} />
+            <FaUser className="icon" onClick={() => OngProfile()} />
             <FaSignOutAlt onClick={handleLogout} className="icon" />
           </div>
         </div>
