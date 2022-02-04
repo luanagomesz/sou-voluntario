@@ -27,7 +27,7 @@ export const SearchContainer = styled.div`
   width: 90%;
   max-width: 1500px;
   background-color: white;
-  margin-top: 140px;
+  margin-top: 120px;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
