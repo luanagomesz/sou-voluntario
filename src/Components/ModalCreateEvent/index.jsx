@@ -1,16 +1,13 @@
 import { ModalContainer, PageContainer } from "./style";
 import { useEventsPageContext } from "../../Contexts/EventPage";
 import { AiFillCloseSquare } from "react-icons/ai";
-import { useEffect, useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
 import { api } from "../../Service";
 import { useAuth } from "../../Contexts/Auth";
 import { toast } from "react-toastify";
-export const ModalCreateEvent = () => {
-  const { refresh, setRefresh, createEventModal, setCreateEventModal } =
-    useEventsPageContext();
-
+export const ModalCreateEvent = ({ setCreateEventModal }) => {
   const { accessToken, user } = useAuth();
-
+  const { refresh, setRefresh } = useEventsPageContext();
   const [userInput, setUserInput] = useState({
     title: "",
     description: "",

@@ -4,6 +4,7 @@ import {
   EventsStatusContainer,
   EventsList,
   EventsListContainer,
+  PageContainer,
 } from "./style";
 import { EventStatusSelector } from "../../Components/EventStatusSelector";
 import { EventUserCard } from "../../Components/EventUserCard";
@@ -30,7 +31,7 @@ export const DashboardUser = () => {
   }, [statusEvent]);
 
   return (
-    <>
+    <PageContainer>
       <Header />
       <Main>
         <EventsStatusContainer className="events__status__container">
@@ -47,6 +48,6 @@ export const DashboardUser = () => {
           </EventsList>
         </EventsListContainer>
       </Main>
-    </>
+    </PageContainer>
   );
 };

@@ -1,6 +1,6 @@
 import { ModalContainer } from "./style";
 import { useEventsPageContext } from "../../Contexts/EventPage";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 export const FilterCategoriesModal = ({ IsOpen }) => {
   const { setCategories, selectedCategories } = useEventsPageContext();
 
