@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import { GrLocation } from "react-icons/gr";
 import { IoPeopleCircle } from "react-icons/io5";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import { toast } from "react-toastify";
 import { useAuth } from "../../Contexts/Auth";
+import { useCategoryImg } from "../../Contexts/CategoryImg";
 import { useUserEvents } from "../../Contexts/UserEvents";
 
 import {
@@ -12,9 +14,9 @@ import {
   WorkTypeEvent,
   EventUserLocationAndStatus,
 } from "./style";
-const bibliotecario = require("../../assets/img/bibliotecario.jpg");
 
 export const EventUserCard = ({ event }) => {
+  const { selectImgUrl, imgUrl } = useCategoryImg();
   const { setEventAsCompleted, loadSubscribedFilteredEvents, statusEvent } =
     useUserEvents();
   const {
@@ -42,10 +44,14 @@ export const EventUserCard = ({ event }) => {
     });
   };
 
+  useEffect(() => {
+    selectImgUrl(category);
+  }, []);
+
   return (
     <EventContainer className="events__list__item">
       <EventUserImage className="image__container">
-        <img src={bibliotecario} alt="event" />
+        <img src={imgUrl} alt="event" />
         <WorkTypeEvent>
           {workType === "volunteering" ? (
             <>
