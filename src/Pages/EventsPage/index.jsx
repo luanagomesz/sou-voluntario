@@ -31,7 +31,7 @@ export const Events = () => {
       document.getElementById("donation").style.backgroundColor =
         "var(--ligthorange)";
       document.getElementById("donation").style.color = "white";
-      console.log(filteredDonation);
+
       if (filteredEvents.length > 0) {
         setFilteredEvents(
           filteredEvents.filter((item) => item.workType === "donation")
@@ -72,7 +72,6 @@ export const Events = () => {
     api
       .get(`/events`)
       .then((res) => {
-        console.log(res.data);
         setEvents(res.data);
       })
       .catch((err) => {

@@ -12,6 +12,7 @@ const CategoryImgProvider = ({ children }) => {
     environment: require("../../assets/img/events_category/meio_ambiente.png"),
     "vulnerabilidade social": require("../../assets/img/events_category/vulnerabilidade_social.png"),
     "social vulnerability": require("../../assets/img/events_category/vulnerabilidade_social.png"),
+    "vulnerabiliade social": require("../../assets/img/events_category/vulnerabilidade_social.png"),
 
     outros: require("../../assets/img/events_category/outros.png"),
     others: require("../../assets/img/events_category/outros.png"),
