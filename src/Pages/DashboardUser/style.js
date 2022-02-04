@@ -13,6 +13,9 @@ export const Main = styled.main`
   width: 100vw;
   min-height: calc(100vh - 130px);
 
+  padding-bottom: 50px;
+  margin-top: 125px;
+
   background-color: var(--ligthblue);
   > * {
     margin: 0 auto;

@@ -42,6 +42,8 @@ export const SearchContainer = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   .button {
     width: 20%;
+    color: var(--grey-50);
+
     button {
       width: 100%;
     }
@@ -50,7 +52,7 @@ export const SearchContainer = styled.div`
     background-color: white;
     border: 1px solid #dedede;
     padding: 8px;
-    color: var(--grey-50);
+
     width: 20%;
     max-width: 200px;
     border-radius: 10px;
@@ -66,6 +68,7 @@ export const SearchContainer = styled.div`
     justify-content: center;
     padding-right: 5px;
     padding-left: 10px;
+
     button {
       background-color: var(--ligthorange);
       width: 50px;
@@ -73,6 +76,12 @@ export const SearchContainer = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+      color: white;
+      :hover {
+        background-color: white;
+        border: 1px solid var(--ligthorange);
+        color: var(--ligthorange);
+      }
     }
     input {
       width: 80%;

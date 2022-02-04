@@ -10,7 +10,7 @@ import { EventUserCard } from "../../Components/EventUserCard";
 import { useUserEvents } from "../../Contexts/UserEvents";
 import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "../../Contexts/Auth";
-import { Header } from "../../Components/Header";
+import { Header } from "../../Components/HeaderX";
 
 export const DashboardUser = () => {
   const { accessToken, user } = useAuth();

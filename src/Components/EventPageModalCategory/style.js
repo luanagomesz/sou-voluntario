@@ -14,7 +14,8 @@ export const ModalContainer = styled.div`
   background-color: white;
   border-radius: 5px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-
+  animation-name: fade;
+  animation-duration: 0.5s;
   div {
     display: flex;
     width: 98%;

@@ -24,6 +24,7 @@ import { BiMap, BiLink } from "react-icons/bi";
 import biblio from "./assets/biblio.jpeg";
 import { GrLocation } from "react-icons/gr";
 import { IoPeopleCircle } from "react-icons/io5";
+import { Header } from "../../Components/HeaderX";
 
 export const DashboardOng = () => {
   const cep =
@@ -43,6 +44,7 @@ export const DashboardOng = () => {
 
   return (
     <>
+      <Header />
       <Main>
         <div className="photos_container">
           <CoverPhoto>
