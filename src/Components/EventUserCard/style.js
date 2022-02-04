@@ -11,6 +11,8 @@ export const EventContainer = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  animation: fade;
+  animation-duration: 500ms;
 `;
 
 export const EventUserImage = styled.figure`
