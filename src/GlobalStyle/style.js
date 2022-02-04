@@ -13,16 +13,29 @@ const GlobalStyle = createGlobalStyle`
     --ligthorange:#FE9E63;
     --cyan: #24585F;
     --darkblue:#081140;
-    --ligthblue: ##F4F8FB;
+    --ligthblue: #F4F8FB;
+    --ice: #D5E0E4;
+    --ligthgrey: #dedede;
     --grey-100:#333333;
+    --grey-80: #333131;
     --grey-50:#999999;
-    --grey-0:rgba(222, 222, 222, 0.3);;
+    --grey-0:rgba(222, 222, 222, 0.3);
 }
 body{
     background: white;
-    color: var(---darkblue);
+    color: var(--darkblue);
     font-family: 'Fira Sans', sans-serif;
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
+
 h1,h2, h3, h4, span, button, div, input, p{
     font-family: 'Fira Sans', sans-serif;
 } 
@@ -33,7 +46,6 @@ button{
     cursor: pointer;
     border: none;
     font-style: normal;
-    font-weight: 600;
     font-size: 16px;
 }
 a{
