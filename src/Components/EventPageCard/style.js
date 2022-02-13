@@ -86,11 +86,14 @@ export const CardContainer = styled.div`
     }
   }
   @media (max-width: 850px) {
-    width: 280px;
+    min-width: 310px;
     margin-right: 0px;
     .imgContainer {
       .containerType {
         margin-top: 150px;
+      }
+      img {
+        width: 100%;
       }
     }
 
