@@ -13,6 +13,7 @@ export const Nav = styled.nav`
   left: 0px;
   top: 0;
   width: 100%;
+  box-shadow: 1px 1px 10px 3px var(--ligthgrey);
   /*   ${({ burguer }) =>
     burguer &&
     css`
