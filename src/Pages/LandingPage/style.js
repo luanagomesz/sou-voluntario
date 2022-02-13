@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
-  width: 95%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
+
   img {
     cursor: pointer;
+    width: 300px;
   }
   h3 {
     font-size: 20px;
@@ -52,6 +54,7 @@ export const Header = styled.header`
 
   @media (max-width: 1080px) {
     justify-content: space-between;
+    margin-bottom: 10px;
     img {
       width: 50%;
       min-width: 180px;
@@ -61,12 +64,21 @@ export const Header = styled.header`
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-right: 5%;
     }
     .textH {
       display: none;
     }
     .menu {
+      margin-top: 2px;
       display: block;
+      margin-right: 15px;
+      font-size: 18px;
+      padding-bottom: 2px;
+      :hover {
+        margin-top: 4px;
+        border-bottom: 2px solid var(--ligthorange);
+      }
     }
     .login {
       display: none;
@@ -87,6 +99,7 @@ export const Header = styled.header`
 
 export const PageContainer = styled.div`
   width: 100vw;
+  max-width: 100%;
   height: fit-content;
   overflow-y: auto;
   overflow-x: hidden;

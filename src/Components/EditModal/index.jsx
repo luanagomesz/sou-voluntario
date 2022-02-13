@@ -6,18 +6,15 @@ import { AiFillCloseSquare } from "react-icons/ai";
 import { useAuth } from "../../Contexts/Auth";
 export const EditModal = ({ ong, edit, RefreshPage, Modalset }) => {
   const [userInput, setUserInput] = useState("");
-
+  const [request, setRequest] = useState(["location"]);
   const { accessToken } = useAuth();
+
   const editOng = () => {
     if (userInput.length > 0) {
       api
-        .patch(
-          `/users/${ong.id}`,
-          { edit: userInput },
-          {
-            headers: { Authorization: `Bearer ${accessToken}` },
-          }
-        )
+        .patch(`/users/${ong.id}`, `${edit.toString()}:`, {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        })
         .then((res) => {
           console.log(res.data);
           RefreshPage();

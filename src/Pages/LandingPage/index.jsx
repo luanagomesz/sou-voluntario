@@ -43,8 +43,12 @@ export const LandingPage = () => {
           Para Voluntarios
         </h3>
         <div>
-          <h3 className="menu">Menu</h3>
-          <GiHamburgerMenu className="icon-menu" />
+          <h3 className="menu" onClick={() => history.push("/login")}>
+            Login
+          </h3>
+          <h3 className="menu" onClick={() => history.push("/register")}>
+            Cadastro
+          </h3>
           <button className="login" onClick={() => history.push("/login")}>
             Login
           </button>
